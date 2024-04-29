@@ -41,11 +41,17 @@ namespace RestaurantMangement {
             //When FResMain form is closed, this event handler will be called, and it will close the current form (this.Close()).
             frm.Closed += (s, args) => this.Close();
             frm.Show();
-
-
-            // insert user first
         }
 
+        private void signUpBtn_Click(object sender, EventArgs e) {
+            this.Hide();
+            FResSignUp f = new FResSignUp();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
 
+        private void label2_Click(object sender, EventArgs e) {
+
+        }
     }
 }

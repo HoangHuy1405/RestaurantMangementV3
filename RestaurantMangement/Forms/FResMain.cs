@@ -17,6 +17,12 @@ namespace RestaurantMangement.Forms {
         private void BtnExit_Click(object sender, EventArgs e) {
             Application.Exit();
         }
-        // hello
+
+        private void btnOrder_Click(object sender, EventArgs e) {
+            this.Hide();
+            FResPOS fResPOS = new FResPOS();
+            fResPOS.Closed += (s, args) => this.Close();
+            fResPOS.Show();
+        }
     }
 }

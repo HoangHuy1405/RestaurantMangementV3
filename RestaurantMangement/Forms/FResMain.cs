@@ -13,6 +13,10 @@ namespace RestaurantMangement.Forms {
         public FResMain() {
             InitializeComponent();
         }
+
+        private void BtnExit_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
         // hello
     }
 }

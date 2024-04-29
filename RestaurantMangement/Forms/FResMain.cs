@@ -13,5 +13,6 @@ namespace RestaurantMangement.Forms {
         public FResMain() {
             InitializeComponent();
         }
+        // hello
     }
 }

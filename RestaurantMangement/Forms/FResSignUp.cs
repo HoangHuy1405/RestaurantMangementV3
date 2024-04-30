@@ -10,16 +10,20 @@ using System.Windows.Forms;
 
 namespace RestaurantMangement.Forms {
     public partial class FResSignUp : Form {
+        AccountDAO accountDAO = new AccountDAO();
         public FResSignUp() {
             InitializeComponent();
         }
 
-        private void signUpBtn_Click(object sender, EventArgs e) {
-
-        }
-
         private void btnExit_Click(object sender, EventArgs e) {
             Application.Exit();
+        }
+
+        private void BtnSignUp_Click(object sender, EventArgs e) {
+            Account acc = new Account(txtUser.Text, txtEmail.Text, txtPass.Text);
+            if(accountDAO.CreateNewAccount(acc)) {
+                MessageBox.Show("Account's created successfully", "Signup", MessageBoxButtons.OK);
+            }
         }
     }
 }

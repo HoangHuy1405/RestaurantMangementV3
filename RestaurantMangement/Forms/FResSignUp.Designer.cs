@@ -23,32 +23,32 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FResSignUp));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             label3 = new Label();
             btnExit = new Guna.UI2.WinForms.Guna2Button();
             txtUser = new Guna.UI2.WinForms.Guna2TextBox();
             label2 = new Label();
-            txtPass = new Guna.UI2.WinForms.Guna2TextBox();
+            txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             label1 = new Label();
             guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
-            signUpBtn = new Guna.UI2.WinForms.Guna2Button();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            BtnSignUp = new Guna.UI2.WinForms.Guna2Button();
+            txtPass = new Guna.UI2.WinForms.Guna2TextBox();
             label4 = new Label();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -58,24 +58,24 @@
             // 
             guna2Panel1.Controls.Add(guna2PictureBox1);
             guna2Panel1.Controls.Add(label3);
-            guna2Panel1.CustomizableEdges = customizableEdges3;
+            guna2Panel1.CustomizableEdges = customizableEdges17;
             guna2Panel1.Dock = DockStyle.Top;
             guna2Panel1.FillColor = Color.FromArgb(53, 55, 75);
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges18;
             guna2Panel1.Size = new Size(386, 158);
             guna2Panel1.TabIndex = 12;
             // 
             // guna2PictureBox1
             // 
             guna2PictureBox1.BackColor = Color.Transparent;
-            guna2PictureBox1.CustomizableEdges = customizableEdges1;
+            guna2PictureBox1.CustomizableEdges = customizableEdges15;
             guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(152, 12);
             guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2PictureBox1.Size = new Size(105, 97);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 7;
@@ -97,7 +97,7 @@
             // 
             btnExit.AutoRoundedCorners = true;
             btnExit.BorderRadius = 34;
-            btnExit.CustomizableEdges = customizableEdges5;
+            btnExit.CustomizableEdges = customizableEdges19;
             btnExit.DisabledState.BorderColor = Color.DarkGray;
             btnExit.DisabledState.CustomBorderColor = Color.DarkGray;
             btnExit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -107,7 +107,7 @@
             btnExit.ForeColor = Color.White;
             btnExit.Location = new Point(217, 500);
             btnExit.Name = "btnExit";
-            btnExit.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnExit.ShadowDecoration.CustomizableEdges = customizableEdges20;
             btnExit.Size = new Size(124, 71);
             btnExit.TabIndex = 4;
             btnExit.Text = "Exit";
@@ -115,7 +115,7 @@
             // 
             // txtUser
             // 
-            txtUser.CustomizableEdges = customizableEdges7;
+            txtUser.CustomizableEdges = customizableEdges21;
             txtUser.DefaultText = "";
             txtUser.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtUser.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -131,7 +131,7 @@
             txtUser.PlaceholderText = "";
             txtUser.RightToLeft = RightToLeft.No;
             txtUser.SelectedText = "";
-            txtUser.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtUser.ShadowDecoration.CustomizableEdges = customizableEdges22;
             txtUser.Size = new Size(296, 60);
             txtUser.TabIndex = 0;
             // 
@@ -145,27 +145,27 @@
             label2.TabIndex = 13;
             label2.Text = "Username";
             // 
-            // txtPass
+            // txtEmail
             // 
-            txtPass.CustomizableEdges = customizableEdges9;
-            txtPass.DefaultText = "";
-            txtPass.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtPass.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtPass.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtPass.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtPass.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPass.Font = new Font("Segoe UI", 9F);
-            txtPass.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPass.Location = new Point(45, 306);
-            txtPass.Margin = new Padding(3, 4, 3, 4);
-            txtPass.Name = "txtPass";
-            txtPass.PasswordChar = '\0';
-            txtPass.PlaceholderText = "";
-            txtPass.RightToLeft = RightToLeft.No;
-            txtPass.SelectedText = "";
-            txtPass.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtPass.Size = new Size(296, 60);
-            txtPass.TabIndex = 1;
+            txtEmail.CustomizableEdges = customizableEdges23;
+            txtEmail.DefaultText = "";
+            txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtEmail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtEmail.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtEmail.Font = new Font("Segoe UI", 9F);
+            txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtEmail.Location = new Point(45, 306);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PasswordChar = '\0';
+            txtEmail.PlaceholderText = "";
+            txtEmail.RightToLeft = RightToLeft.No;
+            txtEmail.SelectedText = "";
+            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            txtEmail.Size = new Size(296, 60);
+            txtEmail.TabIndex = 1;
             // 
             // label1
             // 
@@ -186,47 +186,47 @@
             guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
             guna2MessageDialog1.Text = null;
             // 
-            // signUpBtn
+            // BtnSignUp
             // 
-            signUpBtn.AutoRoundedCorners = true;
-            signUpBtn.BorderRadius = 34;
-            signUpBtn.CustomizableEdges = customizableEdges11;
-            signUpBtn.DisabledState.BorderColor = Color.DarkGray;
-            signUpBtn.DisabledState.CustomBorderColor = Color.DarkGray;
-            signUpBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            signUpBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            signUpBtn.FillColor = Color.FromArgb(120, 160, 131);
-            signUpBtn.Font = new Font("Segoe UI", 12F);
-            signUpBtn.ForeColor = Color.White;
-            signUpBtn.Location = new Point(45, 500);
-            signUpBtn.Name = "signUpBtn";
-            signUpBtn.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            signUpBtn.Size = new Size(124, 71);
-            signUpBtn.TabIndex = 3;
-            signUpBtn.Text = "Sign up";
-            signUpBtn.Click += signUpBtn_Click;
+            BtnSignUp.AutoRoundedCorners = true;
+            BtnSignUp.BorderRadius = 34;
+            BtnSignUp.CustomizableEdges = customizableEdges25;
+            BtnSignUp.DisabledState.BorderColor = Color.DarkGray;
+            BtnSignUp.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtnSignUp.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtnSignUp.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtnSignUp.FillColor = Color.FromArgb(120, 160, 131);
+            BtnSignUp.Font = new Font("Segoe UI", 12F);
+            BtnSignUp.ForeColor = Color.White;
+            BtnSignUp.Location = new Point(45, 500);
+            BtnSignUp.Name = "BtnSignUp";
+            BtnSignUp.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            BtnSignUp.Size = new Size(124, 71);
+            BtnSignUp.TabIndex = 3;
+            BtnSignUp.Text = "Sign up";
+            BtnSignUp.Click += BtnSignUp_Click;
             // 
-            // guna2TextBox1
+            // txtPass
             // 
-            guna2TextBox1.CustomizableEdges = customizableEdges13;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(45, 405);
-            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.RightToLeft = RightToLeft.No;
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2TextBox1.Size = new Size(296, 60);
-            guna2TextBox1.TabIndex = 2;
+            txtPass.CustomizableEdges = customizableEdges27;
+            txtPass.DefaultText = "";
+            txtPass.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtPass.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtPass.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtPass.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtPass.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtPass.Font = new Font("Segoe UI", 9F);
+            txtPass.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtPass.Location = new Point(45, 405);
+            txtPass.Margin = new Padding(3, 4, 3, 4);
+            txtPass.Name = "txtPass";
+            txtPass.PasswordChar = '\0';
+            txtPass.PlaceholderText = "";
+            txtPass.RightToLeft = RightToLeft.No;
+            txtPass.SelectedText = "";
+            txtPass.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            txtPass.Size = new Size(296, 60);
+            txtPass.TabIndex = 2;
             // 
             // label4
             // 
@@ -243,15 +243,15 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(386, 605);
-            Controls.Add(guna2TextBox1);
+            Controls.Add(txtPass);
             Controls.Add(label4);
             Controls.Add(guna2Panel1);
             Controls.Add(btnExit);
             Controls.Add(txtUser);
             Controls.Add(label2);
-            Controls.Add(txtPass);
+            Controls.Add(txtEmail);
             Controls.Add(label1);
-            Controls.Add(signUpBtn);
+            Controls.Add(BtnSignUp);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FResSignUp";
             StartPosition = FormStartPosition.CenterScreen;
@@ -271,11 +271,11 @@
         private Guna.UI2.WinForms.Guna2Button btnExit;
         private Guna.UI2.WinForms.Guna2TextBox txtUser;
         private Label label2;
-        private Guna.UI2.WinForms.Guna2TextBox txtPass;
+        private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Label label1;
         private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
-        private Guna.UI2.WinForms.Guna2Button signUpBtn;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2Button BtnSignUp;
+        private Guna.UI2.WinForms.Guna2TextBox txtPass;
         private Label label4;
     }
 }

@@ -2,6 +2,7 @@ using RestaurantMangement.Forms;
 
 namespace RestaurantMangement {
     public partial class FResLogin : Form {
+        AccountDAO accountDAO = new AccountDAO();
         public FResLogin() {
             InitializeComponent();
         }
@@ -23,24 +24,32 @@ namespace RestaurantMangement {
         }
 
         private void btnLogin_Click(object sender, EventArgs e) {
-            // create database and user table
-            //if(Main.isValidUser(txtUser.Text, txtPass.Text) == false) {
-            //    guna2MessageDialog1.Show("invalid username or password");
-            //    return;
-            //}
-            //else {
-            //    this.Hide();
-            //    FResLogin frm = new FResLogin();
-            //    frm.Show();
-            //}
-
-            // only hide the current form, not completely closed
-            this.Hide();
-            FResMain frm = new FResMain();
-            //This line attaches an event handler to the Closed event of the FOrderFood form.
-            //When FResMain form is closed, this event handler will be called, and it will close the current form (this.Close()).
-            frm.Closed += (s, args) => this.Close();
-            frm.Show();
+            string email = txtEmail.Text.Trim();
+            string password = txtPass.Text.Trim();
+            if(string.IsNullOrEmpty(email) ) {
+                MessageBox.Show("Email has not been filled in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(string.IsNullOrEmpty (password) ) {
+                MessageBox.Show("Password has not been filled in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else {
+                Account acc = new Account(email, password);
+                acc = accountDAO.CheckAccount(acc);
+                if (acc == null) {
+                    MessageBox.Show("Wrong Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEmail.Clear();
+                    txtPass.Clear();
+                } else {
+                    // only hide the current form, not completely closed
+                    this.Hide();
+                    FResMain frm = new FResMain();
+                    //This line attaches an event handler to the Closed event of the FOrderFood form.
+                    //When FResMain form is closed, this event handler will be called, and it will close the current form (this.Close()).
+                    frm.Closed += (s, args) => this.Close();
+                    frm.Show();
+                }
+            }
+            
         }
 
         private void signUpBtn_Click(object sender, EventArgs e) {

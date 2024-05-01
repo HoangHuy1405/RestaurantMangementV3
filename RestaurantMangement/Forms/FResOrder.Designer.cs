@@ -58,7 +58,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            btnAddFood = new Guna.UI2.WinForms.Guna2Button();
+            btnAddItem = new Guna.UI2.WinForms.Guna2Button();
             btnHome = new Guna.UI2.WinForms.Guna2Button();
             label1 = new Label();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -79,7 +79,7 @@
             label7 = new Label();
             guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Panel13 = new Guna.UI2.WinForms.Guna2Panel();
-            btnPurchase = new Guna.UI2.WinForms.Guna2Button();
+            btnProceed = new Guna.UI2.WinForms.Guna2Button();
             label8 = new Label();
             flowLayoutPanel2 = new FlowLayoutPanel();
             guna2Panel12 = new Guna.UI2.WinForms.Guna2Panel();
@@ -103,7 +103,7 @@
             // 
             // guna2Panel1
             // 
-            guna2Panel1.Controls.Add(btnAddFood);
+            guna2Panel1.Controls.Add(btnAddItem);
             guna2Panel1.Controls.Add(btnHome);
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.Controls.Add(guna2PictureBox1);
@@ -116,26 +116,26 @@
             guna2Panel1.Size = new Size(1334, 96);
             guna2Panel1.TabIndex = 0;
             // 
-            // btnAddFood
+            // btnAddItem
             // 
-            btnAddFood.BackColor = Color.Transparent;
-            btnAddFood.BorderRadius = 10;
-            btnAddFood.CustomizableEdges = customizableEdges1;
-            btnAddFood.DisabledState.BorderColor = Color.DarkGray;
-            btnAddFood.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAddFood.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAddFood.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAddFood.FillColor = Color.FromArgb(80, 114, 123);
-            btnAddFood.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddFood.ForeColor = Color.White;
-            btnAddFood.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddFood.Location = new Point(1046, 19);
-            btnAddFood.Name = "btnAddFood";
-            btnAddFood.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnAddFood.Size = new Size(144, 56);
-            btnAddFood.TabIndex = 3;
-            btnAddFood.Text = "Add Food";
-            btnAddFood.Click += btnAddFood_Click;
+            btnAddItem.BackColor = Color.Transparent;
+            btnAddItem.BorderRadius = 10;
+            btnAddItem.CustomizableEdges = customizableEdges1;
+            btnAddItem.DisabledState.BorderColor = Color.DarkGray;
+            btnAddItem.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAddItem.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAddItem.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAddItem.FillColor = Color.FromArgb(80, 114, 123);
+            btnAddItem.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddItem.ForeColor = Color.White;
+            btnAddItem.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddItem.Location = new Point(1046, 19);
+            btnAddItem.Name = "btnAddItem";
+            btnAddItem.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnAddItem.Size = new Size(144, 56);
+            btnAddItem.TabIndex = 3;
+            btnAddItem.Text = "Add Item";
+            btnAddItem.Click += btnAddItem_Click;
             // 
             // btnHome
             // 
@@ -358,7 +358,7 @@
             // 
             // guna2Panel13
             // 
-            guna2Panel13.Controls.Add(btnPurchase);
+            guna2Panel13.Controls.Add(btnProceed);
             guna2Panel13.Controls.Add(label8);
             guna2Panel13.CustomizableEdges = customizableEdges25;
             guna2Panel13.Dock = DockStyle.Bottom;
@@ -368,24 +368,23 @@
             guna2Panel13.Size = new Size(358, 105);
             guna2Panel13.TabIndex = 2;
             // 
-            // btnPurchase
+            // btnProceed
             // 
-            btnPurchase.BorderRadius = 5;
-            btnPurchase.CustomizableEdges = customizableEdges23;
-            btnPurchase.DisabledState.BorderColor = Color.DarkGray;
-            btnPurchase.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnPurchase.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnPurchase.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnPurchase.FillColor = Color.FromArgb(120, 160, 131);
-            btnPurchase.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPurchase.ForeColor = Color.White;
-            btnPurchase.Location = new Point(14, 42);
-            btnPurchase.Name = "btnPurchase";
-            btnPurchase.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            btnPurchase.Size = new Size(341, 60);
-            btnPurchase.TabIndex = 1;
-            btnPurchase.Text = "Purchase";
-            btnPurchase.Click += btnPurchase_Click;
+            btnProceed.BorderRadius = 5;
+            btnProceed.CustomizableEdges = customizableEdges23;
+            btnProceed.DisabledState.BorderColor = Color.DarkGray;
+            btnProceed.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnProceed.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnProceed.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnProceed.FillColor = Color.FromArgb(120, 160, 131);
+            btnProceed.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnProceed.ForeColor = Color.White;
+            btnProceed.Location = new Point(14, 42);
+            btnProceed.Name = "btnProceed";
+            btnProceed.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            btnProceed.Size = new Size(341, 60);
+            btnProceed.TabIndex = 1;
+            btnProceed.Text = "Proceed";
             // 
             // label8
             // 
@@ -399,7 +398,7 @@
             // 
             // flowLayoutPanel2
             // 
-            flowLayoutPanel2.Location = new Point(14, 94);
+            flowLayoutPanel2.Location = new Point(14, 134);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(250, 125);
             flowLayoutPanel2.TabIndex = 1;
@@ -456,13 +455,12 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridView1.Location = new Point(179, 96);
+            dataGridView1.Location = new Point(179, 99);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(797, 601);
+            dataGridView1.Size = new Size(797, 598);
             dataGridView1.TabIndex = 7;
             dataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -553,8 +551,8 @@
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel13;
         private Label label8;
-        private Guna.UI2.WinForms.Guna2Button btnPurchase;
-        private Guna.UI2.WinForms.Guna2Button btnAddFood;
+        private Guna.UI2.WinForms.Guna2Button btnProceed;
+        private Guna.UI2.WinForms.Guna2Button btnAddItem;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView1;
     }
 }

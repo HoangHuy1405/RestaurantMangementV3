@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,24 +39,37 @@ namespace RestaurantMangement.Forms {
 
         }
 
-        private void btnAddFood_Click(object sender, EventArgs e) {
-            // add new UCFood to grid
-            UCFood uCFood = new UCFood();
-        }
-
         // retrieve data from database
-        private void FResOrder_Load(object sender, EventArgs e) {
+        public void FResOrder_Load(object sender, EventArgs e) {
             DataTable table = menuItemDAO.load();
-
             dataGridView1.DataSource = table;
+            if (dataGridView1.Columns.Contains("item_name"))
+                dataGridView1.Columns["item_name"].HeaderText = "Item Name";
+
+            if (dataGridView1.Columns.Contains("item_type"))
+                dataGridView1.Columns["item_type"].HeaderText = "Item Type";
+
+            if (dataGridView1.Columns.Contains("description"))
+                dataGridView1.Columns["description"].HeaderText = "Description";
+
+            if (dataGridView1.Columns.Contains("price"))
+                dataGridView1.Columns["price"].HeaderText = "Price";
+
+            if (dataGridView1.Columns.Contains("quantity"))
+                dataGridView1.Columns["quantity"].HeaderText = "Quantity";
+
+            dataGridView1.ColumnHeadersHeight = 30;
         }
 
         private void ucFood3_Load(object sender, EventArgs e) {
 
         }
 
-        private void btnPurchase_Click(object sender, EventArgs e) {
-
+        private void btnAddItem_Click(object sender, EventArgs e) {
+            this.Hide();
+            FResAddDelEditMenuItem f = new FResAddDelEditMenuItem();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 }

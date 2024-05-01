@@ -20,7 +20,7 @@ namespace RestaurantMangement.Forms {
 
         private void btnOrder_Click(object sender, EventArgs e) {
             this.Hide();
-            FResPOS fResPOS = new FResPOS();
+            FResOrder fResPOS = new FResOrder();
             fResPOS.Closed += (s, args) => this.Close();
             fResPOS.Show();
         }

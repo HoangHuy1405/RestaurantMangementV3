@@ -21,9 +21,16 @@ namespace RestaurantMangement.Forms {
 
         private void BtnSignUp_Click(object sender, EventArgs e) {
             Account acc = new Account(txtUser.Text, txtEmail.Text, txtPass.Text);
-            if(accountDAO.CreateNewAccount(acc)) {
+            if (accountDAO.CreateNewAccount(acc)) {
                 MessageBox.Show("Account's created successfully", "Signup", MessageBoxButtons.OK);
             }
+        }
+
+        private void btnSignIn_Click(object sender, EventArgs e) {
+            this.Hide();
+            FResLogin f = new FResLogin();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 }

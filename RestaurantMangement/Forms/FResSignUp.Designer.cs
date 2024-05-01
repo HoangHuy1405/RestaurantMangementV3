@@ -50,6 +50,7 @@
             BtnSignUp = new Guna.UI2.WinForms.Guna2Button();
             txtPass = new Guna.UI2.WinForms.Guna2TextBox();
             label4 = new Label();
+            btnSignIn = new Label();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
@@ -238,11 +239,23 @@
             label4.TabIndex = 17;
             label4.Text = "Password";
             // 
+            // btnSignIn
+            // 
+            btnSignIn.AutoSize = true;
+            btnSignIn.Font = new Font("Segoe UI", 10.8F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            btnSignIn.Location = new Point(45, 584);
+            btnSignIn.Name = "btnSignIn";
+            btnSignIn.Size = new Size(74, 25);
+            btnSignIn.TabIndex = 18;
+            btnSignIn.Text = "Sign in?";
+            btnSignIn.Click += btnSignIn_Click;
+            // 
             // FResSignUp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(386, 605);
+            ClientSize = new Size(386, 618);
+            Controls.Add(btnSignIn);
             Controls.Add(txtPass);
             Controls.Add(label4);
             Controls.Add(guna2Panel1);
@@ -277,5 +290,6 @@
         private Guna.UI2.WinForms.Guna2Button BtnSignUp;
         private Guna.UI2.WinForms.Guna2TextBox txtPass;
         private Label label4;
+        private Label btnSignIn;
     }
 }

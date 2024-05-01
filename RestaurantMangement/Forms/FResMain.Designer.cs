@@ -320,8 +320,8 @@
             Controls.Add(guna2Panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FResMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FResMain";
-            WindowState = FormWindowState.Maximized;
             guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             guna2Panel2.ResumeLayout(false);

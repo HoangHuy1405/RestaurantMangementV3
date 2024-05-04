@@ -85,7 +85,7 @@
             guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
             dataGridView2 = new Guna.UI2.WinForms.Guna2DataGridView();
             dgvName = new DataGridViewTextBoxColumn();
-            dgvQuantityOrder = new DataGridViewTextBoxColumn();
+            dgvQuantity = new DataGridViewTextBoxColumn();
             guna2Panel13 = new Guna.UI2.WinForms.Guna2Panel();
             txtTotalPrice = new Guna.UI2.WinForms.Guna2TextBox();
             btnProceed = new Guna.UI2.WinForms.Guna2Button();
@@ -124,7 +124,6 @@
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Panel1.Size = new Size(1334, 96);
             guna2Panel1.TabIndex = 0;
-            guna2Panel1.Paint += guna2Panel1_Paint;
             // 
             // btnAddItem
             // 
@@ -360,10 +359,10 @@
             guna2Panel11.Controls.Add(guna2Panel12);
             guna2Panel11.CustomizableEdges = customizableEdges31;
             guna2Panel11.Dock = DockStyle.Right;
-            guna2Panel11.Location = new Point(976, 96);
+            guna2Panel11.Location = new Point(950, 96);
             guna2Panel11.Name = "guna2Panel11";
             guna2Panel11.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            guna2Panel11.Size = new Size(358, 601);
+            guna2Panel11.Size = new Size(384, 601);
             guna2Panel11.TabIndex = 6;
             // 
             // dataGridView2
@@ -381,7 +380,7 @@
             dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView2.ColumnHeadersHeight = 40;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dgvName, dgvQuantityOrder });
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dgvName, dgvQuantity });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -391,11 +390,11 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView2.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridView2.Location = new Point(14, 81);
+            dataGridView2.Location = new Point(3, 81);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersVisible = false;
             dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(332, 409);
+            dataGridView2.Size = new Size(378, 409);
             dataGridView2.TabIndex = 3;
             dataGridView2.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridView2.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -418,6 +417,7 @@
             dataGridView2.ThemeStyle.RowsStyle.Height = 29;
             dataGridView2.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridView2.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
             // dgvName
             // 
@@ -425,11 +425,11 @@
             dgvName.MinimumWidth = 6;
             dgvName.Name = "dgvName";
             // 
-            // dgvQuantityOrder
+            // dgvQuantity
             // 
-            dgvQuantityOrder.HeaderText = "Quantity order";
-            dgvQuantityOrder.MinimumWidth = 6;
-            dgvQuantityOrder.Name = "dgvQuantityOrder";
+            dgvQuantity.HeaderText = "Quantity";
+            dgvQuantity.MinimumWidth = 6;
+            dgvQuantity.Name = "dgvQuantity";
             // 
             // guna2Panel13
             // 
@@ -441,7 +441,7 @@
             guna2Panel13.Location = new Point(0, 496);
             guna2Panel13.Name = "guna2Panel13";
             guna2Panel13.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            guna2Panel13.Size = new Size(358, 105);
+            guna2Panel13.Size = new Size(384, 105);
             guna2Panel13.TabIndex = 2;
             // 
             // txtTotalPrice
@@ -507,7 +507,7 @@
             guna2Panel12.Location = new Point(0, 0);
             guna2Panel12.Name = "guna2Panel12";
             guna2Panel12.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            guna2Panel12.Size = new Size(358, 75);
+            guna2Panel12.Size = new Size(384, 75);
             guna2Panel12.TabIndex = 0;
             // 
             // guna2Separator2
@@ -555,7 +555,7 @@
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(797, 598);
+            dataGridView1.Size = new Size(765, 598);
             dataGridView1.TabIndex = 7;
             dataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -578,7 +578,7 @@
             dataGridView1.ThemeStyle.RowsStyle.Height = 29;
             dataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridView1.CellContentDoubleClick += dataGridView1_CellContentDoubleClick;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // FResOrder
             // 
@@ -651,8 +651,8 @@
         private Guna.UI2.WinForms.Guna2Button btnAddItem;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView1;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dgvName;
-        private DataGridViewTextBoxColumn dgvQuantityOrder;
         private Guna.UI2.WinForms.Guna2TextBox txtTotalPrice;
+        private DataGridViewTextBoxColumn dgvName;
+        private DataGridViewTextBoxColumn dgvQuantity;
     }
 }

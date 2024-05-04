@@ -1,6 +1,8 @@
 ﻿using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace RestaurantMangement.Code
 {
@@ -64,6 +66,35 @@ namespace RestaurantMangement.Code
             {
                 conn.Close();
             }
+        }
+        /* ACCOUNT */
+        public Account getCurrentUsingAccount(string email, string password) {
+            Account user = null;
+            try {
+                conn.Open();
+                string query = "SELECT * FROM Account WHERE email = @Email AND password = @Password";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@Email", email);
+                command.Parameters.AddWithValue("@Password", password);
+
+                using (SqlDataReader reader = command.ExecuteReader()) {
+                    if (reader.Read()) {
+                        user = new Account {
+                            AccId = reader["accID"].ToString(),
+                            Username = reader["username"].ToString(),
+                            Password = reader["password"].ToString(),
+                            FullName = reader["fullName"].ToString(),
+                            Email = reader["email"].ToString(),
+                            PhoneNum = reader["phoneNum"] != DBNull.Value ? reader["phoneNum"].ToString() : null,
+                            Balance = reader["balance"] != DBNull.Value ? Convert.ToDouble(reader["balance"]) : 0.0
+                        };
+                    }
+                }
+                
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return user;
         }
         /* PRODUCT */
         public void addProductWithCate(string productName, string description, double price, string cataName)

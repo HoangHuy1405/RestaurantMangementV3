@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantMangement.Code
 {
-    internal class Account
+    public class Account
     {
         private AccountDAO accountDAO = new AccountDAO();
         private string accId;

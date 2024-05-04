@@ -4,6 +4,8 @@ using RestaurantMangement.Forms;
 namespace RestaurantMangement
 {
     public partial class FResLogin : Form {
+        public static Account currentAcc = new Account();
+        DBConnection db = new DBConnection();
         AccountDAO accountDAO = new AccountDAO();
         public FResLogin() {
             InitializeComponent();
@@ -28,13 +30,11 @@ namespace RestaurantMangement
         private void btnLogin_Click(object sender, EventArgs e) {
             string email = txtEmail.Text.Trim();
             string password = txtPass.Text.Trim();
-            if(string.IsNullOrEmpty(email) ) {
+            if (string.IsNullOrEmpty(email)) {
                 MessageBox.Show("Email has not been filled in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if(string.IsNullOrEmpty (password) ) {
+            } else if (string.IsNullOrEmpty(password)) {
                 MessageBox.Show("Password has not been filled in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else {
+            } else {
                 Account acc = new Account(email, password);
                 acc = accountDAO.CheckAccount(acc);
                 if (acc == null) {
@@ -42,6 +42,10 @@ namespace RestaurantMangement
                     txtEmail.Clear();
                     txtPass.Clear();
                 } else {
+
+                    // get current using account to be used across project
+                    currentAcc = db.getCurrentUsingAccount(email, password);
+
                     // only hide the current form, not completely closed
                     this.Hide();
                     FResMain frm = new FResMain();
@@ -51,7 +55,7 @@ namespace RestaurantMangement
                     frm.Show();
                 }
             }
-            
+
         }
 
         private void signUpBtn_Click(object sender, EventArgs e) {
@@ -62,6 +66,10 @@ namespace RestaurantMangement
         }
 
         private void label2_Click(object sender, EventArgs e) {
+
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e) {
 
         }
     }

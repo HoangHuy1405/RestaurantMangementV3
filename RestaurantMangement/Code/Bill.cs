@@ -6,10 +6,21 @@ using System.Threading.Tasks;
 
 namespace RestaurantMangement.Code
 {
-    internal class Bill
+    public class Bill
     {
         private string billId;
         private string billStatus;
+        private string customerName;
+        private string customerEmail;
+        private string customerPhone;
+        private string paymentMethods;
+        private string note;
+        private string status;
+        private string totalPrice;
+
+        public List<BookedProduct> bookedProducts = new List<BookedProduct>();
+
+        public Bill() { }
 
         public Bill(string billId, string billStatus)
         {

@@ -17,10 +17,17 @@ namespace RestaurantMangement.Forms
 {
     public partial class FResOrder : Form {
         DBConnection db = new DBConnection();
+        Bill bill = new Bill();
+
+        List<BookedProduct> bookedProducts = new List<BookedProduct>();
 
         public FResOrder() {
             InitializeComponent();
         }
+        //public FResOrder(Bill bill) {
+        //    InitializeComponent();
+        //    this.bill = bill;
+        //}
 
         private void btnHome_Click(object sender, EventArgs e) {
             this.Hide();
@@ -46,6 +53,19 @@ namespace RestaurantMangement.Forms
                 dataGridView1.Columns["price"].HeaderText = "Price";
 
 
+            DataGridViewButtonColumn addButtonColumn = new DataGridViewButtonColumn();
+            addButtonColumn.HeaderText = "+";
+            addButtonColumn.Text = "+";
+            addButtonColumn.UseColumnTextForButtonValue = true;
+            dataGridView2.Columns.Add(addButtonColumn);
+
+            DataGridViewButtonColumn subtractButtonColumn = new DataGridViewButtonColumn();
+            subtractButtonColumn.HeaderText = "-";
+            subtractButtonColumn.Text = "-";
+            subtractButtonColumn.UseColumnTextForButtonValue = true;
+            dataGridView2.Columns.Add(subtractButtonColumn);
+
+
             dataGridView1.ColumnHeadersHeight = 30;
         }
 
@@ -56,50 +76,69 @@ namespace RestaurantMangement.Forms
             f.Show();
         }
 
-        private int itemId;
-        private string itemName;
-        private double price;
+        private string productId;
+        private string productName;
+        private decimal price;
         private int quantity = 0;
         private double totalPrice = 0;
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            //int index = e.RowIndex;
-            //if (index >= 0) {
-            //    DataGridViewRow selectedRow = dataGridView1.Rows[index];
-            //    itemId = Convert.ToInt32(selectedRow.Cells[0].Value);
-            //    itemName = selectedRow.Cells[1].Value.ToString();
-            //    price = Convert.ToDouble(selectedRow.Cells[3].Value);
-            //    quantity = Convert.ToInt32(selectedRow.Cells[4].Value);
-            //    //display total price
-            //    totalPrice += price;
-            //    txtTotalPrice.Text = totalPrice.ToString() + " VND";
 
-            //    bool isAdded = false;
-            //    foreach (DataGridViewRow row in dataGridView2.Rows) {
-            //        if (row.Cells[0].Value == itemName) {
-            //            int quantity = Convert.ToInt32(row.Cells["dgvQuantityOrder"].Value);
-            //            quantity++;
-            //            row.Cells["dgvQuantityOrder"].Value = quantity;
-            //            isAdded = true; 
-            //            break;
-            //        }
-            //    }
-            //    foreach (MenuItem item in menuItems) {
-            //        if(item.ItemID == itemId) {
-            //            item.Quantity = quantity;
-            //        }
-            //    }
-            //    if(!isAdded) {
-            //        dataGridView2.Rows.Add(itemName, 1);
-            //        menuItems.Add(new MenuItem(itemId, price, quantity));
-            //    }
-            //}
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
+            int index = e.RowIndex;
+            if (index >= 0) {
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                productId = selectedRow.Cells[0].Value.ToString();
+                productName = selectedRow.Cells[1].Value.ToString();
+                price = Convert.ToDecimal(selectedRow.Cells[3].Value);
+
+                bool isAdded = false;
+                foreach (DataGridViewRow row in dataGridView2.Rows) {
+                    if (row.Cells[0].Value == productName) {
+                        isAdded = true;
+                        break;
+                    }
+                }
+                if (isAdded) {
+                    MessageBox.Show("This food is already in the food cart.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else {
+                    BookedProduct bookedProduct = new BookedProduct(productId, productName, 1, price);
+                    bill.bookedProducts.Add(bookedProduct);
+                    dataGridView2.Rows.Add(productName, 1);
+                }
+            }
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            int index = e.RowIndex;
+            if (index >= 0 && dataGridView2.Columns[e.ColumnIndex] is DataGridViewButtonColumn) {
+                if (dataGridView2.Columns[e.ColumnIndex].HeaderText == "+") {
+                    // Increment quantity by 1
+                    int quantity = Convert.ToInt32(dataGridView2.Rows[index].Cells["dgvQuantity"].Value);
+                    quantity++;
+
+                    bill.bookedProducts[index].Quantity += quantity;
+                    bill.bookedProducts[index].Totalprice += bill.bookedProducts[index].NormalPrice;
+                    dataGridView2.Rows[index].Cells["dgvQuantity"].Value = quantity;
+                } else if (dataGridView2.Columns[e.ColumnIndex].HeaderText == "-") {
+                    // Decrement quantity by 1, if it's greater than 0
+                    int quantity = Convert.ToInt32(dataGridView2.Rows[index].Cells["dgvQuantity"].Value);
+                    if (quantity > 0) {
+                        quantity--;
+                        dataGridView2.Rows[index].Cells["dgvQuantity"].Value = quantity;
+
+                        bill.bookedProducts[index].Quantity -= quantity;
+                        bill.bookedProducts[index].Totalprice -= bill.bookedProducts[index].NormalPrice;
+
+                    }
+                }
+            }
+        }
+
         private void btnProceed_Click(object sender, EventArgs e) {
-
-        }
-
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e) {
-
+            this.Hide();
+            FResPayment f = new FResPayment(bill);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 }

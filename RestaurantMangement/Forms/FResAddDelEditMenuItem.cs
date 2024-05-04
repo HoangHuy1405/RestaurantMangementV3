@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using RestaurantMangement.Code;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantMangement.Forms {
+namespace RestaurantMangement.Forms
+{
     public partial class FResAddDelEditMenuItem : Form {
         DBConnection db = new DBConnection();
 
@@ -93,13 +95,7 @@ namespace RestaurantMangement.Forms {
         }
         private void btnEdit_Click(object sender, EventArgs e) {
             if (isValidInput()) {
-                if (int.TryParse(txtProductID.Text, out productId)) {
-
-                } else {
-                    MessageBox.Show("Invalid id");
-                    return ;
-                }
-                db.editProduct(productId, txtProductName.Text,txtProductCate.Text, price, txtDescription.Text);
+                db.editProduct(txtProductID.Text, txtProductName.Text,txtProductCate.Text, price, txtDescription.Text);
                 //menuItemDAO.edit(menuItem);
                 // update 
                 FResAddDelEditMenuItem_Load(sender, e);
@@ -113,12 +109,7 @@ namespace RestaurantMangement.Forms {
             }
         }
         private void btnDelete_Click(object sender, EventArgs e) {
-            if (int.TryParse(txtProductID.Text, out productId)) {
-                db.deleteProduct(productId);
-            } else {
-                MessageBox.Show("Invalid id");
-                return;
-            }
+            db.deleteProduct(txtProductID.Text);
 
             // update 
             FResAddDelEditMenuItem_Load(sender, e);

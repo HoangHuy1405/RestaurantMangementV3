@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantMangement {
-    internal class Account {
+namespace RestaurantMangement.Code
+{
+    internal class Account
+    {
         private AccountDAO accountDAO = new AccountDAO();
-        private int accId;
+        private string accId;
         private string username;
         private string password;
         private string fullName;
@@ -20,24 +22,27 @@ namespace RestaurantMangement {
         private List<int> cartList = new List<int>();
 
 
-        public Account() {
+        public Account()
+        {
         }
 
         // used to check login
-        public Account(int accId) {
+        public Account(string accId)
+        {
             Account acc = accountDAO.Retrieve(accId);
             this.accId = acc.accId;
-            this.email = acc.email;
-            this.password = acc.password;
-            this.fullName = acc.fullName;
-            this.phoneNum = acc.phoneNum;
-            this.balance = acc.balance;
-            this.cancelledList = acc.cancelledList;
-            this.savedList = acc.savedList;
-            this.cartList = acc.cartList;
+            email = acc.email;
+            password = acc.password;
+            fullName = acc.fullName;
+            phoneNum = acc.phoneNum;
+            balance = acc.balance;
+            cancelledList = acc.cancelledList;
+            savedList = acc.savedList;
+            cartList = acc.cartList;
         }
 
-        public Account(int accId, string username, string password, string fullName, string email, string phoneNum, double balance, List<int> cancelledList, List<int> savedList, List<int> cartList) : this(accId) {
+        public Account(string accId, string username, string password, string fullName, string email, string phoneNum, double balance, List<int> cancelledList, List<int> savedList, List<int> cartList) : this(accId)
+        {
             this.accId = accId;
             this.username = username;
             this.password = password;
@@ -49,7 +54,8 @@ namespace RestaurantMangement {
             this.savedList = savedList;
             this.cartList = cartList;
         }
-        public Account(string username, string password, string fullName, string email, string phoneNum, double balance, List<int> cancelledList, List<int> savedList, List<int> cartList) {
+        public Account(string username, string password, string fullName, string email, string phoneNum, double balance, List<int> cancelledList, List<int> savedList, List<int> cartList)
+        {
             this.username = username;
             this.password = password;
             this.fullName = fullName;
@@ -61,7 +67,8 @@ namespace RestaurantMangement {
             this.cartList = cartList;
         }
         // used to sign up
-        public Account(string username, string email, string password, string fullName) {
+        public Account(string username, string email, string password, string fullName)
+        {
             this.username = username;
             this.email = email;
             this.password = password;
@@ -69,13 +76,14 @@ namespace RestaurantMangement {
             balance = 0;
         }
         // used to sign in 
-        public Account(string email, string password) {
+        public Account(string email, string password)
+        {
             this.email = email;
             this.password = password;
         }
 
 
-        public int AccId { get => accId; set => accId = value; }
+        public string AccId { get => accId; set => accId = value; }
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public string FullName { get => fullName; set => fullName = value; }

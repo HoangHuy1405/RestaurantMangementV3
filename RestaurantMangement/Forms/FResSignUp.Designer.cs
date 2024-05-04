@@ -53,7 +53,7 @@
             txtPass = new Guna.UI2.WinForms.Guna2TextBox();
             label4 = new Label();
             btnSignIn = new Label();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            txtName = new Guna.UI2.WinForms.Guna2TextBox();
             txtFullName = new Label();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -254,27 +254,27 @@
             btnSignIn.Text = "Sign in?";
             btnSignIn.Click += btnSignIn_Click;
             // 
-            // guna2TextBox1
+            // txtName
             // 
-            guna2TextBox1.CustomizableEdges = customizableEdges31;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(45, 459);
-            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.RightToLeft = RightToLeft.No;
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            guna2TextBox1.Size = new Size(296, 60);
-            guna2TextBox1.TabIndex = 19;
+            txtName.CustomizableEdges = customizableEdges31;
+            txtName.DefaultText = "";
+            txtName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtName.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtName.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtName.Font = new Font("Segoe UI", 9F);
+            txtName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtName.Location = new Point(45, 459);
+            txtName.Margin = new Padding(3, 4, 3, 4);
+            txtName.Name = "txtName";
+            txtName.PasswordChar = '\0';
+            txtName.PlaceholderText = "";
+            txtName.RightToLeft = RightToLeft.No;
+            txtName.SelectedText = "";
+            txtName.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            txtName.Size = new Size(296, 60);
+            txtName.TabIndex = 19;
             // 
             // txtFullName
             // 
@@ -291,7 +291,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(386, 658);
-            Controls.Add(guna2TextBox1);
+            Controls.Add(txtName);
             Controls.Add(txtFullName);
             Controls.Add(btnSignIn);
             Controls.Add(txtPass);
@@ -329,7 +329,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtPass;
         private Label label4;
         private Label btnSignIn;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtName;
         private Label txtFullName;
     }
 }

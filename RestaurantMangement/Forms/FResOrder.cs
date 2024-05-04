@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using RestaurantMangement.Code;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,10 +13,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace RestaurantMangement.Forms {
+namespace RestaurantMangement.Forms
+{
     public partial class FResOrder : Form {
         DBConnection db = new DBConnection();
-        
+
         public FResOrder() {
             InitializeComponent();
         }
@@ -93,6 +95,10 @@ namespace RestaurantMangement.Forms {
             //}
         }
         private void btnProceed_Click(object sender, EventArgs e) {
+
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e) {
 
         }
     }

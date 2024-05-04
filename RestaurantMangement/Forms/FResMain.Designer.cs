@@ -52,7 +52,7 @@
             guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             btnBill = new Guna.UI2.WinForms.Guna2Button();
             btnOrder = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            btnTable = new Guna.UI2.WinForms.Guna2Button();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             label1 = new Label();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -71,7 +71,7 @@
             guna2Panel1.Controls.Add(guna2Button5);
             guna2Panel1.Controls.Add(btnBill);
             guna2Panel1.Controls.Add(btnOrder);
-            guna2Panel1.Controls.Add(guna2Button2);
+            guna2Panel1.Controls.Add(btnTable);
             guna2Panel1.Controls.Add(guna2Button1);
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.Controls.Add(guna2PictureBox1);
@@ -167,32 +167,33 @@
             btnOrder.TextAlign = HorizontalAlignment.Left;
             btnOrder.Click += btnOrder_Click;
             // 
-            // guna2Button2
+            // btnTable
             // 
-            guna2Button2.AutoRoundedCorners = true;
-            guna2Button2.BackColor = Color.FromArgb(52, 73, 85);
-            guna2Button2.BorderRadius = 27;
-            guna2Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            guna2Button2.CheckedState.FillColor = Color.FromArgb(80, 114, 123);
+            btnTable.AutoRoundedCorners = true;
+            btnTable.BackColor = Color.FromArgb(52, 73, 85);
+            btnTable.BorderRadius = 27;
+            btnTable.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            btnTable.CheckedState.FillColor = Color.FromArgb(80, 114, 123);
             customizableEdges7.BottomRight = false;
             customizableEdges7.TopRight = false;
-            guna2Button2.CustomizableEdges = customizableEdges7;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.FillColor = Color.Transparent;
-            guna2Button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2Button2.ForeColor = Color.White;
-            guna2Button2.Image = (Image)resources.GetObject("guna2Button2.Image");
-            guna2Button2.ImageAlign = HorizontalAlignment.Left;
-            guna2Button2.Location = new Point(52, 268);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Button2.Size = new Size(225, 56);
-            guna2Button2.TabIndex = 3;
-            guna2Button2.Text = "Tables";
-            guna2Button2.TextAlign = HorizontalAlignment.Left;
+            btnTable.CustomizableEdges = customizableEdges7;
+            btnTable.DisabledState.BorderColor = Color.DarkGray;
+            btnTable.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnTable.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnTable.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnTable.FillColor = Color.Transparent;
+            btnTable.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTable.ForeColor = Color.White;
+            btnTable.Image = (Image)resources.GetObject("btnTable.Image");
+            btnTable.ImageAlign = HorizontalAlignment.Left;
+            btnTable.Location = new Point(52, 268);
+            btnTable.Name = "btnTable";
+            btnTable.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnTable.Size = new Size(225, 56);
+            btnTable.TabIndex = 3;
+            btnTable.Text = "Tables";
+            btnTable.TextAlign = HorizontalAlignment.Left;
+            btnTable.Click += btnTable_Click;
             // 
             // guna2Button1
             // 
@@ -342,7 +343,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button btnBill;
         private Guna.UI2.WinForms.Guna2Button btnOrder;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnTable;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
     }
 }

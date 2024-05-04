@@ -1,6 +1,8 @@
+using RestaurantMangement.Code;
 using RestaurantMangement.Forms;
 
-namespace RestaurantMangement {
+namespace RestaurantMangement
+{
     public partial class FResLogin : Form {
         AccountDAO accountDAO = new AccountDAO();
         public FResLogin() {

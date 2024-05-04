@@ -4,21 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantMangement {
-    internal class Category {
-        private int cateID;
+namespace RestaurantMangement.Code
+{
+    internal class Category
+    {
+        private string cateID;
         private string cateName;
 
         public Category() { }
-        public Category(int cateID, string cateName) {
+        public Category(string cateID, string cateName)
+        {
             this.cateID = cateID;
             this.cateName = cateName;
         }
-        public Category(string cateName) {
-            this.cateName=cateName;
+        public Category(string cateName)
+        {
+            this.cateName = cateName;
         }
 
-        public int CateID { get => cateID; set => cateID = value; }
+        public string CateID { get => cateID; set => cateID = value; }
         public string CateName { get => cateName; set => cateName = value; }
     }
 }

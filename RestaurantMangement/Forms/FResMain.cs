@@ -31,5 +31,12 @@ namespace RestaurantMangement.Forms {
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
+
+        private void btnTable_Click(object sender, EventArgs e) {
+            this.Hide();
+            FBookingTable f = new FBookingTable();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
     }
 }

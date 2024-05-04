@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestaurantMangement.Code;
 
-namespace RestaurantMangement.Forms {
+namespace RestaurantMangement.Forms
+{
     public partial class FResSignUp : Form {
         AccountDAO accountDAO = new AccountDAO();
         public FResSignUp() {
@@ -20,7 +22,7 @@ namespace RestaurantMangement.Forms {
         }
 
         private void BtnSignUp_Click(object sender, EventArgs e) {
-            Account acc = new Account(txtUser.Text, txtEmail.Text, txtPass.Text, txtFullName.Text);
+            Account acc = new Account(txtUser.Text, txtEmail.Text, txtPass.Text, txtName.Text);
             if (accountDAO.CreateNewAccount(acc)) {
                 MessageBox.Show("Account's created successfully", "Signup", MessageBoxButtons.OK);
             }

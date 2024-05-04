@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 
 namespace RestaurantMangement.Code
 {
+    //
     internal class DBConnection
     {
         // SqlConnection object to establish a connection with the database

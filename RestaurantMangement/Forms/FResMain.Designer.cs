@@ -50,7 +50,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            btnBill = new Guna.UI2.WinForms.Guna2Button();
             btnOrder = new Guna.UI2.WinForms.Guna2Button();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
@@ -69,7 +69,7 @@
             // guna2Panel1
             // 
             guna2Panel1.Controls.Add(guna2Button5);
-            guna2Panel1.Controls.Add(guna2Button4);
+            guna2Panel1.Controls.Add(btnBill);
             guna2Panel1.Controls.Add(btnOrder);
             guna2Panel1.Controls.Add(guna2Button2);
             guna2Panel1.Controls.Add(guna2Button1);
@@ -111,32 +111,33 @@
             guna2Button5.Text = "Credits";
             guna2Button5.TextAlign = HorizontalAlignment.Left;
             // 
-            // guna2Button4
+            // btnBill
             // 
-            guna2Button4.AutoRoundedCorners = true;
-            guna2Button4.BackColor = Color.FromArgb(52, 73, 85);
-            guna2Button4.BorderRadius = 27;
-            guna2Button4.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            guna2Button4.CheckedState.FillColor = Color.FromArgb(80, 114, 123);
+            btnBill.AutoRoundedCorners = true;
+            btnBill.BackColor = Color.FromArgb(52, 73, 85);
+            btnBill.BorderRadius = 27;
+            btnBill.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            btnBill.CheckedState.FillColor = Color.FromArgb(80, 114, 123);
             customizableEdges3.BottomRight = false;
             customizableEdges3.TopRight = false;
-            guna2Button4.CustomizableEdges = customizableEdges3;
-            guna2Button4.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button4.FillColor = Color.Transparent;
-            guna2Button4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2Button4.ForeColor = Color.White;
-            guna2Button4.Image = (Image)resources.GetObject("guna2Button4.Image");
-            guna2Button4.ImageAlign = HorizontalAlignment.Left;
-            guna2Button4.Location = new Point(50, 411);
-            guna2Button4.Name = "guna2Button4";
-            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Button4.Size = new Size(225, 56);
-            guna2Button4.TabIndex = 5;
-            guna2Button4.Text = "Bill";
-            guna2Button4.TextAlign = HorizontalAlignment.Left;
+            btnBill.CustomizableEdges = customizableEdges3;
+            btnBill.DisabledState.BorderColor = Color.DarkGray;
+            btnBill.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnBill.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnBill.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnBill.FillColor = Color.Transparent;
+            btnBill.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBill.ForeColor = Color.White;
+            btnBill.Image = (Image)resources.GetObject("btnBill.Image");
+            btnBill.ImageAlign = HorizontalAlignment.Left;
+            btnBill.Location = new Point(50, 411);
+            btnBill.Name = "btnBill";
+            btnBill.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnBill.Size = new Size(225, 56);
+            btnBill.TabIndex = 5;
+            btnBill.Text = "Bill";
+            btnBill.TextAlign = HorizontalAlignment.Left;
+            btnBill.Click += btnBill_Click;
             // 
             // btnOrder
             // 
@@ -339,7 +340,7 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Label label1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button btnBill;
         private Guna.UI2.WinForms.Guna2Button btnOrder;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;

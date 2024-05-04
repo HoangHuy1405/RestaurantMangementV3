@@ -20,9 +20,16 @@ namespace RestaurantMangement.Forms {
 
         private void btnOrder_Click(object sender, EventArgs e) {
             this.Hide();
-            FResOrder fResPOS = new FResOrder();
-            fResPOS.Closed += (s, args) => this.Close();
-            fResPOS.Show();
+            FResOrder f = new FResOrder();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
+
+        private void btnBill_Click(object sender, EventArgs e) {
+            this.Hide();
+            FResBillHistory f = new FResBillHistory();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 }

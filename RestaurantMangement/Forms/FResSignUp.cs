@@ -20,7 +20,7 @@ namespace RestaurantMangement.Forms {
         }
 
         private void BtnSignUp_Click(object sender, EventArgs e) {
-            Account acc = new Account(txtUser.Text, txtEmail.Text, txtPass.Text);
+            Account acc = new Account(txtUser.Text, txtEmail.Text, txtPass.Text, txtFullName.Text);
             if (accountDAO.CreateNewAccount(acc)) {
                 MessageBox.Show("Account's created successfully", "Signup", MessageBoxButtons.OK);
             }

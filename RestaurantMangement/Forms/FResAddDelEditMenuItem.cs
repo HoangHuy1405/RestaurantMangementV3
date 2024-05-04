@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,8 @@ using System.Windows.Forms;
 
 namespace RestaurantMangement.Forms {
     public partial class FResAddDelEditMenuItem : Form {
-        MenuItemDAO menuItemDAO = new MenuItemDAO();
+        DBConnection db = new DBConnection();
+
         public FResAddDelEditMenuItem(Guna2DataGridView dgv) {
             InitializeComponent();
         }
@@ -20,13 +22,13 @@ namespace RestaurantMangement.Forms {
         }
 
         private void FResAddDelEditMenuItem_Load(object sender, EventArgs e) {
-            DataTable table = menuItemDAO.load();
+            DataTable table = db.Load("SELECT p.ProductID, p.productName, p.description, p.price, c.cateName FROM Product p INNER JOIN category c ON p.cateID = c.cateID");
             dataGridView2.DataSource = table;
-            if (dataGridView2.Columns.Contains("item_name"))
-                dataGridView2.Columns["item_name"].HeaderText = "Item Name";
+            if (dataGridView2.Columns.Contains("productName"))
+                dataGridView2.Columns["productName"].HeaderText = "Prduct Name";
 
-            if (dataGridView2.Columns.Contains("item_type"))
-                dataGridView2.Columns["item_type"].HeaderText = "Item Type";
+            if (dataGridView2.Columns.Contains("cateName"))
+                dataGridView2.Columns["cateName"].HeaderText = "Category";
 
             if (dataGridView2.Columns.Contains("description"))
                 dataGridView2.Columns["description"].HeaderText = "Description";
@@ -34,49 +36,100 @@ namespace RestaurantMangement.Forms {
             if (dataGridView2.Columns.Contains("price"))
                 dataGridView2.Columns["price"].HeaderText = "Price";
 
-            if (dataGridView2.Columns.Contains("quantity"))
-                dataGridView2.Columns["quantity"].HeaderText = "Quantity";
 
             dataGridView2.ColumnHeadersHeight = 30;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e) {
 
-            if (string.IsNullOrEmpty(txtItemName.Text)) {
-                MessageBox.Show("Item name has not been filled in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            } else if (string.IsNullOrEmpty(txtItemType.Text)) {
-                MessageBox.Show("Item type has not been filled in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+        private double price;
+        private int productId;
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            
+        }
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e) {
+            int index = e.RowIndex;
+            if (index >= 0) {
+                DataGridViewRow selectedRow = dataGridView2.Rows[index];
+                txtProductID.Text = selectedRow.Cells[0].Value.ToString();
+                txtProductName.Text = selectedRow.Cells[1].Value.ToString();
+                txtDescription.Text = selectedRow.Cells[2].Value.ToString();
+                txtPrice.Text = selectedRow.Cells[3].Value.ToString();
+                txtProductCate.Text = selectedRow.Cells[4].Value.ToString();
             }
-            //
-            double price;
+        }
+        private bool isValidInput() {
+            if (string.IsNullOrEmpty(txtProductName.Text)) {
+                MessageBox.Show("Item name has not been filled in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            } else if (string.IsNullOrEmpty(txtProductCate.Text)) {
+                MessageBox.Show("Item type has not been filled in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             if (double.TryParse(txtPrice.Text, out price)) {
+
 
             } else {
                 MessageBox.Show("Invalid price");
-                return;
+                return false;
             }
-            int quantity;
-            if (int.TryParse(txtQuantity.Text, out quantity)) {
+            return true;
+        }
+        private void btnAdd_Click(object sender, EventArgs e) {
+            // check if input is valid or not
+            if (isValidInput()) {
+                db.addProductWithCate(txtProductName.Text, txtDescription.Text, price, txtProductCate.Text);
+                // update 
+                FResAddDelEditMenuItem_Load(sender, e);
+                MessageBox.Show("Added successfully");
+                // reset to empty
+                txtProductID.Text = "";
+                txtProductName.Text = "";
+                txtProductCate.Text = "";
+                txtDescription.Text = "";
+                txtPrice.Text = "";
+            }
 
-            } else {
-                MessageBox.Show("Invalid quantity");
-                return;
+
+        }
+        private void btnEdit_Click(object sender, EventArgs e) {
+            if (isValidInput()) {
+                if (int.TryParse(txtProductID.Text, out productId)) {
+
+                } else {
+                    MessageBox.Show("Invalid id");
+                    return ;
+                }
+                db.editProduct(productId, txtProductName.Text,txtProductCate.Text, price, txtDescription.Text);
+                //menuItemDAO.edit(menuItem);
+                // update 
+                FResAddDelEditMenuItem_Load(sender, e);
+                MessageBox.Show("edited successfully");
+                // reset to empty
+                txtProductID.Text = "";
+                txtProductName.Text = "";
+                txtProductCate.Text = "";
+                txtDescription.Text = "";
+                txtPrice.Text = "";
             }
-            MenuItem menuItem = new MenuItem(txtItemName.Text, txtItemType.Text, price, txtDescription.Text, quantity);
-            menuItemDAO.add(menuItem);
-            // update 
-            FResAddDelEditMenuItem_Load(sender, e);
-            // reset to empty
-            txtItemName.Text = "";
-            txtItemType.Text = "";
-            txtDescription.Text = "";
-            txtPrice.Text = "";
-            txtQuantity.Text = "";
         }
         private void btnDelete_Click(object sender, EventArgs e) {
+            if (int.TryParse(txtProductID.Text, out productId)) {
+                db.deleteProduct(productId);
+            } else {
+                MessageBox.Show("Invalid id");
+                return;
+            }
 
+            // update 
+            FResAddDelEditMenuItem_Load(sender, e);
+            MessageBox.Show("deleted successfully");
+            // reset to empty
+            txtProductID.Text = "";
+            txtProductName.Text = "";
+            txtProductCate.Text = "";
+            txtDescription.Text = "";
+            txtPrice.Text = "";
+            
         }
         private void btnExit_Click(object sender, EventArgs e) {
             this.Hide();

@@ -26,8 +26,7 @@ namespace RestaurantMangement.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-6K73QJQ;Initial Catalog=RestaurantManagement;Integrated Secur" +
-            "ity=True;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-6K73QJQ;Initial Catalog=RMv3;Integrated Security=True;")]
         public string connStr {
             get {
                 return ((string)(this["connStr"]));

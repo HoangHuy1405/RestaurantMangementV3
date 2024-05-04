@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,6 @@ namespace RestaurantMangement {
 
                 } else {
                     MessageBox.Show("Unsuccessful");
-
                 }
             } catch (Exception ex) {
                 MessageBox.Show("Unsuccessful" + ex);
@@ -50,5 +50,91 @@ namespace RestaurantMangement {
                 conn.Close();
             }
         }
+        /* PRODUCT */
+        public void addProductWithCate(string productName, string description, double price, string cataName) {
+            try {
+                conn.Open();
+                // PROCEDURE InsertProductWithCategory (in database)
+                using (SqlCommand command = new SqlCommand("InsertProductWithCategory", conn)) {
+                    command.CommandType = CommandType.StoredProcedure;
+                    // Parameters
+                    command.Parameters.AddWithValue("@productName", productName);
+                    command.Parameters.AddWithValue("@description", description);
+                    command.Parameters.AddWithValue("@price", price);
+                    command.Parameters.AddWithValue("@cateName", cataName);
+                    command.ExecuteNonQuery();
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+        }
+
+        //edit
+        private int GetOrCreateCategory(string cateName) {
+            int cateID = 0;
+            try {
+                string query = "SELECT cateID FROM Category WHERE CateName = @CateName";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@CateName", cateName);
+
+                conn.Open();
+                var result = command.ExecuteScalar();
+
+                if (result != null) {
+                    cateID = Convert.ToInt32(result);
+                } else {
+                    // if a category does not exist yet => create it
+                    query = "INSERT INTO Category (cateName) VALUES (@CateName); SELECT SCOPE_IDENTITY();";
+                    command = new SqlCommand(query, conn);
+                    command.Parameters.AddWithValue("@CateName", cateName);
+
+                    cateID = Convert.ToInt32(command.ExecuteScalar());
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+
+
+            return cateID;
+        }
+        public void editProduct(int productID, string productName, string cateName, double price, string description) {
+            int cateID = GetOrCreateCategory(cateName);
+            // update product
+            try {
+                string query = "UPDATE Product SET productName = @ProductName, price = @Price, cateID = @CateID, description = @Description WHERE productID = @ProductID";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@ProductName", productName);
+                command.Parameters.AddWithValue("@Price", price);
+                command.Parameters.AddWithValue("@CateID", cateID);
+                command.Parameters.AddWithValue("@Description", description);
+                command.Parameters.AddWithValue("@ProductID", productID);
+
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+        }
+        // delete product
+        public void deleteProduct(int productID) {
+            try {
+                string query = "DELETE FROM Product WHERE ProductID = " + productID;
+                SqlCommand command = new SqlCommand(query, conn);
+
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+        }
+
     }
 }

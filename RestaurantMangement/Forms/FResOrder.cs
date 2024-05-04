@@ -10,18 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace RestaurantMangement.Forms {
     public partial class FResOrder : Form {
-
-        private MenuItemDAO menuItemDAO = new MenuItemDAO();
-
+        DBConnection db = new DBConnection();
+        
         public FResOrder() {
             InitializeComponent();
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e) {
-
         }
 
         private void btnHome_Click(object sender, EventArgs e) {
@@ -31,23 +27,15 @@ namespace RestaurantMangement.Forms {
             frm.Show();
         }
 
-        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-        }
-
-        private void FoodCart_Click(object sender, EventArgs e) {
-
-        }
-
         // retrieve data from database
         public void FResOrder_Load(object sender, EventArgs e) {
-            DataTable table = menuItemDAO.load();
+            DataTable table = db.Load("SELECT p.ProductID, p.productName, p.description, p.price, c.cateName FROM Product p INNER JOIN category c ON p.cateID = c.cateID");
             dataGridView1.DataSource = table;
-            if (dataGridView1.Columns.Contains("item_name"))
-                dataGridView1.Columns["item_name"].HeaderText = "Item Name";
+            if (dataGridView1.Columns.Contains("productName"))
+                dataGridView1.Columns["productName"].HeaderText = "Prduct Name";
 
-            if (dataGridView1.Columns.Contains("item_type"))
-                dataGridView1.Columns["item_type"].HeaderText = "Item Type";
+            if (dataGridView1.Columns.Contains("cateName"))
+                dataGridView1.Columns["cateName"].HeaderText = "Category";
 
             if (dataGridView1.Columns.Contains("description"))
                 dataGridView1.Columns["description"].HeaderText = "Description";
@@ -55,14 +43,8 @@ namespace RestaurantMangement.Forms {
             if (dataGridView1.Columns.Contains("price"))
                 dataGridView1.Columns["price"].HeaderText = "Price";
 
-            if (dataGridView1.Columns.Contains("quantity"))
-                dataGridView1.Columns["quantity"].HeaderText = "Quantity";
 
             dataGridView1.ColumnHeadersHeight = 30;
-        }
-
-        private void ucFood3_Load(object sender, EventArgs e) {
-
         }
 
         private void btnAddItem_Click(object sender, EventArgs e) {
@@ -70,6 +52,48 @@ namespace RestaurantMangement.Forms {
             FResAddDelEditMenuItem f = new FResAddDelEditMenuItem();
             f.Closed += (s, args) => this.Close();
             f.Show();
+        }
+
+        private int itemId;
+        private string itemName;
+        private double price;
+        private int quantity = 0;
+        private double totalPrice = 0;
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            //int index = e.RowIndex;
+            //if (index >= 0) {
+            //    DataGridViewRow selectedRow = dataGridView1.Rows[index];
+            //    itemId = Convert.ToInt32(selectedRow.Cells[0].Value);
+            //    itemName = selectedRow.Cells[1].Value.ToString();
+            //    price = Convert.ToDouble(selectedRow.Cells[3].Value);
+            //    quantity = Convert.ToInt32(selectedRow.Cells[4].Value);
+            //    //display total price
+            //    totalPrice += price;
+            //    txtTotalPrice.Text = totalPrice.ToString() + " VND";
+
+            //    bool isAdded = false;
+            //    foreach (DataGridViewRow row in dataGridView2.Rows) {
+            //        if (row.Cells[0].Value == itemName) {
+            //            int quantity = Convert.ToInt32(row.Cells["dgvQuantityOrder"].Value);
+            //            quantity++;
+            //            row.Cells["dgvQuantityOrder"].Value = quantity;
+            //            isAdded = true; 
+            //            break;
+            //        }
+            //    }
+            //    foreach (MenuItem item in menuItems) {
+            //        if(item.ItemID == itemId) {
+            //            item.Quantity = quantity;
+            //        }
+            //    }
+            //    if(!isAdded) {
+            //        dataGridView2.Rows.Add(itemName, 1);
+            //        menuItems.Add(new MenuItem(itemId, price, quantity));
+            //    }
+            //}
+        }
+        private void btnProceed_Click(object sender, EventArgs e) {
+
         }
     }
 }

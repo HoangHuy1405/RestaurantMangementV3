@@ -7,88 +7,80 @@ using System.Threading.Tasks;
 namespace RestaurantMangement {
     internal class Account {
         private AccountDAO accountDAO = new AccountDAO();
-        private int id;
-        private string email;
+        private int accId;
+        private string username;
         private string password;
-        private string name;
-        private string phone;
-        private DateTime birthday;
-        private string address;
-        private double money;
-        private byte[] avatar;
+        private string fullName;
+        private string email;
+        private string phoneNum;
+        private double balance;
         //private List<Recommend> recommendList = new List<Recommend>();
         private List<int> cancelledList = new List<int>();
         private List<int> savedList = new List<int>();
         private List<int> cartList = new List<int>();
 
+
         public Account() {
         }
 
-        public Account(int id) {
-            Account acc = accountDAO.Retrieve(id);
-            this.id = acc.id;
+        // used to check login
+        public Account(int accId) {
+            Account acc = accountDAO.Retrieve(accId);
+            this.accId = acc.accId;
             this.email = acc.email;
             this.password = acc.password;
-            this.name = acc.name;
-            this.phone = acc.phone;
-            this.birthday = acc.birthday;
-            this.address = acc.address;
-            this.money = acc.money;
-            this.avatar = acc.avatar;
+            this.fullName = acc.fullName;
+            this.phoneNum = acc.phoneNum;
+            this.balance = acc.balance;
             this.cancelledList = acc.cancelledList;
             this.savedList = acc.savedList;
             this.cartList = acc.cartList;
         }
 
-        public Account(int id, string email, string password, string name, string phone, DateTime birthday, string address, double money, byte[] avatar, List<int> cancelledList) {
-            this.id = id;
-            this.email = email;
+        public Account(int accId, string username, string password, string fullName, string email, string phoneNum, double balance, List<int> cancelledList, List<int> savedList, List<int> cartList) : this(accId) {
+            this.accId = accId;
+            this.username = username;
             this.password = password;
-            this.name = name;
-            this.phone = phone;
-            this.birthday = birthday;
-            this.address = address;
-            this.money = money;
-            this.avatar = avatar;
+            this.fullName = fullName;
+            this.email = email;
+            this.phoneNum = phoneNum;
+            this.balance = balance;
             this.cancelledList = cancelledList;
-            //this.savedList = savedList;
-            //this.cartList = cartList;
-
+            this.savedList = savedList;
+            this.cartList = cartList;
         }
-
-        public Account(string email, string password, string name, string phone, DateTime birthday, string address, byte[] avatar) {
+        public Account(string username, string password, string fullName, string email, string phoneNum, double balance, List<int> cancelledList, List<int> savedList, List<int> cartList) {
+            this.username = username;
+            this.password = password;
+            this.fullName = fullName;
+            this.email = email;
+            this.phoneNum = phoneNum;
+            this.balance = balance;
+            this.cancelledList = cancelledList;
+            this.savedList = savedList;
+            this.cartList = cartList;
+        }
+        // used to sign up
+        public Account(string username, string email, string password, string fullName) {
+            this.username = username;
             this.email = email;
             this.password = password;
-            this.name = name;
-            this.phone = phone;
-            this.birthday = birthday;
-            this.address = address;
-            this.avatar = avatar;
+            this.fullName = fullName;
+            balance = 0;
         }
-        public Account(string username, string email, string password) {
-            this.name = username;
-            this.email = email;
-            this.password = password;
-            money = 0;
-        }
+        // used to sign in 
         public Account(string email, string password) {
             this.email = email;
             this.password = password;
         }
 
 
-
-        public int Id { get => id; set => id = value; }
-        public string Email { get => email; set => email = value; }
+        public int AccId { get => accId; set => accId = value; }
+        public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
-        public string Name { get => name; set => name = value; }
-        public string Phone { get => phone; set => phone = value; }
-        public DateTime Birthday { get => birthday; set => birthday = value; }
-        public string Address { get => address; set => address = value; }
-        public byte[] Avatar { get => avatar; set => avatar = value; }
-        public double Money { get => money; set => money = value; }
-        public List<int> CancelledList { get => cancelledList; set => cancelledList = value; }
-        public List<int> SavedList { get => savedList; set => savedList = value; }
-        public List<int> CartList { get => cartList; set => cartList = value; }
+        public string FullName { get => fullName; set => fullName = value; }
+        public string Email { get => email; set => email = value; }
+        public string PhoneNum { get => phoneNum; set => phoneNum = value; }
+        public double Balance { get => balance; set => balance = value; }
     }
 }

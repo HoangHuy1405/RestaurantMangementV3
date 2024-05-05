@@ -128,8 +128,8 @@ namespace RestaurantMangement.Forms {
             this.Hide();
             db.CreateBill(bill);
             MessageBox.Show("Done!");
-            FResMain f = new FResMain();
-            //FBill fBT = new FBill(billID);
+            //FResMain f = new FResMain();
+            FBill f = new FBill(bill);
             f.Closed += (s, args) => this.Close();
             f.Show();
         }

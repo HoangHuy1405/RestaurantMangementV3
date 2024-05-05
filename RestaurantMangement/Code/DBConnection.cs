@@ -3,6 +3,7 @@ using Guna.UI2.WinForms.Suite;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace RestaurantMangement.Code
@@ -197,31 +198,63 @@ namespace RestaurantMangement.Code
         }
         /* BILL */
         public void CreateBill(Bill bill) {
+            using (var connection = new SqlConnection(Properties.Settings.Default.connStr)) {
+                connection.Open();
+
+                // Create a command for the stored procedure
+                var command = new SqlCommand("CreateBill", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                // Add parameters
+                command.Parameters.AddWithValue("@Date", bill.date);
+                command.Parameters.AddWithValue("@Address", bill.customerAddress);
+                command.Parameters.AddWithValue("@CustomerName", bill.customerName);
+                command.Parameters.AddWithValue("@CustomerEmail", bill.customerEmail);
+                command.Parameters.AddWithValue("@CustomerPhone", bill.customerPhone);
+                command.Parameters.AddWithValue("@PaymentMethod", bill.paymentMethods); // Changed parameter name to match the stored procedure
+                command.Parameters.AddWithValue("@Note", bill.note);
+                command.Parameters.AddWithValue("@Status", bill.status);
+                command.Parameters.AddWithValue("@TotalPrice", bill.totalPrice);
+                command.Parameters.AddWithValue("@AccID", bill.accId);
+                command.Parameters.AddWithValue("@VoucherID", string.IsNullOrEmpty(bill.voucherId) ? (object)DBNull.Value : bill.voucherId);
+
+                // Output parameter for BillID
+                command.Parameters.Add("@BillID", SqlDbType.VarChar, 10).Direction = ParameterDirection.Output;
+
+                // Parameter for BookedProducts using DataTable
+                var bookedProductsTable = new DataTable();
+                bookedProductsTable.Columns.Add("productID", typeof(string));
+                bookedProductsTable.Columns.Add("quantity", typeof(int));
+
+                foreach (var bookedProduct in bill.bookedProducts) {
+                    bookedProductsTable.Rows.Add(bookedProduct.ProductId, bookedProduct.Quantity);
+                }
+
+                var parameter = command.Parameters.AddWithValue("@BookedProducts", bookedProductsTable);
+                parameter.SqlDbType = SqlDbType.Structured;
+                parameter.TypeName = "dbo.BookedProductType";
+
+                // Execute the command
+                command.ExecuteNonQuery();
+
+                // Retrieve the output parameter value
+                string billID = command.Parameters["@BillID"].Value.ToString();
+                Console.WriteLine("Created bill with ID: " + billID);
+            }
+        }
+        public string getBillIdBasedOnDate(string accID, DateTime date) {
+            string billID = null;
             try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    conn.Open();
-                    string query = @"INSERT INTO bill (date, Address, customerName, customerEmail, 
-                                                customerPhone, paymentMethods, Note, 
-                                                total_price, accID, voucherID)
-                             VALUES (@Date, @Address, @CustomerName, @CustomerEmail, 
-                                     @CustomerPhone, @PaymentMethods, @Note, 
-                                     @TotalPrice, @AccID, @VoucherID)";
+                conn.Open();
+                string query = "SELECT billID FROM Bill WHERE accID = @AccID AND date = @Date";
 
-                    using (SqlCommand command = new SqlCommand(query, conn)) {
-                        command.Parameters.AddWithValue("@Date", bill.date);
-                        command.Parameters.AddWithValue("@Address", bill.customerAddress);
-                        command.Parameters.AddWithValue("@CustomerName", bill.customerName);
-                        command.Parameters.AddWithValue("@CustomerEmail", bill.customerEmail);
-                        command.Parameters.AddWithValue("@CustomerPhone", bill.customerPhone);
-                        command.Parameters.AddWithValue("@PaymentMethods", bill.paymentMethods);
-                        command.Parameters.AddWithValue("@Note", bill.note);
-                        command.Parameters.AddWithValue("@TotalPrice", bill.totalPrice);
-                        command.Parameters.AddWithValue("@AccID", bill.accId);
-                        if (bill.voucherId == string.Empty) {
-                            command.Parameters.AddWithValue("@VoucherID", DBNull.Value);
-                        } else command.Parameters.AddWithValue("@VoucherID", bill.voucherId);
+                using (SqlCommand command = new SqlCommand(query, conn)) {
+                    command.Parameters.AddWithValue("@AccID", accID);
+                    command.Parameters.AddWithValue("@Date", date);
 
-                        command.ExecuteNonQuery();
+                    object result = command.ExecuteScalar();
+                    if (result != null) {
+                        billID = result.ToString();
                     }
                 }
             } catch (SqlException ex) {
@@ -229,7 +262,9 @@ namespace RestaurantMangement.Code
             } finally {
                 conn.Close();
             }
+            return billID;
         }
+
 
         public void GetBillBasedOnBillID(Bill bill, string billid) {
             try {

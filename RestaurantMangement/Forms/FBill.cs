@@ -11,25 +11,22 @@ using System.Windows.Forms;
 
 namespace RestaurantMangement.Forms {
     public partial class FBill : Form {
-        string billid;
+
         Bill bill = new Bill();
-        DBConnection conn = new DBConnection();
+        DBConnection db = new DBConnection();
 
         public FBill() {
             InitializeComponent();
         }
-        public FBill(string billId) {
+        public FBill(Bill bill) {
             InitializeComponent();
-            this.billid = billId;
-            conn.GetBillBasedOnBillID(bill, billId);
+            this.bill = bill;
             Initilize();
         }
         private void FBill_Load(object sender, EventArgs e) {
-            conn.GetBillBasedOnBillID(bill, billid);
-            Initilize();
+
         }
         private void Initilize() {
-            lblBillIDFill.Text = bill.billId;
             lblStatusFill.Text = bill.status;
             lblNameFill.Text = bill.customerName;
             lblEmailFill.Text = bill.customerEmail;
@@ -83,6 +80,8 @@ namespace RestaurantMangement.Forms {
                 // Add the new row to the DataGridView
                 dataGridView1.Rows.Add(newRow);
             }
+
+            dataGridView1.ColumnHeadersHeight = 30;
         }
 
         private void lblTotalPriceFill_Click(object sender, EventArgs e) {
@@ -91,6 +90,13 @@ namespace RestaurantMangement.Forms {
 
         private void guna2Button1_Click(object sender, EventArgs e) {
             FBill_Load(sender, e);
+        }
+
+        private void btnHome_Click(object sender, EventArgs e) {
+            this.Hide();
+            FResMain f = new FResMain();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 }

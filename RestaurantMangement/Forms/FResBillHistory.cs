@@ -24,8 +24,20 @@ namespace RestaurantMangement.Forms {
         }
 
         private void FResBillHistory_Load(object sender, EventArgs e) {
+            lblName.Text = currentAcc.FullName;
             dataGridView1.DataSource = db.GetBillHistory(currentAcc.AccId);
             dataGridView1.ColumnHeadersHeight = 30;
+        }
+
+        private void lblName_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnHome_Click(object sender, EventArgs e) {
+            this.Hide();
+            FResMain frm = new FResMain();
+            frm.Closed += (s, args) => this.Close();
+            frm.Show();
         }
     }
 }

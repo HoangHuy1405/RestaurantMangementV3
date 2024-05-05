@@ -23,16 +23,16 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            btnHome = new Guna.UI2.WinForms.Guna2Button();
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -40,7 +40,6 @@
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            lblBillIDFill = new Label();
             lblStatusFill = new Label();
             lblNameFill = new Label();
             lblEmailFill = new Label();
@@ -51,7 +50,8 @@
             lblPaymentFill = new Label();
             label11 = new Label();
             dataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            label2 = new Label();
+            lblBIllID = new Label();
             guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -59,15 +59,36 @@
             // guna2Panel3
             // 
             guna2Panel3.BackColor = Color.White;
-            guna2Panel3.Controls.Add(guna2Button1);
+            guna2Panel3.Controls.Add(btnHome);
             guna2Panel3.Controls.Add(label1);
-            guna2Panel3.CustomizableEdges = customizableEdges3;
+            guna2Panel3.CustomizableEdges = customizableEdges7;
             guna2Panel3.FillColor = Color.FromArgb(52, 73, 85);
             guna2Panel3.Location = new Point(1, 1);
             guna2Panel3.Name = "guna2Panel3";
-            guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Panel3.Size = new Size(1064, 75);
             guna2Panel3.TabIndex = 4;
+            // 
+            // btnHome
+            // 
+            btnHome.BackColor = Color.Transparent;
+            btnHome.BorderRadius = 10;
+            btnHome.CustomizableEdges = customizableEdges5;
+            btnHome.DisabledState.BorderColor = Color.DarkGray;
+            btnHome.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnHome.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnHome.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnHome.FillColor = Color.FromArgb(80, 114, 123);
+            btnHome.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnHome.ForeColor = Color.White;
+            btnHome.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnHome.Location = new Point(926, 8);
+            btnHome.Name = "btnHome";
+            btnHome.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnHome.Size = new Size(126, 56);
+            btnHome.TabIndex = 3;
+            btnHome.Text = "Home";
+            btnHome.Click += btnHome_Click;
             // 
             // label1
             // 
@@ -80,18 +101,6 @@
             label1.Size = new Size(261, 46);
             label1.TabIndex = 0;
             label1.Text = "Bill Information";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 13.2F);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(23, 89);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 30);
-            label2.TabIndex = 1;
-            label2.Text = "Bill ID:";
             // 
             // label3
             // 
@@ -176,18 +185,6 @@
             label9.Size = new Size(112, 30);
             label9.TabIndex = 11;
             label9.Text = "Total Price";
-            // 
-            // lblBillIDFill
-            // 
-            lblBillIDFill.AutoSize = true;
-            lblBillIDFill.BackColor = Color.Transparent;
-            lblBillIDFill.Font = new Font("Segoe UI", 13.2F);
-            lblBillIDFill.ForeColor = Color.Black;
-            lblBillIDFill.Location = new Point(226, 89);
-            lblBillIDFill.Name = "lblBillIDFill";
-            lblBillIDFill.Size = new Size(73, 30);
-            lblBillIDFill.TabIndex = 12;
-            lblBillIDFill.Text = "Bill ID:";
             // 
             // lblStatusFill
             // 
@@ -300,26 +297,26 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.ColumnHeadersHeight = 4;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.Dock = DockStyle.Bottom;
             dataGridView1.GridColor = Color.FromArgb(231, 229, 255);
             dataGridView1.Location = new Point(0, 406);
@@ -350,28 +347,37 @@
             dataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
-            // guna2Button1
+            // label2
             // 
-            guna2Button1.CustomizableEdges = customizableEdges1;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.Font = new Font("Segoe UI", 9F);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(836, 8);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Button1.Size = new Size(225, 56);
-            guna2Button1.TabIndex = 1;
-            guna2Button1.Text = "guna2Button1";
-            guna2Button1.Click += guna2Button1_Click;
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 13.2F);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(26, 96);
+            label2.Name = "label2";
+            label2.Size = new Size(73, 30);
+            label2.TabIndex = 23;
+            label2.Text = "Bill ID:";
+            // 
+            // lblBIllID
+            // 
+            lblBIllID.AutoSize = true;
+            lblBIllID.BackColor = Color.Transparent;
+            lblBIllID.Font = new Font("Segoe UI", 13.2F);
+            lblBIllID.ForeColor = Color.Black;
+            lblBIllID.Location = new Point(226, 96);
+            lblBIllID.Name = "lblBIllID";
+            lblBIllID.Size = new Size(73, 30);
+            lblBIllID.TabIndex = 24;
+            lblBIllID.Text = "Bill ID:";
             // 
             // FBill
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1065, 595);
+            Controls.Add(lblBIllID);
+            Controls.Add(label2);
             Controls.Add(dataGridView1);
             Controls.Add(lblPaymentFill);
             Controls.Add(label11);
@@ -382,7 +388,6 @@
             Controls.Add(lblEmailFill);
             Controls.Add(lblNameFill);
             Controls.Add(lblStatusFill);
-            Controls.Add(lblBillIDFill);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -390,7 +395,6 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(guna2Panel3);
             Name = "FBill";
             Text = "FBill";
@@ -406,7 +410,6 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Label label1;
-        private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
@@ -414,7 +417,6 @@
         private Label label7;
         private Label label8;
         private Label label9;
-        private Label lblBillIDFill;
         private Label lblStatusFill;
         private Label lblNameFill;
         private Label lblEmailFill;
@@ -425,6 +427,8 @@
         private Label lblPaymentFill;
         private Label label11;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnHome;
+        private Label label2;
+        private Label lblBIllID;
     }
 }

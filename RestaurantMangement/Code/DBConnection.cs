@@ -3,6 +3,7 @@ using Guna.UI2.WinForms.Suite;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace RestaurantMangement.Code
 {
@@ -230,7 +231,7 @@ namespace RestaurantMangement.Code
             }
         }
 
-            public void GetBillBasedOnBillID(Bill bill, string billid) {
+        public void GetBillBasedOnBillID(Bill bill, string billid) {
             try {
                 using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
                     conn.Open();
@@ -263,6 +264,21 @@ namespace RestaurantMangement.Code
             } finally {
                 conn.Close();
             }
+        }
+        public DataTable GetBillHistory(string accId) {
+            DataTable dt = new DataTable();
+            try {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    conn.Open();
+                    string query = "SELECT * FROM bill WHERE accID = '" + accId + "'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    adapter.Fill(dt);
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return dt;
         }
         /* TABLE */
         public void LoadAvailableTable(string SQL, Guna2DataGridView gridview, DateTime tochoose)

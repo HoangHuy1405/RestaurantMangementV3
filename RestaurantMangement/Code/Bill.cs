@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +9,19 @@ namespace RestaurantMangement.Code
 {
     public class Bill
     {
-        private string billId;
-        private string billStatus;
-        private string customerName;
-        private string customerEmail;
-        private string customerPhone;
-        private string paymentMethods;
-        private string note;
-        private string status;
-        private string totalPrice;
+        public string billId;
+        public DateTime date;
+        public string customerAddress;
+        public string customerName;
+        public string customerEmail;
+        public string customerPhone;
+        public string paymentMethods;
+        public string note;
+        public string billStatus;
+        public string status;
+        public decimal totalPrice;
+        public string accId;
+        public string voucherId;
 
         public List<BookedProduct> bookedProducts = new List<BookedProduct>();
 
@@ -27,8 +32,5 @@ namespace RestaurantMangement.Code
             this.billId = billId;
             this.billStatus = billStatus;
         }
-
-        public string BillId { get => billId; set => billId = value; }
-        public string BillStatus { get => billStatus; set => billStatus = value; }
     }
 }

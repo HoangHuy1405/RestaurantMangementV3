@@ -194,7 +194,76 @@ namespace RestaurantMangement.Code
                 conn.Close();
             }
         }
+        /* BILL */
+        public void CreateBill(Bill bill) {
+            try {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    conn.Open();
+                    string query = @"INSERT INTO bill (date, Address, customerName, customerEmail, 
+                                                customerPhone, paymentMethods, Note, 
+                                                total_price, accID, voucherID)
+                             VALUES (@Date, @Address, @CustomerName, @CustomerEmail, 
+                                     @CustomerPhone, @PaymentMethods, @Note, 
+                                     @TotalPrice, @AccID, @VoucherID)";
 
+                    using (SqlCommand command = new SqlCommand(query, conn)) {
+                        command.Parameters.AddWithValue("@Date", bill.date);
+                        command.Parameters.AddWithValue("@Address", bill.customerAddress);
+                        command.Parameters.AddWithValue("@CustomerName", bill.customerName);
+                        command.Parameters.AddWithValue("@CustomerEmail", bill.customerEmail);
+                        command.Parameters.AddWithValue("@CustomerPhone", bill.customerPhone);
+                        command.Parameters.AddWithValue("@PaymentMethods", bill.paymentMethods);
+                        command.Parameters.AddWithValue("@Note", bill.note);
+                        command.Parameters.AddWithValue("@TotalPrice", bill.totalPrice);
+                        command.Parameters.AddWithValue("@AccID", bill.accId);
+                        if (bill.voucherId == string.Empty) {
+                            command.Parameters.AddWithValue("@VoucherID", DBNull.Value);
+                        } else command.Parameters.AddWithValue("@VoucherID", bill.voucherId);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+        }
+
+            public void GetBillBasedOnBillID(Bill bill, string billid) {
+            try {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    conn.Open();
+                    string query = "SELECT * FROM Bill WHERE billID = @BillID";
+
+                    using (SqlCommand command = new SqlCommand(query, conn)) {
+                        command.Parameters.AddWithValue("@BillID", billid);
+
+                        using (SqlDataReader reader = command.ExecuteReader()) {
+                            if (reader.Read()) {
+                                bill.billId = reader["billID"].ToString();
+                                bill.date = Convert.ToDateTime(reader["date"]);
+                                bill.customerAddress = reader["Address"].ToString();
+                                bill.customerName = reader["customerName"].ToString();
+                                bill.customerEmail = reader["customerEmail"].ToString();
+                                bill.customerPhone = reader["customerPhone"].ToString();
+                                bill.paymentMethods = reader["paymentMethods"].ToString();
+                                bill.note = reader["Note"].ToString();
+                                bill.status = reader["status"].ToString();
+                                bill.totalPrice = Convert.ToDecimal(reader["total_price"]);
+                                bill.accId = reader["accID"].ToString();
+                                bill.voucherId = reader["voucherID"].ToString();
+                            }
+                            reader.Close();
+                        }
+                    }
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+        }
         /* TABLE */
         public void LoadAvailableTable(string SQL, Guna2DataGridView gridview, DateTime tochoose)
         {

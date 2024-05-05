@@ -13,6 +13,8 @@ namespace RestaurantMangement.Forms {
     public partial class FResPayment : Form {
         Account currentAcc = FResLogin.currentAcc;
         Bill bill = new Bill();
+        DBConnection db = new DBConnection();
+
         public FResPayment() {
             InitializeComponent();
         }
@@ -23,6 +25,7 @@ namespace RestaurantMangement.Forms {
         private void FResPayment_Load(object sender, EventArgs e) {
             lblBuyerName.Text = currentAcc.FullName;
             definingBookedProduct();
+            FillOtherInfo();
         }
         private void definingBookedProduct() {
             // Clear existing rows and columns
@@ -54,15 +57,15 @@ namespace RestaurantMangement.Forms {
             dataGridView1.ColumnHeadersHeight = 30;
 
             // Fill gridview with booked product data from bill
-            foreach (BookedProduct bookedDishOrDrink in bill.bookedProducts) {
+            foreach (BookedProduct bookedProduct in bill.bookedProducts) {
                 // Create a new row for the DataGridView
                 DataGridViewRow newRow = new DataGridViewRow();
 
                 // Populate the cells of the new row with data from the BookedDishOrDrink object
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedDishOrDrink.ProductId });
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedDishOrDrink.ProductName });
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedDishOrDrink.Quantity });
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedDishOrDrink.Totalprice });
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.ProductId });
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.ProductName });
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.Quantity });
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.Totalprice });
 
                 // Add the new row to the DataGridView
                 dataGridView1.Rows.Add(newRow);
@@ -75,23 +78,39 @@ namespace RestaurantMangement.Forms {
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
+        private void FillOtherInfo() {
+            decimal totalprice = 0;
+            int numberofitems = 0;
+            // Calculate total price of booked dish and drink items
+            foreach (DataGridViewRow row in dataGridView1.Rows) {
+                decimal price = Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+                totalprice += price;
+                numberofitems += Convert.ToInt32(row.Cells["Quantity"].Value);
+            }
+
+            // Calculate shipping (if applicable)
+            decimal shipping = (totalprice / 100) * 10;
+            bill.totalPrice = totalprice;
+            // Update the UI with calculated values
+            lblTotalPrice.Text = (totalprice + shipping).ToString();
+            lblShippingFee.Text = shipping.ToString();
+            lblSubTotalPrice.Text = totalprice.ToString();
+            lblNoOfItems.Text = numberofitems.ToString();
+
+        }
         private void FillBill() {
-            //bill.customerName = txtName.Text;
-            //bill.customerEmail = string.Empty;
-            //if (this.rbtnOnline.Checked) {
-            //    bill.paymentMethods = "Online";
-            //} else bill.paymentMethods = "Cash";
-            //bill.Note = string.Empty;
-            //bill.beginDay = DateTime.Now;
-            //bill.customerPhone = txtPhone.Text;
-            //bill.address = txtAddress.Text;
-            //bill.type = "Shipping";
-            //bill.voucherID = string.Empty;
-            //bill.status = "Pending";
-            //bill.endDate = bill.beginDay.AddHours(3);
-            //if (bill.type == "Online") {
-            //    bill.deposit = Convert.ToDecimal(lblTotalPrice.Text);
-            //} else bill.deposit = 0;
+            bill.customerName = txtName.Text;
+            bill.customerEmail = string.Empty;
+            if (this.rbtnOnline.Checked) {
+                bill.paymentMethods = "Online";
+            } else bill.paymentMethods = "Cash";
+            bill.note = string.Empty;
+            bill.customerPhone = txtPhone.Text;
+            bill.customerAddress = txtAddress.Text;
+            bill.voucherId = string.Empty;
+            bill.status = "Pending";
+            bill.date = DateTime.Now;
+            bill.accId = currentAcc.AccId;
         }
 
 
@@ -102,6 +121,17 @@ namespace RestaurantMangement.Forms {
 
         private void label5_Click(object sender, EventArgs e) {
 
+        }
+
+        private void btnBuy_Click(object sender, EventArgs e) {
+            FillBill();
+            this.Hide();
+            db.CreateBill(bill);
+            MessageBox.Show("Done!");
+            FResMain f = new FResMain();
+            //FBill fBT = new FBill(billID);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 }

@@ -114,24 +114,31 @@ namespace RestaurantMangement.Forms
                 if (dataGridView2.Columns[e.ColumnIndex].HeaderText == "+") {
                     // Increment quantity by 1
                     int quantity = Convert.ToInt32(dataGridView2.Rows[index].Cells["dgvQuantity"].Value);
-                    quantity++;
-
-                    bill.bookedProducts[index].Quantity += quantity;
+                    bill.bookedProducts[index].Quantity += 1;
                     bill.bookedProducts[index].Totalprice += bill.bookedProducts[index].NormalPrice;
+
+                    quantity++;
                     dataGridView2.Rows[index].Cells["dgvQuantity"].Value = quantity;
                 } else if (dataGridView2.Columns[e.ColumnIndex].HeaderText == "-") {
                     // Decrement quantity by 1, if it's greater than 0
                     int quantity = Convert.ToInt32(dataGridView2.Rows[index].Cells["dgvQuantity"].Value);
                     if (quantity > 0) {
+                        bill.bookedProducts[index].Quantity -= 1;
+                        bill.bookedProducts[index].Totalprice -= bill.bookedProducts[index].NormalPrice;
+
                         quantity--;
                         dataGridView2.Rows[index].Cells["dgvQuantity"].Value = quantity;
 
-                        bill.bookedProducts[index].Quantity -= quantity;
-                        bill.bookedProducts[index].Totalprice -= bill.bookedProducts[index].NormalPrice;
-
                     }
                 }
+                // Disable the button temporarily
+                dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
+                dataGridView2.BeginEdit(true);
             }
+        }
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+            // Enable the button after the edit is complete
+            dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = false;
         }
 
         private void btnProceed_Click(object sender, EventArgs e) {
@@ -139,6 +146,10 @@ namespace RestaurantMangement.Forms
             FResPayment f = new FResPayment(bill);
             f.Closed += (s, args) => this.Close();
             f.Show();
+        }
+
+        private void dataGridView2_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            
         }
     }
 }

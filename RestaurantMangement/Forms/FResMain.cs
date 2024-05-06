@@ -34,7 +34,7 @@ namespace RestaurantMangement.Forms {
 
         private void btnTable_Click(object sender, EventArgs e) {
             this.Hide();
-            FBookingTable f = new FBookingTable();
+            FResBookingTable f = new FResBookingTable();
             f.Closed += (s, args) => this.Close();
             f.Show();
         }

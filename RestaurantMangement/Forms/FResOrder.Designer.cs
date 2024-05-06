@@ -65,7 +65,6 @@
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             btnAddItem = new Guna.UI2.WinForms.Guna2Button();
             btnHome = new Guna.UI2.WinForms.Guna2Button();
-            label1 = new Label();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             CategoryPanel = new FlowLayoutPanel();
@@ -114,7 +113,6 @@
             // 
             guna2Panel1.Controls.Add(btnAddItem);
             guna2Panel1.Controls.Add(btnHome);
-            guna2Panel1.Controls.Add(label1);
             guna2Panel1.Controls.Add(guna2PictureBox1);
             guna2Panel1.CustomizableEdges = customizableEdges7;
             guna2Panel1.Dock = DockStyle.Top;
@@ -166,18 +164,6 @@
             btnHome.TabIndex = 2;
             btnHome.Text = "Home";
             btnHome.Click += btnHome_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(81, 38);
-            label1.Name = "label1";
-            label1.Size = new Size(66, 37);
-            label1.TabIndex = 1;
-            label1.Text = "POS";
             // 
             // guna2PictureBox1
             // 
@@ -597,7 +583,6 @@
             Text = "FResPOS";
             Load += FResOrder_Load;
             guna2Panel1.ResumeLayout(false);
-            guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             CategoryPanel.ResumeLayout(false);
             guna2Panel3.ResumeLayout(false);
@@ -627,7 +612,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Label label1;
         private Guna.UI2.WinForms.Guna2Button btnHome;
         private FlowLayoutPanel CategoryPanel;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;

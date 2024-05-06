@@ -90,7 +90,7 @@ namespace RestaurantMangement.Forms {
 
             // Calculate shipping (if applicable)
             decimal shipping = (totalprice / 100) * 10;
-            bill.totalPrice = totalprice;
+            bill.TotalPrice = totalprice;
             // Update the UI with calculated values
             lblTotalPrice.Text = (totalprice + shipping).ToString();
             lblShippingFee.Text = shipping.ToString();
@@ -99,18 +99,18 @@ namespace RestaurantMangement.Forms {
 
         }
         private void FillBill() {
-            bill.customerName = txtName.Text;
-            bill.customerEmail = string.Empty;
+            bill.CustomerName = txtName.Text;
+            bill.CustomerEmail = currentAcc.Email;
             if (this.rbtnOnline.Checked) {
-                bill.paymentMethods = "Online";
-            } else bill.paymentMethods = "Cash";
-            bill.note = string.Empty;
-            bill.customerPhone = txtPhone.Text;
-            bill.customerAddress = txtAddress.Text;
-            bill.voucherId = string.Empty;
-            bill.status = "Pending";
-            bill.date = DateTime.Now;
-            bill.accId = currentAcc.AccId;
+                bill.PaymentMethods = "Online";
+            } else bill.PaymentMethods = "Cash";
+            bill.Note = "Order food";
+            bill.CustomerPhone = txtPhone.Text;
+            bill.CustomerAddress = txtAddress.Text;
+            bill.VoucherId = string.Empty;
+            bill.Status = "Pending";
+            bill.Date = DateTime.Now;
+            bill.AccId = currentAcc.AccId;
         }
 
 
@@ -129,7 +129,7 @@ namespace RestaurantMangement.Forms {
             db.CreateBill(bill);
             MessageBox.Show("Done!");
             //FResMain f = new FResMain();
-            FBill f = new FBill(bill);
+            FResBill f = new FResBill(bill);
             f.Closed += (s, args) => this.Close();
             f.Show();
         }

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace RestaurantMangement.Code
 {
-    internal class AccountDAO
+    public class AccountDAO
     {
         private SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         private DBConnection dbconnection = new DBConnection();

@@ -89,7 +89,6 @@
             lblBuyerName = new Label();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             btnHome = new Guna.UI2.WinForms.Guna2Button();
-            label1 = new Label();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Panel1.SuspendLayout();
             guna2Panel5.SuspendLayout();
@@ -534,7 +533,6 @@
             // guna2Panel2
             // 
             guna2Panel2.Controls.Add(btnHome);
-            guna2Panel2.Controls.Add(label1);
             guna2Panel2.Controls.Add(guna2PictureBox1);
             guna2Panel2.CustomizableEdges = customizableEdges31;
             guna2Panel2.Dock = DockStyle.Top;
@@ -565,18 +563,6 @@
             btnHome.TabIndex = 2;
             btnHome.Text = "Home";
             btnHome.Click += btnHome_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(81, 38);
-            label1.Name = "label1";
-            label1.Size = new Size(66, 37);
-            label1.TabIndex = 1;
-            label1.Text = "POS";
             // 
             // guna2PictureBox1
             // 
@@ -614,7 +600,6 @@
             guna2Panel6.ResumeLayout(false);
             guna2Panel6.PerformLayout();
             guna2Panel2.ResumeLayout(false);
-            guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -624,7 +609,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2Button btnHome;
-        private Label label1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private Label label2;

@@ -4,13 +4,15 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing.Text;
+using System.Text;
 using System.Windows.Forms;
 
 namespace RestaurantMangement.Code
 {
     //
-    internal class DBConnection
+    public class DBConnection
     {
+        Account currentAcc = FResLogin.currentAcc;
         // SqlConnection object to establish a connection with the database
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
 
@@ -206,17 +208,17 @@ namespace RestaurantMangement.Code
                 command.CommandType = CommandType.StoredProcedure;
 
                 // Add parameters
-                command.Parameters.AddWithValue("@Date", bill.date);
-                command.Parameters.AddWithValue("@Address", bill.customerAddress);
-                command.Parameters.AddWithValue("@CustomerName", bill.customerName);
-                command.Parameters.AddWithValue("@CustomerEmail", bill.customerEmail);
-                command.Parameters.AddWithValue("@CustomerPhone", bill.customerPhone);
-                command.Parameters.AddWithValue("@PaymentMethod", bill.paymentMethods); // Changed parameter name to match the stored procedure
-                command.Parameters.AddWithValue("@Note", bill.note);
-                command.Parameters.AddWithValue("@Status", bill.status);
-                command.Parameters.AddWithValue("@TotalPrice", bill.totalPrice);
-                command.Parameters.AddWithValue("@AccID", bill.accId);
-                command.Parameters.AddWithValue("@VoucherID", string.IsNullOrEmpty(bill.voucherId) ? (object)DBNull.Value : bill.voucherId);
+                command.Parameters.AddWithValue("@Date", bill.Date);
+                command.Parameters.AddWithValue("@Address", bill.CustomerAddress);
+                command.Parameters.AddWithValue("@CustomerName", bill.CustomerName);
+                command.Parameters.AddWithValue("@CustomerEmail", bill.CustomerEmail);
+                command.Parameters.AddWithValue("@CustomerPhone", bill.CustomerPhone);
+                command.Parameters.AddWithValue("@PaymentMethod", bill.PaymentMethods); // Changed parameter name to match the stored procedure
+                command.Parameters.AddWithValue("@Note", bill.Note);
+                command.Parameters.AddWithValue("@Status", bill.Status);
+                command.Parameters.AddWithValue("@TotalPrice", bill.TotalPrice);
+                command.Parameters.AddWithValue("@AccID", bill.AccId);
+                command.Parameters.AddWithValue("@VoucherID", string.IsNullOrEmpty(bill.VoucherId) ? (object)DBNull.Value : bill.VoucherId);
 
                 // Output parameter for BillID
                 command.Parameters.Add("@BillID", SqlDbType.VarChar, 10).Direction = ParameterDirection.Output;
@@ -246,9 +248,9 @@ namespace RestaurantMangement.Code
             string billID = null;
             try {
                 conn.Open();
-                string query = "SELECT billID FROM Bill WHERE accID = @AccID AND date = @Date";
+                string sqlQuery = "SELECT billID FROM Bill WHERE accID = @AccID AND date = @Date";
 
-                using (SqlCommand command = new SqlCommand(query, conn)) {
+                using (SqlCommand command = new SqlCommand(sqlQuery, conn)) {
                     command.Parameters.AddWithValue("@AccID", accID);
                     command.Parameters.AddWithValue("@Date", date);
 
@@ -270,25 +272,25 @@ namespace RestaurantMangement.Code
             try {
                 using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
                     conn.Open();
-                    string query = "SELECT * FROM Bill WHERE billID = @BillID";
+                    string sqlQuery = "SELECT * FROM Bill WHERE billID = @BillID";
 
-                    using (SqlCommand command = new SqlCommand(query, conn)) {
+                    using (SqlCommand command = new SqlCommand(sqlQuery, conn)) {
                         command.Parameters.AddWithValue("@BillID", billid);
 
                         using (SqlDataReader reader = command.ExecuteReader()) {
                             if (reader.Read()) {
-                                bill.billId = reader["billID"].ToString();
-                                bill.date = Convert.ToDateTime(reader["date"]);
-                                bill.customerAddress = reader["Address"].ToString();
-                                bill.customerName = reader["customerName"].ToString();
-                                bill.customerEmail = reader["customerEmail"].ToString();
-                                bill.customerPhone = reader["customerPhone"].ToString();
-                                bill.paymentMethods = reader["paymentMethods"].ToString();
-                                bill.note = reader["Note"].ToString();
-                                bill.status = reader["status"].ToString();
-                                bill.totalPrice = Convert.ToDecimal(reader["total_price"]);
-                                bill.accId = reader["accID"].ToString();
-                                bill.voucherId = reader["voucherID"].ToString();
+                                bill.BillId = reader["billID"].ToString();
+                                bill.Date = Convert.ToDateTime(reader["date"]);
+                                bill.CustomerAddress = reader["Address"].ToString();
+                                bill.CustomerName = reader["customerName"].ToString();
+                                bill.CustomerEmail = reader["customerEmail"].ToString();
+                                bill.CustomerPhone = reader["customerPhone"].ToString();
+                                bill.PaymentMethods = reader["paymentMethods"].ToString();
+                                bill.Note = reader["Note"].ToString();
+                                bill.Status = reader["status"].ToString();
+                                bill.TotalPrice = Convert.ToDecimal(reader["total_price"]);
+                                bill.AccId = reader["accID"].ToString();
+                                bill.VoucherId = reader["voucherID"].ToString();
                             }
                             reader.Close();
                         }
@@ -300,39 +302,113 @@ namespace RestaurantMangement.Code
                 conn.Close();
             }
         }
-        public DataTable GetBillHistory(string accId) {
+        public DataTable GetBillHistoryFromDBOfThatAccount(string accId) {
             DataTable dt = new DataTable();
             try {
                 using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
                     conn.Open();
-                    string query = "SELECT * FROM bill WHERE accID = '" + accId + "'";
+                    string sqlQuery = "SELECT * FROM bill WHERE accID = '" + accId + "'";
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
                     adapter.Fill(dt);
                 }
             } catch (SqlException ex) {
                 MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
             }
             return dt;
         }
         /* TABLE */
-        public void LoadAvailableTable(string SQL, Guna2DataGridView gridview, DateTime tochoose)
-        {
-            try
-            {
-                conn.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(SQL, conn);
-                adapter.SelectCommand.Parameters.AddWithValue("@DateTime", tochoose);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                gridview.DataSource = dt;
+        public DataTable LoadTablesFromDB() {
+            DataTable dt = new DataTable();
+            try {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    conn.Open();
+                    string sqlQuery = "SELECT tableID, t.roomID, numchair, status, type, PricePerTable FROM [Table] t INNER JOIN Room r ON t.roomID = r.roomID";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
+                    adapter.Fill(dt);
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
             }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
+            return dt;
+        }
+
+        public string CheckTableAvailability(string timeBegin, string timeEnd, string roomType) {
+            string tableID = "";
+            string sqlQuery = @"SELECT t.tableID
+                            FROM [Table] t
+                            JOIN Room r ON t.roomID = r.roomID
+                            WHERE r.type = @RoomType
+                            AND t.tableID NOT IN
+                            (
+                                SELECT tableID
+                                FROM AccBookTable
+                                WHERE NOT
+                                (
+                                    timeEnd <= @TimeBegin
+                                    OR timeBegin >= @TimeEnd
+                                )
+                            )
+                         ";
+
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr)) {
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection)) {
+                    command.Parameters.AddWithValue("@TimeBegin", timeBegin);
+                    command.Parameters.AddWithValue("@TimeEnd", timeEnd);
+                    command.Parameters.AddWithValue("@RoomType", roomType);
+                    connection.Open();
+                    var result = command.ExecuteScalar();
+                    if (result != null)
+                        tableID = result.ToString();
+                }
             }
-            finally
-            {
+            return tableID;
+        }
+
+        public BookedTable loadBookedTableFromTableID(string tableID) {
+            BookedTable bookedTable = new BookedTable();
+
+            string sqlQuery = @"
+                            SELECT t.tableID, t.roomID, r.PricePerTable, r.type
+                            FROM [Table] t
+                            JOIN Room r ON t.roomID = r.roomID
+                            WHERE t.tableID = '" + tableID + "'";
+
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr)) {
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection)) {
+                    command.Parameters.AddWithValue("@TableID", tableID);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) {
+                        bookedTable.TableID = tableID;
+                        bookedTable.RoomID = reader["roomID"].ToString();
+                        bookedTable.PricePerTable = Convert.ToDecimal(reader["PricePerTable"]);
+                        bookedTable.RoomType = reader["type"].ToString();
+                    }
+                    reader.Close();
+                }
+            }
+
+            return bookedTable;
+        }
+
+        public void InsertDataIntoAccBookTable(BookedTable bookedTable) {
+            try {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    conn.Open();
+                    string sqlQuery = string.Format("INSERT INTO AccBookTable(tableID, accID, timeBegin, timeEnd) VALUES ('{0}','{1}',{2},{3}",bookedTable.TableID, currentAcc.AccId, bookedTable.TimeBegin, bookedTable.TimeEnd);
+                    using (SqlCommand command = new SqlCommand(sqlQuery, conn)) {
+                        command.ExecuteNonQuery();
+                    }
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
                 conn.Close();
             }
         }

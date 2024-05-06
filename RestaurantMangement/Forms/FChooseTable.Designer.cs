@@ -23,29 +23,34 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             btnService = new Guna.UI2.WinForms.Guna2Button();
-            label4 = new Label();
+            lblTotalMoney = new Label();
             guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             label3 = new Label();
             gvChosenTable = new Guna.UI2.WinForms.Guna2DataGridView();
+            tableID = new DataGridViewTextBoxColumn();
+            roomID = new DataGridViewTextBoxColumn();
+            chairnumber = new DataGridViewTextBoxColumn();
+            type = new DataGridViewTextBoxColumn();
+            price = new DataGridViewTextBoxColumn();
             gvTable = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
@@ -67,11 +72,11 @@
             guna2Panel2.Controls.Add(gvTable);
             guna2Panel2.Controls.Add(guna2Panel4);
             guna2Panel2.Controls.Add(guna2Panel3);
-            guna2Panel2.CustomizableEdges = customizableEdges19;
+            guna2Panel2.CustomizableEdges = customizableEdges9;
             guna2Panel2.Dock = DockStyle.Fill;
             guna2Panel2.Location = new Point(0, 0);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2Panel2.Size = new Size(1518, 733);
             guna2Panel2.TabIndex = 1;
             // 
@@ -79,21 +84,21 @@
             // 
             guna2Panel5.BackColor = Color.White;
             guna2Panel5.Controls.Add(btnService);
-            guna2Panel5.Controls.Add(label4);
+            guna2Panel5.Controls.Add(lblTotalMoney);
             guna2Panel5.Controls.Add(guna2Separator2);
             guna2Panel5.Controls.Add(label3);
-            guna2Panel5.CustomizableEdges = customizableEdges13;
+            guna2Panel5.CustomizableEdges = customizableEdges3;
             guna2Panel5.FillColor = Color.FromArgb(52, 73, 85);
             guna2Panel5.Location = new Point(1010, 575);
             guna2Panel5.Name = "guna2Panel5";
-            guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2Panel5.Size = new Size(505, 155);
             guna2Panel5.TabIndex = 5;
             // 
             // btnService
             // 
             btnService.BackColor = Color.Transparent;
-            btnService.CustomizableEdges = customizableEdges11;
+            btnService.CustomizableEdges = customizableEdges1;
             btnService.DisabledState.BorderColor = Color.DarkGray;
             btnService.DisabledState.CustomBorderColor = Color.DarkGray;
             btnService.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -104,22 +109,23 @@
             btnService.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnService.Location = new Point(21, 87);
             btnService.Name = "btnService";
-            btnService.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnService.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnService.Size = new Size(459, 56);
             btnService.TabIndex = 12;
             btnService.Text = "Go back";
+            btnService.Click += btnGoBack_Click;
             // 
-            // label4
+            // lblTotalMoney
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(292, 21);
-            label4.Name = "label4";
-            label4.Size = new Size(144, 31);
-            label4.TabIndex = 3;
-            label4.Text = "120,000 VND";
+            lblTotalMoney.AutoSize = true;
+            lblTotalMoney.BackColor = Color.Transparent;
+            lblTotalMoney.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotalMoney.ForeColor = Color.White;
+            lblTotalMoney.Location = new Point(292, 21);
+            lblTotalMoney.Name = "lblTotalMoney";
+            lblTotalMoney.Size = new Size(144, 31);
+            lblTotalMoney.TabIndex = 3;
+            lblTotalMoney.Text = "120,000 VND";
             // 
             // guna2Separator2
             // 
@@ -143,27 +149,29 @@
             // 
             // gvChosenTable
             // 
-            dataGridViewCellStyle7.BackColor = Color.White;
-            gvChosenTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            gvChosenTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            gvChosenTable.ColumnHeadersHeight = 4;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            gvChosenTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            gvChosenTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            gvChosenTable.ColumnHeadersHeight = 50;
             gvChosenTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.White;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            gvChosenTable.DefaultCellStyle = dataGridViewCellStyle9;
+            gvChosenTable.Columns.AddRange(new DataGridViewColumn[] { tableID, roomID, chairnumber, type, price });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            gvChosenTable.DefaultCellStyle = dataGridViewCellStyle3;
             gvChosenTable.GridColor = Color.FromArgb(231, 229, 255);
+            gvChosenTable.ImeMode = ImeMode.Alpha;
             gvChosenTable.Location = new Point(1012, 84);
             gvChosenTable.Name = "gvChosenTable";
             gvChosenTable.RowHeadersVisible = false;
@@ -182,7 +190,7 @@
             gvChosenTable.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             gvChosenTable.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             gvChosenTable.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            gvChosenTable.ThemeStyle.HeaderStyle.Height = 4;
+            gvChosenTable.ThemeStyle.HeaderStyle.Height = 50;
             gvChosenTable.ThemeStyle.ReadOnly = false;
             gvChosenTable.ThemeStyle.RowsStyle.BackColor = Color.White;
             gvChosenTable.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -191,29 +199,60 @@
             gvChosenTable.ThemeStyle.RowsStyle.Height = 29;
             gvChosenTable.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gvChosenTable.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            gvChosenTable.CellClick += gvChosenTable_CellClick;
+            // 
+            // tableID
+            // 
+            tableID.HeaderText = "tableID";
+            tableID.MinimumWidth = 6;
+            tableID.Name = "tableID";
+            // 
+            // roomID
+            // 
+            roomID.HeaderText = "roomID";
+            roomID.MinimumWidth = 6;
+            roomID.Name = "roomID";
+            // 
+            // chairnumber
+            // 
+            chairnumber.HeaderText = "number of chairs";
+            chairnumber.MinimumWidth = 6;
+            chairnumber.Name = "chairnumber";
+            // 
+            // type
+            // 
+            type.HeaderText = "type";
+            type.MinimumWidth = 6;
+            type.Name = "type";
+            // 
+            // price
+            // 
+            price.HeaderText = "price";
+            price.MinimumWidth = 6;
+            price.Name = "price";
             // 
             // gvTable
             // 
-            dataGridViewCellStyle10.BackColor = Color.White;
-            gvTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle11.ForeColor = Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            gvTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            gvTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            gvTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             gvTable.ColumnHeadersHeight = 4;
             gvTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.White;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle12.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            gvTable.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            gvTable.DefaultCellStyle = dataGridViewCellStyle6;
             gvTable.GridColor = Color.FromArgb(231, 229, 255);
             gvTable.Location = new Point(0, 84);
             gvTable.Name = "gvTable";
@@ -242,17 +281,18 @@
             gvTable.ThemeStyle.RowsStyle.Height = 29;
             gvTable.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gvTable.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            gvTable.CellClick += gvTable_CellClick;
             // 
             // guna2Panel4
             // 
             guna2Panel4.BackColor = Color.White;
             guna2Panel4.Controls.Add(guna2Separator1);
             guna2Panel4.Controls.Add(label2);
-            guna2Panel4.CustomizableEdges = customizableEdges15;
+            guna2Panel4.CustomizableEdges = customizableEdges5;
             guna2Panel4.FillColor = Color.FromArgb(52, 73, 85);
             guna2Panel4.Location = new Point(1012, 3);
             guna2Panel4.Name = "guna2Panel4";
-            guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2Panel4.Size = new Size(503, 75);
             guna2Panel4.TabIndex = 4;
             // 
@@ -280,11 +320,11 @@
             // 
             guna2Panel3.BackColor = Color.White;
             guna2Panel3.Controls.Add(label1);
-            guna2Panel3.CustomizableEdges = customizableEdges17;
+            guna2Panel3.CustomizableEdges = customizableEdges7;
             guna2Panel3.FillColor = Color.FromArgb(52, 73, 85);
             guna2Panel3.Location = new Point(0, 3);
             guna2Panel3.Name = "guna2Panel3";
-            guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Panel3.Size = new Size(1006, 75);
             guna2Panel3.TabIndex = 3;
             // 
@@ -334,7 +374,12 @@
         private Label label3;
         private Guna.UI2.WinForms.Guna2DataGridView gvChosenTable;
         private Guna.UI2.WinForms.Guna2DataGridView gvTable;
-        private Label label4;
+        private Label lblTotalMoney;
         private Guna.UI2.WinForms.Guna2Button btnService;
+        private DataGridViewTextBoxColumn tableID;
+        private DataGridViewTextBoxColumn roomID;
+        private DataGridViewTextBoxColumn chairnumber;
+        private DataGridViewTextBoxColumn type;
+        private DataGridViewTextBoxColumn price;
     }
 }

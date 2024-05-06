@@ -25,7 +25,7 @@ namespace RestaurantMangement.Forms {
 
         private void FResBillHistory_Load(object sender, EventArgs e) {
             lblName.Text = currentAcc.FullName;
-            dataGridView1.DataSource = db.GetBillHistory(currentAcc.AccId);
+            dataGridView1.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccId);
             dataGridView1.ColumnHeadersHeight = 30;
         }
 

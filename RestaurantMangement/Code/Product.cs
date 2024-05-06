@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantMangement.Code
 {
-    internal class Product
+    public class Product
     {
         private string productID;
         private string productName;

@@ -3,6 +3,7 @@ using Guna.UI2.WinForms.Suite;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Drawing.Design;
 using System.Drawing.Text;
 using System.Text;
 using System.Windows.Forms;
@@ -401,10 +402,24 @@ namespace RestaurantMangement.Code
             try {
                 using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
                     conn.Open();
-                    string sqlQuery = string.Format("INSERT INTO AccBookTable(tableID, accID, timeBegin, timeEnd) VALUES ('{0}','{1}',{2},{3}",bookedTable.TableID, currentAcc.AccId, bookedTable.TimeBegin, bookedTable.TimeEnd);
+                    MessageBox.Show(bookedTable.TimeBegin.ToString());
+                    string sqlQuery = string.Format("INSERT INTO AccBookTable(tableID, accID, timeBegin, timeEnd) VALUES (@tableID, @accId ,@timeBegin, @timeEnd)");
+
+                    DataTable dt = new DataTable("AccBookTable");
+                    DataRow row = dt.NewRow();
+                   
+                    
                     using (SqlCommand command = new SqlCommand(sqlQuery, conn)) {
+                        command.Parameters.Add("@tableID", System.Data.SqlDbType.VarChar, 4).Value = bookedTable.TableID;
+                        command.Parameters.Add("@accId", System.Data.SqlDbType.VarChar, 4).Value = currentAcc.AccId;
+                        command.Parameters.Add("@timeBegin", System.Data.SqlDbType.DateTime, 50).Value = bookedTable.TimeBegin.ToString("yyyy-MM-dd HH:mm:ss"); 
+                        command.Parameters.Add("@timeEnd", System.Data.SqlDbType.DateTime, 50).Value = bookedTable.TimeEnd.ToString("yyyy-MM-dd HH:mm:ss"); 
+
+                        
                         command.ExecuteNonQuery();
                     }
+
+                    
                 }
             } catch (SqlException ex) {
                 MessageBox.Show("Error: " + ex.Message);

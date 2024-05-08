@@ -47,7 +47,7 @@ namespace RestaurantMangement
 
                     // get current using account to be used across project
                     currentAcc = db.getCurrentUsingAccount(email, password);
-
+                    isAdmin = accountDAO.checkManager(acc.AccId);
                     // only hide the current form, not completely closed
                     this.Hide();
                     FResMain frm = new FResMain();

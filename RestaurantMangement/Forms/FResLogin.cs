@@ -1,10 +1,12 @@
 using RestaurantMangement.Code;
 using RestaurantMangement.Forms;
+using System.DirectoryServices.ActiveDirectory;
 
 namespace RestaurantMangement
 {
     public partial class FResLogin : Form {
         public static Account currentAcc = new Account();
+        public static bool isAdmin = false;
         DBConnection db = new DBConnection();
         AccountDAO accountDAO = new AccountDAO();
         public FResLogin() {

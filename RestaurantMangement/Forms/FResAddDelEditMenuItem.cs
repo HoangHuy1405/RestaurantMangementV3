@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -15,39 +16,40 @@ namespace RestaurantMangement.Forms
 {
     public partial class FResAddDelEditMenuItem : Form {
         DBConnection db = new DBConnection();
+        SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
+        DataTable table = new DataTable("ProductwithCategory");
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        DataSet ds = new DataSet();
 
-        public FResAddDelEditMenuItem(Guna2DataGridView dgv) {
+        public FResAddDelEditMenuItem() {
+            InitalAdapter();
             InitializeComponent();
         }
-        public FResAddDelEditMenuItem() {
-            InitializeComponent();
+
+        private void InitalAdapter() 
+        {
+            adapter.TableMappings.Add("Table", "ProductwithCategory");
+            //select
+            string selectQuery = "Select p.ProductID, p.productName, p.description, p.price, c.cateName as ProductwithCategory FROM Product p INNER JOIN category c ON p.cateID = c.cateID";
+            SqlCommand selectCmd = new SqlCommand(selectQuery, conn);
+            adapter.SelectCommand = selectCmd;
+            ds.Tables.Add(table);
+        }
+
+        private void LoadMenuItem() 
+        {
+            table.Rows.Clear();
+            adapter.Fill(ds);
         }
 
         private void FResAddDelEditMenuItem_Load(object sender, EventArgs e) {
-            DataTable table = db.Load("SELECT p.ProductID, p.productName, p.description, p.price, c.cateName FROM Product p INNER JOIN category c ON p.cateID = c.cateID");
+            LoadMenuItem();
             dataGridView2.DataSource = table;
-            if (dataGridView2.Columns.Contains("productName"))
-                dataGridView2.Columns["productName"].HeaderText = "Prduct Name";
-
-            if (dataGridView2.Columns.Contains("cateName"))
-                dataGridView2.Columns["cateName"].HeaderText = "Category";
-
-            if (dataGridView2.Columns.Contains("description"))
-                dataGridView2.Columns["description"].HeaderText = "Description";
-
-            if (dataGridView2.Columns.Contains("price"))
-                dataGridView2.Columns["price"].HeaderText = "Price";
-
-
-            dataGridView2.ColumnHeadersHeight = 30;
         }
-
 
         private double price;
         private int productId;
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            
-        }
+
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e) {
             int index = e.RowIndex;
             if (index >= 0) {
@@ -109,18 +111,7 @@ namespace RestaurantMangement.Forms
             }
         }
         private void btnDelete_Click(object sender, EventArgs e) {
-            db.deleteProduct(txtProductID.Text);
 
-            // update 
-            FResAddDelEditMenuItem_Load(sender, e);
-            MessageBox.Show("deleted successfully");
-            // reset to empty
-            txtProductID.Text = "";
-            txtProductName.Text = "";
-            txtProductCate.Text = "";
-            txtDescription.Text = "";
-            txtPrice.Text = "";
-            
         }
         private void btnExit_Click(object sender, EventArgs e) {
             this.Hide();

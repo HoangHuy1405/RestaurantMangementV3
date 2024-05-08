@@ -70,10 +70,19 @@ namespace RestaurantMangement.Forms
         }
 
         private void btnAddItem_Click(object sender, EventArgs e) {
-            this.Hide();
-            FResAddDelEditMenuItem f = new FResAddDelEditMenuItem();
-            f.Closed += (s, args) => this.Close();
-            f.Show();
+            FResLogin.isAdmin = true;
+            if (FResLogin.isAdmin)
+            {
+                this.Hide();
+                FResAddDelEditMenuItem f = new FResAddDelEditMenuItem();
+                f.Closed += (s, args) => this.Close();
+                f.Show();
+            }
+            else
+            {
+                MessageBox.Show("Admin access requirement!");
+            }
+            
         }
 
         private string productId;

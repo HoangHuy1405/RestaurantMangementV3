@@ -64,7 +64,7 @@ namespace RestaurantMangement.Forms {
                 return;
             } else MessageBox.Show(tableID);
 
-            
+
 
             // fill booked Table information
             bookedTable = db.loadBookedTableFromTableID(tableID);
@@ -119,6 +119,13 @@ namespace RestaurantMangement.Forms {
 
         private void cbBeginMinutes_SelectedIndexChanged(object sender, EventArgs e) {
 
+        }
+
+        private void btnAddTable_Click(object sender, EventArgs e) {
+            this.Hide();
+            FResAddTable frm = new FResAddTable();
+            frm.Closed += (s, args) => this.Close();
+            frm.Show();
         }
     }
 }

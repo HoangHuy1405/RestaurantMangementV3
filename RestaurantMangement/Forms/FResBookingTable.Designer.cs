@@ -22,7 +22,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -30,6 +31,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -58,11 +61,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnHome = new Guna.UI2.WinForms.Guna2Button();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            btnAddTable = new Guna.UI2.WinForms.Guna2Button();
             guna2ContainerControl1 = new Guna.UI2.WinForms.Guna2ContainerControl();
             label8 = new Label();
             NumQuantity = new Guna.UI2.WinForms.Guna2NumericUpDown();
@@ -85,7 +87,6 @@
             txtPhoneNumber = new Guna.UI2.WinForms.Guna2TextBox();
             txtName = new Guna.UI2.WinForms.Guna2TextBox();
             label1 = new Label();
-            btnAddTable = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             guna2Panel1.SuspendLayout();
             guna2ContainerControl1.SuspendLayout();
@@ -140,6 +141,27 @@
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Panel1.Size = new Size(1000, 96);
             guna2Panel1.TabIndex = 1;
+            // 
+            // btnAddTable
+            // 
+            btnAddTable.BackColor = Color.Transparent;
+            btnAddTable.BorderRadius = 10;
+            btnAddTable.CustomizableEdges = customizableEdges5;
+            btnAddTable.DisabledState.BorderColor = Color.DarkGray;
+            btnAddTable.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAddTable.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAddTable.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAddTable.FillColor = Color.FromArgb(80, 114, 123);
+            btnAddTable.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddTable.ForeColor = Color.White;
+            btnAddTable.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddTable.Location = new Point(835, 21);
+            btnAddTable.Name = "btnAddTable";
+            btnAddTable.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnAddTable.Size = new Size(144, 56);
+            btnAddTable.TabIndex = 4;
+            btnAddTable.Text = "Edit";
+            btnAddTable.Click += btnAddTable_Click;
             // 
             // guna2ContainerControl1
             // 
@@ -207,7 +229,6 @@
             label5.Size = new Size(93, 23);
             label5.TabIndex = 19;
             label5.Text = "Room type";
-            label5.Click += label5_Click;
             // 
             // cbRoomType
             // 
@@ -546,27 +567,6 @@
             label1.Size = new Size(238, 46);
             label1.TabIndex = 0;
             label1.Text = "Booking Table";
-            // 
-            // btnAddTable
-            // 
-            btnAddTable.BackColor = Color.Transparent;
-            btnAddTable.BorderRadius = 10;
-            btnAddTable.CustomizableEdges = customizableEdges5;
-            btnAddTable.DisabledState.BorderColor = Color.DarkGray;
-            btnAddTable.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAddTable.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAddTable.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAddTable.FillColor = Color.FromArgb(80, 114, 123);
-            btnAddTable.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddTable.ForeColor = Color.White;
-            btnAddTable.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddTable.Location = new Point(835, 21);
-            btnAddTable.Name = "btnAddTable";
-            btnAddTable.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnAddTable.Size = new Size(144, 56);
-            btnAddTable.TabIndex = 4;
-            btnAddTable.Text = "Add Table";
-            btnAddTable.Click += btnAddTable_Click;
             // 
             // FResBookingTable
             // 

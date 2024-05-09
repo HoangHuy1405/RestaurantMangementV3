@@ -31,11 +31,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -47,7 +47,6 @@
             txtProductName = new Guna.UI2.WinForms.Guna2TextBox();
             label1 = new Label();
             label2 = new Label();
-            txtProductCate = new Guna.UI2.WinForms.Guna2TextBox();
             label3 = new Label();
             txtPrice = new Guna.UI2.WinForms.Guna2TextBox();
             label4 = new Label();
@@ -59,6 +58,7 @@
             btnExit = new Guna.UI2.WinForms.Guna2Button();
             label6 = new Label();
             txtProductID = new Guna.UI2.WinForms.Guna2TextBox();
+            CategoryItems = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
@@ -73,7 +73,7 @@
             txtProductName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtProductName.Font = new Font("Segoe UI", 9F);
             txtProductName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtProductName.Location = new Point(12, 143);
+            txtProductName.Location = new Point(11, 276);
             txtProductName.Margin = new Padding(3, 4, 3, 4);
             txtProductName.Name = "txtProductName";
             txtProductName.PasswordChar = '\0';
@@ -88,7 +88,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(80, 114, 123);
-            label1.Location = new Point(12, 111);
+            label1.Location = new Point(11, 244);
             label1.Name = "label1";
             label1.Size = new Size(143, 28);
             label1.TabIndex = 1;
@@ -99,39 +99,18 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(80, 114, 123);
-            label2.Location = new Point(12, 430);
+            label2.Location = new Point(172, 17);
             label2.Name = "label2";
             label2.Size = new Size(171, 28);
             label2.TabIndex = 3;
             label2.Text = "Product Category";
-            // 
-            // txtProductCate
-            // 
-            txtProductCate.CustomizableEdges = customizableEdges3;
-            txtProductCate.DefaultText = "";
-            txtProductCate.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtProductCate.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtProductCate.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtProductCate.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtProductCate.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtProductCate.Font = new Font("Segoe UI", 9F);
-            txtProductCate.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtProductCate.Location = new Point(12, 462);
-            txtProductCate.Margin = new Padding(3, 4, 3, 4);
-            txtProductCate.Name = "txtProductCate";
-            txtProductCate.PasswordChar = '\0';
-            txtProductCate.PlaceholderText = "";
-            txtProductCate.SelectedText = "";
-            txtProductCate.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtProductCate.Size = new Size(337, 60);
-            txtProductCate.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(80, 114, 123);
-            label3.Location = new Point(11, 320);
+            label3.Location = new Point(10, 453);
             label3.Name = "label3";
             label3.Size = new Size(56, 28);
             label3.TabIndex = 5;
@@ -139,7 +118,7 @@
             // 
             // txtPrice
             // 
-            txtPrice.CustomizableEdges = customizableEdges5;
+            txtPrice.CustomizableEdges = customizableEdges3;
             txtPrice.DefaultText = "";
             txtPrice.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtPrice.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -148,13 +127,13 @@
             txtPrice.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPrice.Font = new Font("Segoe UI", 9F);
             txtPrice.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPrice.Location = new Point(11, 352);
+            txtPrice.Location = new Point(10, 485);
             txtPrice.Margin = new Padding(3, 4, 3, 4);
             txtPrice.Name = "txtPrice";
             txtPrice.PasswordChar = '\0';
             txtPrice.PlaceholderText = "";
             txtPrice.SelectedText = "";
-            txtPrice.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtPrice.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtPrice.Size = new Size(337, 60);
             txtPrice.TabIndex = 4;
             // 
@@ -163,7 +142,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(80, 114, 123);
-            label4.Location = new Point(12, 217);
+            label4.Location = new Point(11, 350);
             label4.Name = "label4";
             label4.Size = new Size(115, 28);
             label4.TabIndex = 7;
@@ -171,7 +150,7 @@
             // 
             // txtDescription
             // 
-            txtDescription.CustomizableEdges = customizableEdges7;
+            txtDescription.CustomizableEdges = customizableEdges5;
             txtDescription.DefaultText = "";
             txtDescription.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtDescription.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -180,19 +159,19 @@
             txtDescription.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtDescription.Font = new Font("Segoe UI", 9F);
             txtDescription.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtDescription.Location = new Point(12, 249);
+            txtDescription.Location = new Point(11, 382);
             txtDescription.Margin = new Padding(3, 4, 3, 4);
             txtDescription.Name = "txtDescription";
             txtDescription.PasswordChar = '\0';
             txtDescription.PlaceholderText = "";
             txtDescription.SelectedText = "";
-            txtDescription.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtDescription.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtDescription.Size = new Size(338, 65);
             txtDescription.TabIndex = 6;
             // 
             // btnAdd
             // 
-            btnAdd.CustomizableEdges = customizableEdges9;
+            btnAdd.CustomizableEdges = customizableEdges7;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -202,7 +181,7 @@
             btnAdd.ForeColor = Color.White;
             btnAdd.Location = new Point(11, 563);
             btnAdd.Name = "btnAdd";
-            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnAdd.Size = new Size(80, 56);
             btnAdd.TabIndex = 10;
             btnAdd.Text = "Add";
@@ -216,6 +195,8 @@
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
@@ -226,6 +207,7 @@
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.NullValue = null;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
@@ -262,7 +244,7 @@
             // 
             // btnEdit
             // 
-            btnEdit.CustomizableEdges = customizableEdges11;
+            btnEdit.CustomizableEdges = customizableEdges9;
             btnEdit.DisabledState.BorderColor = Color.DarkGray;
             btnEdit.DisabledState.CustomBorderColor = Color.DarkGray;
             btnEdit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -272,7 +254,7 @@
             btnEdit.ForeColor = Color.White;
             btnEdit.Location = new Point(97, 563);
             btnEdit.Name = "btnEdit";
-            btnEdit.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnEdit.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnEdit.Size = new Size(80, 56);
             btnEdit.TabIndex = 12;
             btnEdit.Text = "Edit";
@@ -280,7 +262,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.CustomizableEdges = customizableEdges13;
+            btnDelete.CustomizableEdges = customizableEdges11;
             btnDelete.DisabledState.BorderColor = Color.DarkGray;
             btnDelete.DisabledState.CustomBorderColor = Color.DarkGray;
             btnDelete.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -290,7 +272,7 @@
             btnDelete.ForeColor = Color.White;
             btnDelete.Location = new Point(183, 563);
             btnDelete.Name = "btnDelete";
-            btnDelete.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnDelete.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnDelete.Size = new Size(80, 56);
             btnDelete.TabIndex = 13;
             btnDelete.Text = "Delete";
@@ -298,7 +280,7 @@
             // 
             // btnExit
             // 
-            btnExit.CustomizableEdges = customizableEdges15;
+            btnExit.CustomizableEdges = customizableEdges13;
             btnExit.DisabledState.BorderColor = Color.DarkGray;
             btnExit.DisabledState.CustomBorderColor = Color.DarkGray;
             btnExit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -308,7 +290,7 @@
             btnExit.ForeColor = Color.White;
             btnExit.Location = new Point(269, 563);
             btnExit.Name = "btnExit";
-            btnExit.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnExit.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnExit.Size = new Size(80, 56);
             btnExit.TabIndex = 14;
             btnExit.Text = "Exit";
@@ -319,7 +301,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(80, 114, 123);
-            label6.Location = new Point(12, 50);
+            label6.Location = new Point(12, 17);
             label6.Name = "label6";
             label6.Size = new Size(109, 28);
             label6.TabIndex = 15;
@@ -327,31 +309,50 @@
             // 
             // txtProductID
             // 
-            txtProductID.CustomizableEdges = customizableEdges17;
+            txtProductID.BorderColor = SystemColors.ButtonShadow;
+            txtProductID.CustomizableEdges = customizableEdges15;
             txtProductID.DefaultText = "";
             txtProductID.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtProductID.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtProductID.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtProductID.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtProductID.FillColor = SystemColors.Control;
             txtProductID.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtProductID.Font = new Font("Segoe UI", 9F);
-            txtProductID.ForeColor = Color.Black;
             txtProductID.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtProductID.Location = new Point(127, 34);
+            txtProductID.Location = new Point(12, 49);
             txtProductID.Margin = new Padding(3, 4, 3, 4);
             txtProductID.Name = "txtProductID";
             txtProductID.PasswordChar = '\0';
-            txtProductID.PlaceholderText = "uneditable";
+            txtProductID.PlaceholderText = "";
             txtProductID.SelectedText = "";
-            txtProductID.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            txtProductID.Size = new Size(222, 60);
-            txtProductID.TabIndex = 16;
+            txtProductID.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtProductID.Size = new Size(109, 46);
+            txtProductID.TabIndex = 17;
+            // 
+            // CategoryItems
+            // 
+            CategoryItems.BackColor = Color.Transparent;
+            CategoryItems.CustomizableEdges = customizableEdges17;
+            CategoryItems.DrawMode = DrawMode.OwnerDrawFixed;
+            CategoryItems.DropDownStyle = ComboBoxStyle.DropDownList;
+            CategoryItems.FocusedColor = Color.FromArgb(94, 148, 255);
+            CategoryItems.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            CategoryItems.Font = new Font("Segoe UI", 10F);
+            CategoryItems.ForeColor = Color.FromArgb(68, 88, 112);
+            CategoryItems.ItemHeight = 30;
+            CategoryItems.Location = new Point(176, 59);
+            CategoryItems.Name = "CategoryItems";
+            CategoryItems.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            CategoryItems.Size = new Size(167, 36);
+            CategoryItems.TabIndex = 18;
             // 
             // FResAddDelEditMenuItem
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1135, 645);
+            Controls.Add(CategoryItems);
             Controls.Add(txtProductID);
             Controls.Add(label6);
             Controls.Add(btnExit);
@@ -364,7 +365,6 @@
             Controls.Add(label3);
             Controls.Add(txtPrice);
             Controls.Add(label2);
-            Controls.Add(txtProductCate);
             Controls.Add(label1);
             Controls.Add(txtProductName);
             Name = "FResAddDelEditMenuItem";
@@ -381,7 +381,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtProductName;
         private Label label1;
         private Label label2;
-        private Guna.UI2.WinForms.Guna2TextBox txtProductCate;
         private Label label3;
         private Guna.UI2.WinForms.Guna2TextBox txtPrice;
         private Label label4;
@@ -393,5 +392,6 @@
         private Guna.UI2.WinForms.Guna2Button btnExit;
         private Label label6;
         private Guna.UI2.WinForms.Guna2TextBox txtProductID;
+        private Guna.UI2.WinForms.Guna2ComboBox CategoryItems;
     }
 }

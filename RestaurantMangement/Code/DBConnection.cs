@@ -158,9 +158,23 @@ namespace RestaurantMangement.Code
 
             return cateID;
         }
+        public string getCateIDFromCateName(string cateName) {
+            string cateID = "";
+            try {
+                string sqlQuery = "SELECT cateID FROM Category WHERE cateName = '" + cateName + "'";
+                SqlCommand command = new SqlCommand(sqlQuery, conn);
+                conn.Open();
+                cateID = command.ExecuteScalar().ToString();
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+            return cateID;
+        }
 
         public void editProduct(string productID, string productName, string cateName, double price, string description) {
-            string cateID = GetOrCreateCategory(cateName);
+            string cateID = getCateIDFromCateName(cateName);
             // update product
             try {
                 string query = "UPDATE Product SET productName = @ProductName, price = @Price, cateID = @CateID, description = @Description WHERE productID = @ProductID";
@@ -198,6 +212,20 @@ namespace RestaurantMangement.Code
             {
                 conn.Close();
             }
+        }
+        /* Category */
+        public DataTable LoadCategoryTable() {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr)) {
+                string query = "SELECT cateID, cateName FROM Category";
+                using (SqlCommand command = new SqlCommand(query, connection)) {
+                    connection.Open();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command)) {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            return dataTable;
         }
         /* BILL */
         public void CreateBill(Bill bill) {

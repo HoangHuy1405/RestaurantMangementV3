@@ -64,7 +64,7 @@ namespace RestaurantMangement.Forms {
                 return;
             } else MessageBox.Show(tableID);
 
-            
+
 
             // fill booked Table information
             bookedTable = db.loadBookedTableFromTableID(tableID);
@@ -118,6 +118,10 @@ namespace RestaurantMangement.Forms {
         }
 
         private void cbBeginMinutes_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void btnOrderMore_Click(object sender, EventArgs e) {
 
         }
     }

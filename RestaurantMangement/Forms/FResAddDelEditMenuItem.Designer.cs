@@ -73,7 +73,7 @@
             txtProductName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtProductName.Font = new Font("Segoe UI", 9F);
             txtProductName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtProductName.Location = new Point(11, 276);
+            txtProductName.Location = new Point(10, 165);
             txtProductName.Margin = new Padding(3, 4, 3, 4);
             txtProductName.Name = "txtProductName";
             txtProductName.PasswordChar = '\0';
@@ -88,7 +88,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(80, 114, 123);
-            label1.Location = new Point(11, 244);
+            label1.Location = new Point(10, 133);
             label1.Name = "label1";
             label1.Size = new Size(143, 28);
             label1.TabIndex = 1;
@@ -110,7 +110,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(80, 114, 123);
-            label3.Location = new Point(10, 453);
+            label3.Location = new Point(12, 393);
             label3.Name = "label3";
             label3.Size = new Size(56, 28);
             label3.TabIndex = 5;
@@ -127,7 +127,7 @@
             txtPrice.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPrice.Font = new Font("Segoe UI", 9F);
             txtPrice.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPrice.Location = new Point(10, 485);
+            txtPrice.Location = new Point(12, 425);
             txtPrice.Margin = new Padding(3, 4, 3, 4);
             txtPrice.Name = "txtPrice";
             txtPrice.PasswordChar = '\0';
@@ -142,7 +142,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(80, 114, 123);
-            label4.Location = new Point(11, 350);
+            label4.Location = new Point(12, 252);
             label4.Name = "label4";
             label4.Size = new Size(115, 28);
             label4.TabIndex = 7;
@@ -159,7 +159,7 @@
             txtDescription.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtDescription.Font = new Font("Segoe UI", 9F);
             txtDescription.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtDescription.Location = new Point(11, 382);
+            txtDescription.Location = new Point(12, 284);
             txtDescription.Margin = new Padding(3, 4, 3, 4);
             txtDescription.Name = "txtDescription";
             txtDescription.PasswordChar = '\0';

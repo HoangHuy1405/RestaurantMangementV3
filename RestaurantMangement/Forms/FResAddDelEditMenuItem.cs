@@ -112,8 +112,6 @@ namespace RestaurantMangement.Forms
                 txtDescription.Text = "";
                 txtPrice.Text = "";
             }
-
-
         }
         private void btnEdit_Click(object sender, EventArgs e) {
             if (isValidInput()) {

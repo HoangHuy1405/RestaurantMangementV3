@@ -98,6 +98,8 @@ namespace RestaurantMangement.Code
                 
             } catch (SqlException ex) {
                 MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
             }
             return user;
         }
@@ -177,7 +179,9 @@ namespace RestaurantMangement.Code
             string cateID = getCateIDFromCateName(cateName);
             // update product
             try {
-                string query = "UPDATE Product SET productName = @ProductName, price = @Price, cateID = @CateID, description = @Description WHERE productID = @ProductID";
+                string query = "UPDATE Product " +
+                               "SET productName = @ProductName, price = @Price, cateID = @CateID, description = @Description " +
+                               "WHERE productID = @ProductID";
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@ProductName", productName);
                 command.Parameters.AddWithValue("@Price", price);
@@ -232,7 +236,7 @@ namespace RestaurantMangement.Code
             using (var connection = new SqlConnection(Properties.Settings.Default.connStr)) {
                 connection.Open();
 
-                // Create a command for the stored procedure
+                // PROCEDURE CreateBill created in database in procedure.sql
                 var command = new SqlCommand("CreateBill", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -273,6 +277,8 @@ namespace RestaurantMangement.Code
                 Console.WriteLine("Created bill with ID: " + billID);
             }
         }
+
+        // not work yet
         public string getBillIdBasedOnDate(string accID, DateTime date) {
             string billID = null;
             try {
@@ -354,7 +360,8 @@ namespace RestaurantMangement.Code
             try {
                 using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
                     conn.Open();
-                    string sqlQuery = "SELECT tableID, t.roomID, numchair, status, type, PricePerTable FROM [Table] t INNER JOIN Room r ON t.roomID = r.roomID";
+                    string sqlQuery = "SELECT tableID, t.roomID, numchair, status, type, PricePerTable " +
+                                      "FROM [Table] t INNER JOIN Room r ON t.roomID = r.roomID";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
                     adapter.Fill(dt);
@@ -431,7 +438,8 @@ namespace RestaurantMangement.Code
                 using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
                     conn.Open();
                     MessageBox.Show(bookedTable.TimeBegin.ToString());
-                    string sqlQuery = string.Format("INSERT INTO AccBookTable(tableID, accID, timeBegin, timeEnd) VALUES (@tableID, @accId ,@timeBegin, @timeEnd)");
+                    string sqlQuery = string.Format("INSERT INTO AccBookTable(tableID, accID, timeBegin, timeEnd) " +
+                                                    "VALUES (@tableID, @accId ,@timeBegin, @timeEnd)");
 
                     DataTable dt = new DataTable("AccBookTable");
                     DataRow row = dt.NewRow();

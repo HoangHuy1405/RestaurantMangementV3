@@ -420,7 +420,22 @@ namespace RestaurantMangement.Code
                 conn.Close();
             }
         }
-
+        /* VOUCHER */
+        public DataTable LoadVoucherTable() {
+            DataTable dt = new DataTable();
+            try {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    string sqlQuery = "SELECT * FROM Voucher";
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
+                    adapter.Fill(dt);
+                }
+            } catch( SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+            return dt;
+        }
         /* TABLE */
         public DataTable LoadTablesFromDB() {
             DataTable dt = new DataTable();

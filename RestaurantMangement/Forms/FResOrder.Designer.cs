@@ -46,19 +46,17 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
@@ -86,9 +84,7 @@
             dgvName = new DataGridViewTextBoxColumn();
             dgvQuantity = new DataGridViewTextBoxColumn();
             guna2Panel13 = new Guna.UI2.WinForms.Guna2Panel();
-            txtTotalPrice = new Guna.UI2.WinForms.Guna2TextBox();
             btnProceed = new Guna.UI2.WinForms.Guna2Button();
-            label8 = new Label();
             guna2Panel12 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             FoodCart = new Label();
@@ -343,11 +339,11 @@
             guna2Panel11.Controls.Add(dataGridView2);
             guna2Panel11.Controls.Add(guna2Panel13);
             guna2Panel11.Controls.Add(guna2Panel12);
-            guna2Panel11.CustomizableEdges = customizableEdges31;
+            guna2Panel11.CustomizableEdges = customizableEdges29;
             guna2Panel11.Dock = DockStyle.Right;
             guna2Panel11.Location = new Point(950, 96);
             guna2Panel11.Name = "guna2Panel11";
-            guna2Panel11.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            guna2Panel11.ShadowDecoration.CustomizableEdges = customizableEdges30;
             guna2Panel11.Size = new Size(384, 601);
             guna2Panel11.TabIndex = 6;
             // 
@@ -421,46 +417,19 @@
             // 
             // guna2Panel13
             // 
-            guna2Panel13.Controls.Add(txtTotalPrice);
             guna2Panel13.Controls.Add(btnProceed);
-            guna2Panel13.Controls.Add(label8);
-            guna2Panel13.CustomizableEdges = customizableEdges27;
+            guna2Panel13.CustomizableEdges = customizableEdges25;
             guna2Panel13.Dock = DockStyle.Bottom;
             guna2Panel13.Location = new Point(0, 496);
             guna2Panel13.Name = "guna2Panel13";
-            guna2Panel13.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2Panel13.ShadowDecoration.CustomizableEdges = customizableEdges26;
             guna2Panel13.Size = new Size(384, 105);
             guna2Panel13.TabIndex = 2;
-            // 
-            // txtTotalPrice
-            // 
-            txtTotalPrice.BackColor = Color.Gainsboro;
-            txtTotalPrice.BorderColor = SystemColors.Control;
-            txtTotalPrice.CustomizableEdges = customizableEdges23;
-            txtTotalPrice.DefaultText = "";
-            txtTotalPrice.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtTotalPrice.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtTotalPrice.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtTotalPrice.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtTotalPrice.FillColor = SystemColors.Control;
-            txtTotalPrice.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTotalPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtTotalPrice.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTotalPrice.Location = new Point(129, 6);
-            txtTotalPrice.Margin = new Padding(4, 6, 4, 6);
-            txtTotalPrice.Name = "txtTotalPrice";
-            txtTotalPrice.PasswordChar = '\0';
-            txtTotalPrice.PlaceholderForeColor = Color.Black;
-            txtTotalPrice.PlaceholderText = "";
-            txtTotalPrice.SelectedText = "";
-            txtTotalPrice.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            txtTotalPrice.Size = new Size(216, 36);
-            txtTotalPrice.TabIndex = 2;
             // 
             // btnProceed
             // 
             btnProceed.BorderRadius = 5;
-            btnProceed.CustomizableEdges = customizableEdges25;
+            btnProceed.CustomizableEdges = customizableEdges23;
             btnProceed.DisabledState.BorderColor = Color.DarkGray;
             btnProceed.DisabledState.CustomBorderColor = Color.DarkGray;
             btnProceed.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -468,33 +437,23 @@
             btnProceed.FillColor = Color.FromArgb(120, 160, 131);
             btnProceed.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnProceed.ForeColor = Color.White;
-            btnProceed.Location = new Point(14, 51);
+            btnProceed.Location = new Point(14, 34);
             btnProceed.Name = "btnProceed";
-            btnProceed.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            btnProceed.Size = new Size(358, 51);
+            btnProceed.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            btnProceed.Size = new Size(358, 68);
             btnProceed.TabIndex = 1;
             btnProceed.Text = "Proceed";
             btnProceed.Click += btnProceed_Click;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(14, 14);
-            label8.Name = "label8";
-            label8.Size = new Size(116, 28);
-            label8.TabIndex = 0;
-            label8.Text = "Total price: ";
             // 
             // guna2Panel12
             // 
             guna2Panel12.Controls.Add(guna2Separator2);
             guna2Panel12.Controls.Add(FoodCart);
-            guna2Panel12.CustomizableEdges = customizableEdges29;
+            guna2Panel12.CustomizableEdges = customizableEdges27;
             guna2Panel12.Dock = DockStyle.Top;
             guna2Panel12.Location = new Point(0, 0);
             guna2Panel12.Name = "guna2Panel12";
-            guna2Panel12.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            guna2Panel12.ShadowDecoration.CustomizableEdges = customizableEdges28;
             guna2Panel12.Size = new Size(384, 75);
             guna2Panel12.TabIndex = 0;
             // 
@@ -600,7 +559,6 @@
             guna2Panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             guna2Panel13.ResumeLayout(false);
-            guna2Panel13.PerformLayout();
             guna2Panel12.ResumeLayout(false);
             guna2Panel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -632,12 +590,10 @@
         private Label FoodCart;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel13;
-        private Label label8;
         private Guna.UI2.WinForms.Guna2Button btnProceed;
         private Guna.UI2.WinForms.Guna2Button btnAddItem;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView1;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView2;
-        private Guna.UI2.WinForms.Guna2TextBox txtTotalPrice;
         private DataGridViewTextBoxColumn dgvName;
         private DataGridViewTextBoxColumn dgvQuantity;
     }

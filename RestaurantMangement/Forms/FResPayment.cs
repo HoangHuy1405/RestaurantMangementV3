@@ -14,6 +14,7 @@ namespace RestaurantMangement.Forms {
         Account currentAcc = FResLogin.currentAcc;
         Bill bill = new Bill();
         DBConnection db = new DBConnection();
+        DataTable vouchers;
 
         public FResPayment() {
             InitializeComponent();
@@ -21,11 +22,15 @@ namespace RestaurantMangement.Forms {
         public FResPayment(Bill bill) {
             InitializeComponent();
             this.bill = bill;
+            this.vouchers = db.LoadVoucherTable();
+            loadVoucherIntoComboBox();
+            definingBookedProduct();
+            calculateTheTotalPrice();
         }
         private void FResPayment_Load(object sender, EventArgs e) {
             lblBuyerName.Text = currentAcc.FullName;
             definingBookedProduct();
-            FillOtherInfo();
+            //calculateTheTotalPrice();
         }
         private void definingBookedProduct() {
             // Clear existing rows and columns
@@ -78,23 +83,39 @@ namespace RestaurantMangement.Forms {
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
-        private void FillOtherInfo() {
-            decimal totalprice = 0;
+        private void calculateTheTotalPrice() {
+            decimal subTotalPrice = 0;
+            decimal totalPrice = 0;
             int numberofitems = 0;
+
+            decimal voucherDiscount = 0;
+            if (cbVouchers.SelectedItem != null) {
+                string selectedVoucherId = cbVouchers.SelectedItem.ToString();
+                DataRow[] foundRows = vouchers.Select($"voucherID = '{selectedVoucherId}'");
+                if (foundRows.Length > 0) {
+                    // Get the discount value from the found row
+                    voucherDiscount = Convert.ToDecimal(foundRows[0]["discount"]);
+                    MessageBox.Show($"Discount value for voucher id {selectedVoucherId}: {voucherDiscount}%");
+                }
+            }
             // Calculate total price of booked dish and drink items
             foreach (DataGridViewRow row in dataGridView1.Rows) {
                 decimal price = Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                totalprice += price;
+                subTotalPrice += price;
                 numberofitems += Convert.ToInt32(row.Cells["Quantity"].Value);
             }
 
             // Calculate shipping (if applicable)
-            decimal shipping = (totalprice / 100) * 10;
-            bill.TotalPrice = totalprice;
+            decimal shipping = (subTotalPrice / 100) * 10;
+            totalPrice = shipping + subTotalPrice;
+            totalPrice = totalPrice - totalPrice * voucherDiscount / 100;
+            bill.TotalPrice = totalPrice;
+
             // Update the UI with calculated values
-            lblTotalPrice.Text = (totalprice + shipping).ToString();
+            lblVoucher.Text = voucherDiscount.ToString() + "%";
+            lblTotalPrice.Text = totalPrice.ToString();
             lblShippingFee.Text = shipping.ToString();
-            lblSubTotalPrice.Text = totalprice.ToString();
+            lblSubTotalPrice.Text = subTotalPrice.ToString();
             lblNoOfItems.Text = numberofitems.ToString();
 
         }
@@ -112,7 +133,14 @@ namespace RestaurantMangement.Forms {
             bill.Date = DateTime.Now;
             bill.AccId = currentAcc.AccId;
         }
-
+        // load every voucher in db to gunaComboBox
+        public void loadVoucherIntoComboBox() {
+            if (vouchers.Rows.Count > 0) {
+                foreach (DataRow dataRow in vouchers.Rows) {
+                    cbVouchers.Items.Add(dataRow["voucherID"].ToString());
+                }
+            }
+        }
 
 
         private void label2_Click(object sender, EventArgs e) {
@@ -125,6 +153,9 @@ namespace RestaurantMangement.Forms {
 
         private void btnBuy_Click(object sender, EventArgs e) {
             FillBill();
+            if(cbVouchers.SelectedItem != null) {
+                bill.VoucherId = cbVouchers.SelectedItem.ToString();
+            }
             this.Hide();
             db.CreateBill(bill);
             MessageBox.Show("Done!");
@@ -132,6 +163,17 @@ namespace RestaurantMangement.Forms {
             FResBill f = new FResBill(bill);
             f.Closed += (s, args) => this.Close();
             f.Show();
+        }
+
+        // recalculate the total price
+        private void cbVouchers_SelectedIndexChanged(object sender, EventArgs e) {
+            
+        }
+
+        private void cbVouchers_SelectedValueChanged(object sender, EventArgs e) {
+            //cbVouchers.Items.Clear();
+            calculateTheTotalPrice();
+            FResPayment_Load(sender, e);
         }
     }
 }

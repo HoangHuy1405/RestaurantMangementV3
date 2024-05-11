@@ -64,18 +64,19 @@ namespace RestaurantMangement.Forms
             }
         }
         private void SetDefaultCategory(string categoryName) {
-            foreach (string item in CategoryItems.Items) {
+            foreach (string item in cbCategoryItems.Items) {
                 if (item == categoryName) {
-                    CategoryItems.SelectedItem = item;
+                    cbCategoryItems.SelectedItem = item;
                     break;
                 }
             }
         }
+        // load into gunaComboxBox
         private void LoadCategories() {
             DataTable categories = db.LoadCategoryTable();
             if (categories.Rows.Count > 0) {
                 foreach (DataRow row in categories.Rows) {
-                    CategoryItems.Items.Add(row["cateName"].ToString());
+                    cbCategoryItems.Items.Add(row["cateName"].ToString());
                 }
             }
         }
@@ -97,10 +98,10 @@ namespace RestaurantMangement.Forms
         private void btnAdd_Click(object sender, EventArgs e) {
             // check if input is valid or not
             if (isValidInput()) {
-                string cateName = CategoryItems.SelectedItem.ToString();
+                string cateName = cbCategoryItems.SelectedItem.ToString();
                 db.addProductWithCate(txtProductName.Text, txtDescription.Text, price, cateName);
                 // update 
-                CategoryItems.Items.Clear();
+                cbCategoryItems.Items.Clear();
                 FResAddDelEditMenuItem_Load(sender, e);
                 MessageBox.Show("Added successfully");
                 // reset to empty
@@ -112,11 +113,11 @@ namespace RestaurantMangement.Forms
         }
         private void btnEdit_Click(object sender, EventArgs e) {
             if (isValidInput()) {
-                string cateName = CategoryItems.SelectedItem.ToString();
+                string cateName = cbCategoryItems.SelectedItem.ToString();
                 db.editProduct(txtProductID.Text, txtProductName.Text, cateName, price, txtDescription.Text);
                 //menuItemDAO.edit(menuItem);
                 // update 
-                CategoryItems.Items.Clear();
+                cbCategoryItems.Items.Clear();
                 FResAddDelEditMenuItem_Load(sender, e);
                 MessageBox.Show("edited successfully");
                 // reset to empty

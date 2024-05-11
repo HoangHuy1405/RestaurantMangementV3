@@ -97,6 +97,10 @@ namespace RestaurantMangement.Forms {
         private void dgvTable_CellClick(object sender, DataGridViewCellEventArgs e) {
 
         }
+
+        private void btnExit_Click(object sender, EventArgs e) {
+
+        }
     }
 
 }

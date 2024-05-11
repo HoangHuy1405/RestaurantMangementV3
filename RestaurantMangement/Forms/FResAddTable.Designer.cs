@@ -181,6 +181,7 @@
             btnExit.Size = new Size(80, 56);
             btnExit.TabIndex = 30;
             btnExit.Text = "Exit";
+            btnExit.Click += btnExit_Click;
             // 
             // btnDelete
             // 
@@ -432,6 +433,7 @@
             Controls.Add(label1);
             Controls.Add(txtNumberOfChair);
             Name = "FResAddTable";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FResAddTable";
             Load += FResAddTable_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRoom).EndInit();

@@ -586,6 +586,7 @@
             Controls.Add(guna2Panel2);
             Controls.Add(guna2Panel1);
             Name = "FResPayment";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FResPayment";
             Load += FResPayment_Load;
             guna2Panel1.ResumeLayout(false);

@@ -471,7 +471,7 @@
             btnProceed.Location = new Point(14, 51);
             btnProceed.Name = "btnProceed";
             btnProceed.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            btnProceed.Size = new Size(332, 51);
+            btnProceed.Size = new Size(358, 51);
             btnProceed.TabIndex = 1;
             btnProceed.Text = "Proceed";
             btnProceed.Click += btnProceed_Click;

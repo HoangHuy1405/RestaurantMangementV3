@@ -151,6 +151,7 @@
             gvBillHistory.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gvBillHistory.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             gvBillHistory.CellClick += gvBillHistory_CellClick;
+            gvBillHistory.CellContentClick += gvBillHistory_CellContentClick;
             // 
             // FResBillHistory
             // 
@@ -160,6 +161,7 @@
             Controls.Add(gvBillHistory);
             Controls.Add(guna2Panel1);
             Name = "FResBillHistory";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FResBillHistory";
             Load += FResBillHistory_Load;
             guna2Panel1.ResumeLayout(false);

@@ -25,7 +25,13 @@ namespace RestaurantMangement.Forms {
 
         private void FResBillHistory_Load(object sender, EventArgs e) {
             lblName.Text = currentAcc.FullName;
-            gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccId);
+            if(FResLogin.isAdmin) {
+                // if you are a manager => you are allowed to see all bill history
+                gvBillHistory.DataSource = db.GetAllBillHistory();
+            } else {
+                gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccId);
+            }
+            
             gvBillHistory.ColumnHeadersHeight = 30;
         }
 
@@ -41,11 +47,22 @@ namespace RestaurantMangement.Forms {
         }
 
         private void gvBillHistory_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if(FResLogin.isAdmin) {
+            int index = e.RowIndex;
+            if (FResLogin.isAdmin && index >= 0) {
+                DataGridViewRow selectedRow = gvBillHistory.Rows[index];
+                string billId = selectedRow.Cells[0].Value.ToString();
+                this.Hide();
+                FResEditDelBillHistory frm = new FResEditDelBillHistory(billId);
+                frm.Closed += (s, args) => this.Close();
+                frm.Show();
 
             } else {
                 MessageBox.Show("Admin access requirement!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void gvBillHistory_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
         }
     }
 }

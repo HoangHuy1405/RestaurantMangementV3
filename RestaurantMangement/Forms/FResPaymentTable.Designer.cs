@@ -364,6 +364,7 @@
             Controls.Add(label1);
             Controls.Add(guna2Panel2);
             Name = "FResPaymentTable";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FPaymentTable";
             Load += FResPaymentTable_Load;
             guna2Panel2.ResumeLayout(false);

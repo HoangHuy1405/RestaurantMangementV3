@@ -354,6 +354,73 @@ namespace RestaurantMangement.Code
             }
             return dt;
         }
+        public DataTable GetAllBillHistory() {
+            DataTable dt = new DataTable();
+            try {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    conn.Open();
+                    string sqlQuery = "SELECT * FROM bill";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
+                    adapter.Fill(dt);
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+            return dt;
+        }
+        public DataTable getBillFromBillID(string billID) {
+            DataTable dt = new DataTable();
+            try {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    conn.Open();
+                    string sqlQuery = "SELECT * FROM bill WHERE billID = '" + billID + "'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
+                    adapter.Fill(dt);
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+            return dt;
+        }
+        public void UpdateBillStatus(string billID, string billStatus) {
+            try {
+                using(SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    string sqlQuery = "UPDATE Bill " +
+                                      "SET status = '" + billStatus + "' " +
+                                      "WHERE billID = '" + billID + "'";
+                    SqlCommand command = new SqlCommand(sqlQuery, conn);
+                    conn.Open();
+                    command.ExecuteNonQuery();
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+        }
+        public void deleteBIll(string billID) {
+            try {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+                    string sqlQuery = "DELETE FROM bill " +
+                                      "WHERE billID = '" + billID + "'";
+                    SqlCommand command = new SqlCommand(sqlQuery, conn);
+
+                    conn.Open();
+                    command.ExecuteNonQuery();
+                }
+            } catch (SqlException ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            } finally {
+                conn.Close();
+            }
+        }
+
         /* TABLE */
         public DataTable LoadTablesFromDB() {
             DataTable dt = new DataTable();

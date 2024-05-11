@@ -25,8 +25,8 @@ namespace RestaurantMangement.Forms {
 
         private void FResBillHistory_Load(object sender, EventArgs e) {
             lblName.Text = currentAcc.FullName;
-            dataGridView1.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccId);
-            dataGridView1.ColumnHeadersHeight = 30;
+            gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccId);
+            gvBillHistory.ColumnHeadersHeight = 30;
         }
 
         private void lblName_Click(object sender, EventArgs e) {
@@ -38,6 +38,14 @@ namespace RestaurantMangement.Forms {
             FResMain frm = new FResMain();
             frm.Closed += (s, args) => this.Close();
             frm.Show();
+        }
+
+        private void gvBillHistory_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if(FResLogin.isAdmin) {
+
+            } else {
+                MessageBox.Show("Admin access requirement!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

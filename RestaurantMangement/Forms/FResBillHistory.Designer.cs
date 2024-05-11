@@ -25,18 +25,18 @@
         private void InitializeComponent() {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            btnHome = new Guna.UI2.WinForms.Guna2Button();
             lblName = new Label();
             label1 = new Label();
-            dataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            btnHome = new Guna.UI2.WinForms.Guna2Button();
+            gvBillHistory = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gvBillHistory).BeginInit();
             SuspendLayout();
             // 
             // guna2Panel1
@@ -50,8 +50,29 @@
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Panel1.Size = new Size(982, 78);
+            guna2Panel1.Size = new Size(1132, 78);
             guna2Panel1.TabIndex = 0;
+            // 
+            // btnHome
+            // 
+            btnHome.BackColor = Color.Transparent;
+            btnHome.BorderRadius = 10;
+            btnHome.CustomizableEdges = customizableEdges1;
+            btnHome.DisabledState.BorderColor = Color.DarkGray;
+            btnHome.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnHome.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnHome.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnHome.FillColor = Color.FromArgb(80, 114, 123);
+            btnHome.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnHome.ForeColor = Color.White;
+            btnHome.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnHome.Location = new Point(985, 12);
+            btnHome.Name = "btnHome";
+            btnHome.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnHome.Size = new Size(126, 56);
+            btnHome.TabIndex = 3;
+            btnHome.Text = "Home";
+            btnHome.Click += btnHome_Click;
             // 
             // lblName
             // 
@@ -59,7 +80,7 @@
             lblName.BackColor = Color.Transparent;
             lblName.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblName.ForeColor = Color.White;
-            lblName.Location = new Point(671, 19);
+            lblName.Location = new Point(605, 19);
             lblName.Name = "lblName";
             lblName.Size = new Size(154, 38);
             lblName.TabIndex = 1;
@@ -78,10 +99,10 @@
             label1.TabIndex = 0;
             label1.Text = "Your Bill History";
             // 
-            // dataGridView1
+            // gvBillHistory
             // 
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            gvBillHistory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -89,9 +110,9 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.ColumnHeadersHeight = 4;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            gvBillHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            gvBillHistory.ColumnHeadersHeight = 4;
+            gvBillHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -99,78 +120,58 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridView1.Location = new Point(0, 78);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(982, 403);
-            dataGridView1.TabIndex = 1;
-            dataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            dataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            dataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            dataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            dataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            dataGridView1.ThemeStyle.BackColor = Color.White;
-            dataGridView1.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
-            dataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridView1.ThemeStyle.HeaderStyle.Height = 4;
-            dataGridView1.ThemeStyle.ReadOnly = false;
-            dataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
-            dataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            dataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridView1.ThemeStyle.RowsStyle.Height = 29;
-            dataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            // 
-            // btnHome
-            // 
-            btnHome.BackColor = Color.Transparent;
-            btnHome.BorderRadius = 10;
-            btnHome.CustomizableEdges = customizableEdges1;
-            btnHome.DisabledState.BorderColor = Color.DarkGray;
-            btnHome.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnHome.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnHome.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnHome.FillColor = Color.FromArgb(80, 114, 123);
-            btnHome.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnHome.ForeColor = Color.White;
-            btnHome.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(844, 12);
-            btnHome.Name = "btnHome";
-            btnHome.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnHome.Size = new Size(126, 56);
-            btnHome.TabIndex = 3;
-            btnHome.Text = "Home";
-            btnHome.Click += btnHome_Click;
+            gvBillHistory.DefaultCellStyle = dataGridViewCellStyle3;
+            gvBillHistory.Dock = DockStyle.Fill;
+            gvBillHistory.GridColor = Color.FromArgb(231, 229, 255);
+            gvBillHistory.Location = new Point(0, 78);
+            gvBillHistory.Name = "gvBillHistory";
+            gvBillHistory.RowHeadersVisible = false;
+            gvBillHistory.RowHeadersWidth = 51;
+            gvBillHistory.Size = new Size(1132, 442);
+            gvBillHistory.TabIndex = 1;
+            gvBillHistory.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            gvBillHistory.ThemeStyle.AlternatingRowsStyle.Font = null;
+            gvBillHistory.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            gvBillHistory.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            gvBillHistory.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            gvBillHistory.ThemeStyle.BackColor = Color.White;
+            gvBillHistory.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            gvBillHistory.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            gvBillHistory.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            gvBillHistory.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            gvBillHistory.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            gvBillHistory.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            gvBillHistory.ThemeStyle.HeaderStyle.Height = 4;
+            gvBillHistory.ThemeStyle.ReadOnly = false;
+            gvBillHistory.ThemeStyle.RowsStyle.BackColor = Color.White;
+            gvBillHistory.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            gvBillHistory.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            gvBillHistory.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            gvBillHistory.ThemeStyle.RowsStyle.Height = 29;
+            gvBillHistory.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            gvBillHistory.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            gvBillHistory.CellClick += gvBillHistory_CellClick;
             // 
             // FResBillHistory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 481);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(1132, 520);
+            Controls.Add(gvBillHistory);
             Controls.Add(guna2Panel1);
             Name = "FResBillHistory";
             Text = "FResBillHistory";
             Load += FResBillHistory_Load;
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gvBillHistory).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2DataGridView dataGridView1;
+        private Guna.UI2.WinForms.Guna2DataGridView gvBillHistory;
         private Label label1;
         private Label lblName;
         private Guna.UI2.WinForms.Guna2Button btnHome;

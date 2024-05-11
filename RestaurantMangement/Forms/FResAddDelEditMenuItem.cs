@@ -21,7 +21,6 @@ namespace RestaurantMangement.Forms
         private string productCategory;
 
         public FResAddDelEditMenuItem() {
-            InitalAdapter();
             InitializeComponent();
         }
 

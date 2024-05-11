@@ -22,23 +22,18 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FResBookingTable));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -60,11 +55,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnHome = new Guna.UI2.WinForms.Guna2Button();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -158,7 +148,7 @@
             btnAddTable.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAddTable.ForeColor = Color.White;
             btnAddTable.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddTable.Location = new Point(835, 21);
+            btnAddTable.Location = new Point(700, 21);
             btnAddTable.Name = "btnAddTable";
             btnAddTable.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnAddTable.Size = new Size(144, 56);
@@ -188,10 +178,10 @@
             guna2ContainerControl1.Controls.Add(txtPhoneNumber);
             guna2ContainerControl1.Controls.Add(txtName);
             guna2ContainerControl1.Controls.Add(label1);
-            guna2ContainerControl1.CustomizableEdges = customizableEdges31;
+            guna2ContainerControl1.CustomizableEdges = customizableEdges30;
             guna2ContainerControl1.Location = new Point(65, 136);
             guna2ContainerControl1.Name = "guna2ContainerControl1";
-            guna2ContainerControl1.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            guna2ContainerControl1.ShadowDecoration.CustomizableEdges = customizableEdges31;
             guna2ContainerControl1.Size = new Size(877, 590);
             guna2ContainerControl1.TabIndex = 2;
             guna2ContainerControl1.Text = "guna2ContainerControl1";
@@ -201,7 +191,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(645, 165);
+            label8.Location = new Point(724, 166);
             label8.Name = "label8";
             label8.Size = new Size(76, 23);
             label8.TabIndex = 21;
@@ -210,13 +200,13 @@
             // NumQuantity
             // 
             NumQuantity.BackColor = Color.Transparent;
-            NumQuantity.CustomizableEdges = customizableEdges9;
+            NumQuantity.CustomizableEdges = customizableEdges8;
             NumQuantity.Font = new Font("Segoe UI", 9F);
-            NumQuantity.Location = new Point(645, 192);
+            NumQuantity.Location = new Point(724, 193);
             NumQuantity.Margin = new Padding(3, 4, 3, 4);
             NumQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             NumQuantity.Name = "NumQuantity";
-            NumQuantity.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            NumQuantity.ShadowDecoration.CustomizableEdges = customizableEdges9;
             NumQuantity.Size = new Size(107, 49);
             NumQuantity.TabIndex = 20;
             NumQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
@@ -226,7 +216,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(645, 78);
+            label5.Location = new Point(724, 78);
             label5.Name = "label5";
             label5.Size = new Size(93, 23);
             label5.TabIndex = 19;
@@ -236,7 +226,7 @@
             // 
             cbRoomType.AllowDrop = true;
             cbRoomType.BackColor = Color.Transparent;
-            cbRoomType.CustomizableEdges = customizableEdges11;
+            cbRoomType.CustomizableEdges = customizableEdges10;
             cbRoomType.DrawMode = DrawMode.OwnerDrawFixed;
             cbRoomType.DropDownHeight = 200;
             cbRoomType.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -247,9 +237,9 @@
             cbRoomType.IntegralHeight = false;
             cbRoomType.ItemHeight = 40;
             cbRoomType.Items.AddRange(new object[] { "Normal", "Deluxe" });
-            cbRoomType.Location = new Point(645, 104);
+            cbRoomType.Location = new Point(724, 104);
             cbRoomType.Name = "cbRoomType";
-            cbRoomType.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            cbRoomType.ShadowDecoration.CustomizableEdges = customizableEdges11;
             cbRoomType.Size = new Size(107, 46);
             cbRoomType.TabIndex = 18;
             // 
@@ -257,7 +247,7 @@
             // 
             cbEndMinutes.AllowDrop = true;
             cbEndMinutes.BackColor = Color.Transparent;
-            cbEndMinutes.CustomizableEdges = customizableEdges13;
+            cbEndMinutes.CustomizableEdges = customizableEdges12;
             cbEndMinutes.DrawMode = DrawMode.OwnerDrawFixed;
             cbEndMinutes.DropDownHeight = 200;
             cbEndMinutes.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -270,7 +260,7 @@
             cbEndMinutes.Items.AddRange(new object[] { "00", "10", "20", "30", "40", "50" });
             cbEndMinutes.Location = new Point(664, 269);
             cbEndMinutes.Name = "cbEndMinutes";
-            cbEndMinutes.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            cbEndMinutes.ShadowDecoration.CustomizableEdges = customizableEdges13;
             cbEndMinutes.Size = new Size(88, 46);
             cbEndMinutes.TabIndex = 17;
             // 
@@ -289,7 +279,7 @@
             // 
             cbEndHour.AllowDrop = true;
             cbEndHour.BackColor = Color.Transparent;
-            cbEndHour.CustomizableEdges = customizableEdges15;
+            cbEndHour.CustomizableEdges = customizableEdges14;
             cbEndHour.DrawMode = DrawMode.OwnerDrawFixed;
             cbEndHour.DropDownHeight = 200;
             cbEndHour.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -302,7 +292,7 @@
             cbEndHour.Items.AddRange(new object[] { "8 ", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21" });
             cbEndHour.Location = new Point(528, 269);
             cbEndHour.Name = "cbEndHour";
-            cbEndHour.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            cbEndHour.ShadowDecoration.CustomizableEdges = customizableEdges15;
             cbEndHour.Size = new Size(101, 46);
             cbEndHour.TabIndex = 15;
             // 
@@ -321,7 +311,7 @@
             // 
             cbBeginMinutes.AllowDrop = true;
             cbBeginMinutes.BackColor = Color.Transparent;
-            cbBeginMinutes.CustomizableEdges = customizableEdges17;
+            cbBeginMinutes.CustomizableEdges = customizableEdges16;
             cbBeginMinutes.DrawMode = DrawMode.OwnerDrawFixed;
             cbBeginMinutes.DropDownHeight = 200;
             cbBeginMinutes.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -334,36 +324,16 @@
             cbBeginMinutes.Items.AddRange(new object[] { "00", "10", "20", "30", "40", "50" });
             cbBeginMinutes.Location = new Point(380, 269);
             cbBeginMinutes.Name = "cbBeginMinutes";
-            cbBeginMinutes.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            cbBeginMinutes.ShadowDecoration.CustomizableEdges = customizableEdges17;
             cbBeginMinutes.Size = new Size(105, 46);
             cbBeginMinutes.TabIndex = 13;
             cbBeginMinutes.SelectedIndexChanged += cbBeginMinutes_SelectedIndexChanged;
-            // 
-            // btnOrderMore
-            // 
-            btnOrderMore.BackColor = Color.Transparent;
-            btnOrderMore.BorderRadius = 10;
-            btnOrderMore.CustomizableEdges = customizableEdges19;
-            btnOrderMore.DisabledState.BorderColor = Color.DarkGray;
-            btnOrderMore.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnOrderMore.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnOrderMore.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnOrderMore.FillColor = Color.FromArgb(80, 114, 123);
-            btnOrderMore.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnOrderMore.ForeColor = Color.White;
-            btnOrderMore.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnOrderMore.Location = new Point(480, 520);
-            btnOrderMore.Name = "btnOrderMore";
-            btnOrderMore.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            btnOrderMore.Size = new Size(354, 56);
-            btnOrderMore.TabIndex = 12;
-            btnOrderMore.Text = "Order more";
             // 
             // btnBook
             // 
             btnBook.BackColor = Color.Transparent;
             btnBook.BorderRadius = 10;
-            btnBook.CustomizableEdges = customizableEdges17;
+            btnBook.CustomizableEdges = customizableEdges16;
             btnBook.DisabledState.BorderColor = Color.DarkGray;
             btnBook.DisabledState.CustomBorderColor = Color.DarkGray;
             btnBook.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -374,7 +344,7 @@
             btnBook.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnBook.Location = new Point(274, 519);
             btnBook.Name = "btnBook";
-            btnBook.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnBook.ShadowDecoration.CustomizableEdges = customizableEdges17;
             btnBook.Size = new Size(327, 56);
             btnBook.TabIndex = 11;
             btnBook.Text = "Book";
@@ -384,7 +354,7 @@
             // 
             txtNote.BackColor = Color.White;
             txtNote.BorderRadius = 15;
-            txtNote.CustomizableEdges = customizableEdges19;
+            txtNote.CustomizableEdges = customizableEdges18;
             txtNote.DefaultText = "";
             txtNote.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtNote.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -401,8 +371,8 @@
             txtNote.PlaceholderForeColor = Color.Gray;
             txtNote.PlaceholderText = "Note";
             txtNote.SelectedText = "";
-            txtNote.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            txtNote.Size = new Size(803, 162);
+            txtNote.ShadowDecoration.CustomizableEdges = customizableEdges19;
+            txtNote.Size = new Size(811, 162);
             txtNote.TabIndex = 10;
             txtNote.TextOffset = new Point(20, 0);
             // 
@@ -421,7 +391,7 @@
             // 
             cbBeginHour.AllowDrop = true;
             cbBeginHour.BackColor = Color.Transparent;
-            cbBeginHour.CustomizableEdges = customizableEdges21;
+            cbBeginHour.CustomizableEdges = customizableEdges20;
             cbBeginHour.DrawMode = DrawMode.OwnerDrawFixed;
             cbBeginHour.DropDownHeight = 200;
             cbBeginHour.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -434,7 +404,7 @@
             cbBeginHour.Items.AddRange(new object[] { "", "8 ", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21" });
             cbBeginHour.Location = new Point(251, 269);
             cbBeginHour.Name = "cbBeginHour";
-            cbBeginHour.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            cbBeginHour.ShadowDecoration.CustomizableEdges = customizableEdges21;
             cbBeginHour.Size = new Size(94, 46);
             cbBeginHour.TabIndex = 7;
             // 
@@ -442,7 +412,7 @@
             // 
             dtBookingDate.BackColor = Color.White;
             dtBookingDate.Checked = true;
-            dtBookingDate.CustomizableEdges = customizableEdges23;
+            dtBookingDate.CustomizableEdges = customizableEdges22;
             dtBookingDate.FillColor = Color.FromArgb(52, 73, 85);
             dtBookingDate.Font = new Font("Segoe UI", 9F);
             dtBookingDate.ForeColor = Color.White;
@@ -451,7 +421,7 @@
             dtBookingDate.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtBookingDate.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtBookingDate.Name = "dtBookingDate";
-            dtBookingDate.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            dtBookingDate.ShadowDecoration.CustomizableEdges = customizableEdges23;
             dtBookingDate.Size = new Size(196, 48);
             dtBookingDate.TabIndex = 6;
             dtBookingDate.Value = new DateTime(2024, 5, 4, 11, 35, 0, 974);
@@ -483,7 +453,7 @@
             txtEmail.AutoRoundedCorners = true;
             txtEmail.BackColor = Color.White;
             txtEmail.BorderRadius = 29;
-            txtEmail.CustomizableEdges = customizableEdges25;
+            txtEmail.CustomizableEdges = customizableEdges24;
             txtEmail.DefaultText = "";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -500,8 +470,8 @@
             txtEmail.PlaceholderForeColor = Color.Gray;
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
-            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            txtEmail.Size = new Size(570, 60);
+            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges25;
+            txtEmail.Size = new Size(654, 60);
             txtEmail.TabIndex = 3;
             txtEmail.TextOffset = new Point(20, 0);
             // 
@@ -510,7 +480,7 @@
             txtPhoneNumber.AutoRoundedCorners = true;
             txtPhoneNumber.BackColor = Color.White;
             txtPhoneNumber.BorderRadius = 29;
-            txtPhoneNumber.CustomizableEdges = customizableEdges27;
+            txtPhoneNumber.CustomizableEdges = customizableEdges26;
             txtPhoneNumber.DefaultText = "";
             txtPhoneNumber.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtPhoneNumber.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -520,15 +490,15 @@
             txtPhoneNumber.Font = new Font("Segoe UI", 9F);
             txtPhoneNumber.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPhoneNumber.IconLeftOffset = new Point(10, 0);
-            txtPhoneNumber.Location = new Point(333, 90);
+            txtPhoneNumber.Location = new Point(390, 90);
             txtPhoneNumber.Margin = new Padding(3, 4, 3, 4);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.PasswordChar = '\0';
             txtPhoneNumber.PlaceholderForeColor = Color.Gray;
             txtPhoneNumber.PlaceholderText = "Phone number";
             txtPhoneNumber.SelectedText = "";
-            txtPhoneNumber.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            txtPhoneNumber.Size = new Size(268, 60);
+            txtPhoneNumber.ShadowDecoration.CustomizableEdges = customizableEdges27;
+            txtPhoneNumber.Size = new Size(295, 60);
             txtPhoneNumber.TabIndex = 2;
             txtPhoneNumber.TextOffset = new Point(20, 0);
             // 
@@ -537,7 +507,7 @@
             txtName.AutoRoundedCorners = true;
             txtName.BackColor = Color.White;
             txtName.BorderRadius = 29;
-            txtName.CustomizableEdges = customizableEdges29;
+            txtName.CustomizableEdges = customizableEdges28;
             txtName.DefaultText = "";
             txtName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -554,9 +524,8 @@
             txtName.PlaceholderForeColor = Color.Gray;
             txtName.PlaceholderText = "Enter your name";
             txtName.SelectedText = "";
-            txtName.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            txtName.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            txtName.Size = new Size(278, 60);
+            txtName.ShadowDecoration.CustomizableEdges = customizableEdges29;
+            txtName.Size = new Size(330, 60);
             txtName.TabIndex = 1;
             txtName.TextOffset = new Point(20, 0);
             // 

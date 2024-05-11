@@ -16,6 +16,7 @@ namespace RestaurantMangement.Forms {
     {
         DBConnection db = new DBConnection();
         Account currentAcc = FResLogin.currentAcc;
+        bool isAdmin = FResLogin.isAdmin;
         Bill bill = new Bill();
         BookedTable bookedTable = new BookedTable();
         decimal totalprice = 0;
@@ -128,10 +129,14 @@ namespace RestaurantMangement.Forms {
 
         private void btnAddTable_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FResAddTable frm = new FResAddTable();
-            frm.Closed += (s, args) => this.Close();
-            frm.Show();
+            if(FResLogin.isAdmin) {
+                this.Hide();
+                FResAddTable frm = new FResAddTable();
+                frm.Closed += (s, args) => this.Close();
+                frm.Show();
+            } else {
+                MessageBox.Show("Admin access requirement!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnOrderMore_Click(object sender, EventArgs e) {

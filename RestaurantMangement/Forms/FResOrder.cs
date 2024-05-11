@@ -70,7 +70,6 @@ namespace RestaurantMangement.Forms
         }
 
         private void btnAddItem_Click(object sender, EventArgs e) {
-            FResLogin.isAdmin = true;
             if (FResLogin.isAdmin)
             {
                 this.Hide();
@@ -80,7 +79,7 @@ namespace RestaurantMangement.Forms
             }
             else
             {
-                MessageBox.Show("Admin access requirement!");
+                MessageBox.Show("Admin access requirement!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
         }

@@ -95,10 +95,10 @@ namespace RestaurantMangement.Code
             DataTable table = dbconnection.Load(selectQuery);
             if (table.Rows.Count > 0)
             {
-                MessageBox.Show("Admin");
+                MessageBox.Show("Login as Admin");
                 return true;
             }
-            MessageBox.Show("Not admin");
+            MessageBox.Show("Login as customer");
             return false;
         }
     }

@@ -22,8 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -46,6 +45,8 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label6 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -62,6 +63,7 @@
             txtPricePerTable = new Guna.UI2.WinForms.Guna2TextBox();
             roomBox = new Guna.UI2.WinForms.Guna2ComboBox();
             dgvTable = new Guna.UI2.WinForms.Guna2DataGridView();
+            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvRoom).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvTable).BeginInit();
             SuspendLayout();
@@ -71,7 +73,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(80, 114, 123);
-            label6.Location = new Point(19, 38);
+            label6.Location = new Point(14, 28);
             label6.Name = "label6";
             label6.Size = new Size(83, 28);
             label6.TabIndex = 25;
@@ -82,7 +84,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(80, 114, 123);
-            label4.Location = new Point(19, 205);
+            label4.Location = new Point(18, 308);
             label4.Name = "label4";
             label4.Size = new Size(65, 28);
             label4.TabIndex = 24;
@@ -93,7 +95,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(80, 114, 123);
-            label3.Location = new Point(18, 308);
+            label3.Location = new Point(12, 197);
             label3.Name = "label3";
             label3.Size = new Size(111, 28);
             label3.TabIndex = 22;
@@ -110,7 +112,7 @@
             txtRoomType.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtRoomType.Font = new Font("Segoe UI", 9F);
             txtRoomType.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtRoomType.Location = new Point(18, 340);
+            txtRoomType.Location = new Point(12, 229);
             txtRoomType.Margin = new Padding(3, 4, 3, 4);
             txtRoomType.Name = "txtRoomType";
             txtRoomType.PasswordChar = '\0';
@@ -125,7 +127,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(80, 114, 123);
-            label2.Location = new Point(18, 409);
+            label2.Location = new Point(18, 471);
             label2.Name = "label2";
             label2.Size = new Size(144, 28);
             label2.TabIndex = 20;
@@ -136,11 +138,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(80, 114, 123);
-            label1.Location = new Point(19, 99);
+            label1.Location = new Point(14, 78);
             label1.Name = "label1";
-            label1.Size = new Size(163, 28);
+            label1.Size = new Size(170, 28);
             label1.TabIndex = 18;
-            label1.Text = "Numbe of chairs";
+            label1.Text = "Number of chairs";
             // 
             // txtNumberOfChair
             // 
@@ -153,7 +155,7 @@
             txtNumberOfChair.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNumberOfChair.Font = new Font("Segoe UI", 9F);
             txtNumberOfChair.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNumberOfChair.Location = new Point(18, 131);
+            txtNumberOfChair.Location = new Point(13, 121);
             txtNumberOfChair.Margin = new Padding(3, 4, 3, 4);
             txtNumberOfChair.Name = "txtNumberOfChair";
             txtNumberOfChair.PasswordChar = '\0';
@@ -173,7 +175,7 @@
             btnExit.FillColor = Color.FromArgb(120, 160, 131);
             btnExit.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(282, 544);
+            btnExit.Location = new Point(275, 577);
             btnExit.Name = "btnExit";
             btnExit.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnExit.Size = new Size(80, 56);
@@ -190,7 +192,7 @@
             btnDelete.FillColor = Color.FromArgb(120, 160, 131);
             btnDelete.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(196, 544);
+            btnDelete.Location = new Point(189, 577);
             btnDelete.Name = "btnDelete";
             btnDelete.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnDelete.Size = new Size(80, 56);
@@ -208,7 +210,7 @@
             btnEdit.FillColor = Color.FromArgb(120, 160, 131);
             btnEdit.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnEdit.ForeColor = Color.White;
-            btnEdit.Location = new Point(110, 544);
+            btnEdit.Location = new Point(103, 577);
             btnEdit.Name = "btnEdit";
             btnEdit.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnEdit.Size = new Size(80, 56);
@@ -226,7 +228,7 @@
             btnAdd.FillColor = Color.FromArgb(120, 160, 131);
             btnAdd.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnAdd.ForeColor = Color.White;
-            btnAdd.Location = new Point(24, 544);
+            btnAdd.Location = new Point(17, 577);
             btnAdd.Name = "btnAdd";
             btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnAdd.Size = new Size(80, 56);
@@ -257,7 +259,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvRoom.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRoom.GridColor = Color.FromArgb(231, 229, 255);
-            dgvRoom.Location = new Point(368, 12);
+            dgvRoom.Location = new Point(366, 12);
             dgvRoom.Name = "dgvRoom";
             dgvRoom.RowHeadersVisible = false;
             dgvRoom.RowHeadersWidth = 51;
@@ -290,7 +292,7 @@
             // 
             lblTableID.AutoSize = true;
             lblTableID.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTableID.Location = new Point(127, 38);
+            lblTableID.Location = new Point(180, 33);
             lblTableID.Name = "lblTableID";
             lblTableID.Size = new Size(77, 28);
             lblTableID.TabIndex = 32;
@@ -307,7 +309,7 @@
             txtPricePerTable.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPricePerTable.Font = new Font("Segoe UI", 9F);
             txtPricePerTable.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPricePerTable.Location = new Point(18, 441);
+            txtPricePerTable.Location = new Point(18, 503);
             txtPricePerTable.Margin = new Padding(3, 4, 3, 4);
             txtPricePerTable.Name = "txtPricePerTable";
             txtPricePerTable.PasswordChar = '\0';
@@ -328,7 +330,7 @@
             roomBox.Font = new Font("Segoe UI", 10F);
             roomBox.ForeColor = Color.FromArgb(68, 88, 112);
             roomBox.ItemHeight = 30;
-            roomBox.Location = new Point(18, 252);
+            roomBox.Location = new Point(17, 340);
             roomBox.Name = "roomBox";
             roomBox.ShadowDecoration.CustomizableEdges = customizableEdges16;
             roomBox.Size = new Size(337, 36);
@@ -384,12 +386,35 @@
             dgvTable.ThemeStyle.RowsStyle.Height = 29;
             dgvTable.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvTable.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgvTable.CellClick += dgvTable_CellClick;
+            // 
+            // guna2TextBox1
+            // 
+            guna2TextBox1.CustomizableEdges = customizableEdges17;
+            guna2TextBox1.DefaultText = "";
+            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Font = new Font("Segoe UI", 9F);
+            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Location = new Point(103, 28);
+            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2TextBox1.Name = "guna2TextBox1";
+            guna2TextBox1.PasswordChar = '\0';
+            guna2TextBox1.PlaceholderText = "";
+            guna2TextBox1.SelectedText = "";
+            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2TextBox1.Size = new Size(71, 33);
+            guna2TextBox1.TabIndex = 35;
             // 
             // FResAddTable
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1135, 645);
+            Controls.Add(guna2TextBox1);
             Controls.Add(dgvTable);
             Controls.Add(roomBox);
             Controls.Add(lblTableID);
@@ -435,5 +460,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtPricePerTable;
         private Guna.UI2.WinForms.Guna2ComboBox roomBox;
         private Guna.UI2.WinForms.Guna2DataGridView dgvTable;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
     }
 }

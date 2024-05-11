@@ -67,8 +67,6 @@ namespace RestaurantMangement.Forms {
             }
             else MessageBox.Show(tableID);
 
-
-
             // fill booked Table information
             bookedTable = db.loadBookedTableFromTableID(tableID);
             // fill the rest of bookedTable

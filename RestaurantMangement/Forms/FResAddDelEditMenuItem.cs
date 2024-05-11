@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -19,10 +20,8 @@ namespace RestaurantMangement.Forms
         private string productID;
         private string productCategory;
 
-        public FResAddDelEditMenuItem(Guna2DataGridView dgv) {
-            InitializeComponent();
-        }
         public FResAddDelEditMenuItem() {
+            InitalAdapter();
             InitializeComponent();
         }
 
@@ -47,7 +46,6 @@ namespace RestaurantMangement.Forms
             LoadCategories();
             dataGridView2.Columns["price"].DefaultCellStyle.Format = "0.0";
         }
-
 
         private double price;
         private int productId;

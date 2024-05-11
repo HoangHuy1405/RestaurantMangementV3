@@ -87,5 +87,19 @@ namespace RestaurantMangement.Code
                 return null;
             }
         }
+
+        public bool checkManager(string accID)
+        {
+            string selectQuery = "Select mID from Manager where accID = '" + accID + "'";
+
+            DataTable table = dbconnection.Load(selectQuery);
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Admin");
+                return true;
+            }
+            MessageBox.Show("Not admin");
+            return false;
+        }
     }
 }

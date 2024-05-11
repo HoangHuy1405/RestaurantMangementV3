@@ -14,7 +14,7 @@ namespace RestaurantMangement.Code
         public static SqlConnection con = new SqlConnection(con_string);
 
         //Method to check user validation
-        public static bool isValidUser(string user, string password)
+        public bool isValidUser(string user, string password)
         {
             bool isValid = false;
 

@@ -73,7 +73,7 @@ namespace RestaurantMangement.Forms
             if (FResLogin.isAdmin)
             {
                 this.Hide();
-                FResAddDelEditMenuItem f = new FResAddDelEditMenuItem();
+                FResAddDelEditProduct f = new FResAddDelEditProduct();
                 f.Closed += (s, args) => this.Close();
                 f.Show();
             }

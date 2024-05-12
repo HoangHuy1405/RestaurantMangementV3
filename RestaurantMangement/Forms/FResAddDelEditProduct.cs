@@ -15,17 +15,24 @@ using System.Windows.Forms;
 
 namespace RestaurantMangement.Forms
 {
-    public partial class FResAddDelEditMenuItem : Form {
+    public partial class FResAddDelEditProduct : Form {
         DBConnection db = new DBConnection();
         private string productID;
         private string productCategory;
 
-        public FResAddDelEditMenuItem() {
+        public FResAddDelEditProduct() {
             InitializeComponent();
         }
 
-        private void FResAddDelEditMenuItem_Load(object sender, EventArgs e) {
-            DataTable table = db.Load("SELECT p.ProductID, p.productName, p.description, p.price, c.cateName FROM Product p INNER JOIN category c ON p.cateID = c.cateID");
+        private double price;
+        private int productId;
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
+
+
+        private void FResAddDelEditProduct_Load(object sender, EventArgs e) {
+            DataTable table = db.loadProductWithCate();
             dataGridView2.DataSource = table;
             if (dataGridView2.Columns.Contains("productName"))
                 dataGridView2.Columns["productName"].HeaderText = "Prduct Name";
@@ -43,13 +50,7 @@ namespace RestaurantMangement.Forms
             dataGridView2.ColumnHeadersHeight = 30;
 
             LoadCategories();
-            dataGridView2.Columns["price"].DefaultCellStyle.Format = "0.0";
-        }
-
-        private double price;
-        private int productId;
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
+            //dataGridView2.Columns["price"].DefaultCellStyle.Format = "0.0";
         }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e) {
             int index = e.RowIndex;
@@ -102,7 +103,7 @@ namespace RestaurantMangement.Forms
                 db.addProductWithCate(txtProductName.Text, txtDescription.Text, price, cateName);
                 // update 
                 cbCategoryItems.Items.Clear();
-                FResAddDelEditMenuItem_Load(sender, e);
+                FResAddDelEditProduct_Load(sender, e);
                 MessageBox.Show("Added successfully");
                 // reset to empty
                 txtProductID.Text = "";
@@ -118,7 +119,7 @@ namespace RestaurantMangement.Forms
                 //menuItemDAO.edit(menuItem);
                 // update 
                 cbCategoryItems.Items.Clear();
-                FResAddDelEditMenuItem_Load(sender, e);
+                FResAddDelEditProduct_Load(sender, e);
                 MessageBox.Show("edited successfully");
                 // reset to empty
                 txtProductID.Text = "";
@@ -131,7 +132,7 @@ namespace RestaurantMangement.Forms
             db.deleteProduct(txtProductID.Text);
 
             // update 
-            FResAddDelEditMenuItem_Load(sender, e);
+            FResAddDelEditProduct_Load(sender, e);
             MessageBox.Show("deleted successfully");
             // reset to empty
             txtProductID.Text = "";
@@ -146,5 +147,6 @@ namespace RestaurantMangement.Forms
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
+
     }
 }

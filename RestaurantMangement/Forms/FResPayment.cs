@@ -153,7 +153,7 @@ namespace RestaurantMangement.Forms {
 
         private void btnBuy_Click(object sender, EventArgs e) {
             FillBill();
-            if(cbVouchers.SelectedItem != null) {
+            if (cbVouchers.SelectedItem != null) {
                 bill.VoucherId = cbVouchers.SelectedItem.ToString();
             }
             this.Hide();
@@ -167,13 +167,24 @@ namespace RestaurantMangement.Forms {
 
         // recalculate the total price
         private void cbVouchers_SelectedIndexChanged(object sender, EventArgs e) {
-            
+
         }
 
         private void cbVouchers_SelectedValueChanged(object sender, EventArgs e) {
             //cbVouchers.Items.Clear();
             calculateTheTotalPrice();
             FResPayment_Load(sender, e);
+        }
+
+        private void btnEditVoucher_Click(object sender, EventArgs e) {
+            if (FResLogin.isAdmin) {
+                this.Hide();
+                FResAddEditDelVouchers f = new FResAddEditDelVouchers();
+                f.Closed += (s, args) => this.Close();
+                f.Show();
+            } else {
+                MessageBox.Show("Admin access requirement!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

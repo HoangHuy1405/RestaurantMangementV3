@@ -55,12 +55,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             dataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -95,6 +97,7 @@
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             btnHome = new Guna.UI2.WinForms.Guna2Button();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            btnEditVoucher = new Guna.UI2.WinForms.Guna2Button();
             guna2Panel1.SuspendLayout();
             guna2Panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -580,14 +583,15 @@
             // 
             // guna2Panel2
             // 
+            guna2Panel2.Controls.Add(btnEditVoucher);
             guna2Panel2.Controls.Add(btnHome);
             guna2Panel2.Controls.Add(guna2PictureBox1);
-            guna2Panel2.CustomizableEdges = customizableEdges33;
+            guna2Panel2.CustomizableEdges = customizableEdges35;
             guna2Panel2.Dock = DockStyle.Top;
             guna2Panel2.FillColor = Color.FromArgb(52, 73, 85);
             guna2Panel2.Location = new Point(0, 0);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges34;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges36;
             guna2Panel2.Size = new Size(1500, 96);
             guna2Panel2.TabIndex = 1;
             // 
@@ -595,7 +599,7 @@
             // 
             btnHome.BackColor = Color.Transparent;
             btnHome.BorderRadius = 10;
-            btnHome.CustomizableEdges = customizableEdges29;
+            btnHome.CustomizableEdges = customizableEdges31;
             btnHome.DisabledState.BorderColor = Color.DarkGray;
             btnHome.DisabledState.CustomBorderColor = Color.DarkGray;
             btnHome.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -606,7 +610,7 @@
             btnHome.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnHome.Location = new Point(1362, 19);
             btnHome.Name = "btnHome";
-            btnHome.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            btnHome.ShadowDecoration.CustomizableEdges = customizableEdges32;
             btnHome.Size = new Size(126, 56);
             btnHome.TabIndex = 2;
             btnHome.Text = "Home";
@@ -615,16 +619,37 @@
             // guna2PictureBox1
             // 
             guna2PictureBox1.BackColor = Color.Transparent;
-            guna2PictureBox1.CustomizableEdges = customizableEdges31;
+            guna2PictureBox1.CustomizableEdges = customizableEdges33;
             guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(12, 12);
             guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges34;
             guna2PictureBox1.Size = new Size(81, 75);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 0;
             guna2PictureBox1.TabStop = false;
+            // 
+            // btnEditVoucher
+            // 
+            btnEditVoucher.BackColor = Color.Transparent;
+            btnEditVoucher.BorderRadius = 10;
+            btnEditVoucher.CustomizableEdges = customizableEdges29;
+            btnEditVoucher.DisabledState.BorderColor = Color.DarkGray;
+            btnEditVoucher.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnEditVoucher.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnEditVoucher.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnEditVoucher.FillColor = Color.FromArgb(80, 114, 123);
+            btnEditVoucher.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditVoucher.ForeColor = Color.White;
+            btnEditVoucher.HoverState.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditVoucher.Location = new Point(1119, 19);
+            btnEditVoucher.Name = "btnEditVoucher";
+            btnEditVoucher.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            btnEditVoucher.Size = new Size(217, 56);
+            btnEditVoucher.TabIndex = 3;
+            btnEditVoucher.Text = "add voucher";
+            btnEditVoucher.Click += btnEditVoucher_Click;
             // 
             // FResPayment
             // 
@@ -689,5 +714,6 @@
         private Label label1;
         private Guna.UI2.WinForms.Guna2ComboBox cbVouchers;
         private Label lblVoucher;
+        private Guna.UI2.WinForms.Guna2Button btnEditVoucher;
     }
 }

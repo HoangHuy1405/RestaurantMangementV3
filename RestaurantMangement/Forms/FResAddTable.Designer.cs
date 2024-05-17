@@ -59,11 +59,12 @@
             btnEdit = new Guna.UI2.WinForms.Guna2Button();
             btnAdd = new Guna.UI2.WinForms.Guna2Button();
             dgvRoom = new Guna.UI2.WinForms.Guna2DataGridView();
-            lblTableID = new Label();
             txtPricePerTable = new Guna.UI2.WinForms.Guna2TextBox();
             roomBox = new Guna.UI2.WinForms.Guna2ComboBox();
             dgvTable = new Guna.UI2.WinForms.Guna2DataGridView();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            txtTableID = new Guna.UI2.WinForms.Guna2TextBox();
+            label5 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvRoom).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvTable).BeginInit();
             SuspendLayout();
@@ -260,11 +261,11 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvRoom.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRoom.GridColor = Color.FromArgb(231, 229, 255);
-            dgvRoom.Location = new Point(366, 12);
+            dgvRoom.Location = new Point(366, 50);
             dgvRoom.Name = "dgvRoom";
             dgvRoom.RowHeadersVisible = false;
             dgvRoom.RowHeadersWidth = 51;
-            dgvRoom.Size = new Size(757, 276);
+            dgvRoom.Size = new Size(757, 190);
             dgvRoom.TabIndex = 31;
             dgvRoom.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvRoom.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -288,16 +289,6 @@
             dgvRoom.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvRoom.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dgvRoom.CellClick += dgvRoom_CellClick;
-            // 
-            // lblTableID
-            // 
-            lblTableID.AutoSize = true;
-            lblTableID.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTableID.Location = new Point(180, 33);
-            lblTableID.Name = "lblTableID";
-            lblTableID.Size = new Size(77, 28);
-            lblTableID.TabIndex = 32;
-            lblTableID.Text = "tableID";
             // 
             // txtPricePerTable
             // 
@@ -360,11 +351,11 @@
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             dgvTable.DefaultCellStyle = dataGridViewCellStyle6;
             dgvTable.GridColor = Color.FromArgb(231, 229, 255);
-            dgvTable.Location = new Point(368, 308);
+            dgvTable.Location = new Point(366, 308);
             dgvTable.Name = "dgvTable";
             dgvTable.RowHeadersVisible = false;
             dgvTable.RowHeadersWidth = 51;
-            dgvTable.Size = new Size(757, 292);
+            dgvTable.Size = new Size(757, 325);
             dgvTable.TabIndex = 34;
             dgvTable.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvTable.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -389,36 +380,60 @@
             dgvTable.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dgvTable.CellClick += dgvTable_CellClick;
             // 
-            // guna2TextBox1
+            // txtTableID
             // 
-            guna2TextBox1.CustomizableEdges = customizableEdges17;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(103, 28);
-            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2TextBox1.Size = new Size(71, 33);
-            guna2TextBox1.TabIndex = 35;
+            txtTableID.CustomizableEdges = customizableEdges17;
+            txtTableID.DefaultText = "";
+            txtTableID.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtTableID.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtTableID.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtTableID.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtTableID.FillColor = SystemColors.Control;
+            txtTableID.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTableID.Font = new Font("Segoe UI", 9F);
+            txtTableID.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTableID.Location = new Point(103, 28);
+            txtTableID.Margin = new Padding(3, 4, 3, 4);
+            txtTableID.Name = "txtTableID";
+            txtTableID.PasswordChar = '\0';
+            txtTableID.PlaceholderText = "uneditable";
+            txtTableID.SelectedText = "";
+            txtTableID.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtTableID.Size = new Size(104, 33);
+            txtTableID.TabIndex = 35;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(80, 114, 123);
+            label5.Location = new Point(366, 9);
+            label5.Name = "label5";
+            label5.Size = new Size(320, 28);
+            label5.TabIndex = 36;
+            label5.Text = "please choose which room to add";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.FromArgb(80, 114, 123);
+            label7.Location = new Point(366, 261);
+            label7.Name = "label7";
+            label7.Size = new Size(208, 28);
+            label7.TabIndex = 37;
+            label7.Text = "Table in chosen room";
             // 
             // FResAddTable
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1135, 645);
-            Controls.Add(guna2TextBox1);
+            Controls.Add(label7);
+            Controls.Add(label5);
+            Controls.Add(txtTableID);
             Controls.Add(dgvTable);
             Controls.Add(roomBox);
-            Controls.Add(lblTableID);
             Controls.Add(dgvRoom);
             Controls.Add(btnExit);
             Controls.Add(btnDelete);
@@ -458,10 +473,11 @@
         private Guna.UI2.WinForms.Guna2Button btnEdit;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private Guna.UI2.WinForms.Guna2DataGridView dgvRoom;
-        private Label lblTableID;
         private Guna.UI2.WinForms.Guna2TextBox txtPricePerTable;
         private Guna.UI2.WinForms.Guna2ComboBox roomBox;
         private Guna.UI2.WinForms.Guna2DataGridView dgvTable;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtTableID;
+        private Label label5;
+        private Label label7;
     }
 }

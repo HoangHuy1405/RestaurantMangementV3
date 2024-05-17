@@ -35,6 +35,11 @@ namespace RestaurantMangement.Forms {
             lblAddressFill.Text = bill.CustomerAddress;
             lblDateFill.Text = bill.Date.ToString("yyyy-MM-dd HH:mm");
             lblPaymentFill.Text = bill.PaymentMethods;
+            if (bill.VoucherId == null) {
+                lblVoucherID.Text = "No voucher";
+            } else {
+                lblVoucherID.Text = bill.VoucherId;
+            }
             lblTotalPriceFill.Text = bill.TotalPrice.ToString();
             //Fill for table cart
             DefiningBookedDishAndDrink();

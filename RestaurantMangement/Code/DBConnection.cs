@@ -15,7 +15,8 @@ namespace RestaurantMangement.Code
     {
         Account currentAcc = FResLogin.currentAcc;
         // SqlConnection object to establish a connection with the database
-        SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
+        //SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
+        SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=RMv6;Integrated Security=True");
 
         public DBConnection() { }
 
@@ -95,7 +96,6 @@ namespace RestaurantMangement.Code
                         };
                     }
                 }
-                
             } catch (SqlException ex) {
                 MessageBox.Show("Error: " + ex.Message);
             } finally {

@@ -38,7 +38,9 @@ namespace RestaurantMangement.Code
             }
             else
             {
-                string sql = string.Format("INSERT INTO Account (email, password, username, fullname) VALUES ('{0}', '{1}', '{2}', '{3}')", account.Email, account.Password, account.Username, account.FullName);
+                string sql = string.Format("INSERT INTO Account (email, password, username, fullname) " +
+                                           "VALUES ('{0}', '{1}', '{2}', '{3}')", 
+                                           account.Email, account.Password, account.Username, account.FullName);
                 dbconnection.Execute(sql);
                 return true;
             }
@@ -46,7 +48,8 @@ namespace RestaurantMangement.Code
         }
         public Account CheckAccount(Account account)
         {
-            string SQL = string.Format("select * from Account where email = '{0}' and password = '{1}'", account.Email, account.Password);
+            string SQL = string.Format("SELECT * FROM Account " +
+                                       "WHERE email = '{0}' and password = '{1}'", account.Email, account.Password);
             DataTable dt = dbconnection.Load(SQL);
             return GetAccountFromDataTable(dt);
         }
@@ -69,17 +72,6 @@ namespace RestaurantMangement.Code
                 account.PhoneNum = Convert.ToString(row["phoneNum"]);
                 account.Balance = row["balance"] != DBNull.Value ? Convert.ToDouble(row["balance"]) : 0;
 
-                //object birthdayValue = row["birthday"];
-                //DateTime birthday;
-                //if (birthdayValue != DBNull.Value && DateTime.TryParse(birthdayValue.ToString(), out birthday)) {
-                //    account.Birthday = birthday;
-                //}
-                //// Assuming the Avatar column is stored as byte[] in the database
-                //if (row["Avatar"] != DBNull.Value) {
-                //    account.Avatar = (byte[])row["Avatar"];
-                //} else {
-                //    account.Avatar = null; // Or any other default value you want to assign
-                //}
                 return account;
             }
             else

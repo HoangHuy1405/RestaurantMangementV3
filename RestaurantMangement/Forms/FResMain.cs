@@ -38,5 +38,12 @@ namespace RestaurantMangement.Forms {
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e) {
+            this.Hide();
+            FResLogin f = new FResLogin();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
     }
 }

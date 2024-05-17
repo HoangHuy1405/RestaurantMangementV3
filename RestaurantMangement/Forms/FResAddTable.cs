@@ -95,11 +95,18 @@ namespace RestaurantMangement.Forms {
         }
 
         private void dgvTable_CellClick(object sender, DataGridViewCellEventArgs e) {
-
+            int index = e.RowIndex;
+            if (index >= 0) {
+                DataGridViewRow selectedRowofRows = dgvTable.Rows[index];
+                txtTableID.Text = selectedRowofRows.Cells[0].Value.ToString();
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e) {
-
+            this.Hide();
+            FResBookingTable frm = new FResBookingTable();
+            frm.Closed += (s, args) => this.Close();
+            frm.Show();
         }
     }
 

@@ -539,7 +539,7 @@
             Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "FResOrder";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FResPOS";
+            Text = "FResOrder";
             Load += FResOrder_Load;
             guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();

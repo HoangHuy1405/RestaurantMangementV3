@@ -76,7 +76,7 @@ namespace RestaurantMangement.Forms
 
                 // Add the new row to the DataGridView
                 dataGridView1.Rows.Add(newRow);
-            }
+            }*/
         }
 
         private void btnHome_Click(object sender, EventArgs e) {

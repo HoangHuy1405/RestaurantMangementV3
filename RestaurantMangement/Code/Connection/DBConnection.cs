@@ -11,7 +11,7 @@ namespace RestaurantMangement.Code.Connection
     {
         private static string connectionUrl = Properties.Settings.Default.connStr;
 
-        public static SqlConnection openConnection()
+        public static SqlConnection getConnection()
         {
             SqlConnection conn = null;
             try

@@ -16,7 +16,7 @@ namespace RestaurantMangement.Code.DAO
             DataTable dataTable = new DataTable();
             try
             {
-                //conn = Code.Connection.DBConnection.openConnection();
+                conn = Code.Connection.DBConnection.getConnection();
                 conn.Open();
                 string query = "SELECT p.ProductID, p.productName, p.description, p.price, c.cateName " +
                                "FROM Product p " +

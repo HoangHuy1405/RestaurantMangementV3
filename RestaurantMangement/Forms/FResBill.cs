@@ -83,7 +83,7 @@ namespace RestaurantMangement.Forms {
 
                 // Add the new row to the DataGridView
                 dataGridView1.Rows.Add(newRow);
-            }
+            }*/
 
             */
             dataGridView1.ColumnHeadersHeight = 30;

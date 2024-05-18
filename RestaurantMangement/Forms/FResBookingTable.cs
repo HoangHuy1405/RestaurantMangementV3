@@ -40,8 +40,9 @@ namespace RestaurantMangement.Forms {
             frm.Closed += (s, args) => this.Close();
             frm.Show();
         }
-        private void fillBill() {
-            bill.CustomerName = txtName.Text;
+        private void fillBill()
+        {
+            /*bill.CustomerName = txtName.Text;
             bill.CustomerEmail = currentAcc.Email;
             bill.PaymentMethods = "Online";
             bill.Note = txtNote.Text;
@@ -50,7 +51,7 @@ namespace RestaurantMangement.Forms {
             bill.VoucherId = string.Empty;
             bill.Status = "Pending";
             bill.Date = DateTime.Now;
-            bill.AccID = currentAcc.AccID;
+            bill.AccId = currentAcc.AccId;*/
         }
 
         private void btnBook_Click(object sender, EventArgs e) {

@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,8 @@ using System.Threading.Tasks;
 namespace RestaurantMangement.Code.DAO
 {   
     public class AccountDAO : DAOInterface<Account>
-    {   
+    {
+        SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=RMv7;Integrated Security=True; User ID = sa; Password = 123");
         public static AccountDAO instance() {
             return new AccountDAO();
         }
@@ -32,13 +34,15 @@ namespace RestaurantMangement.Code.DAO
         public int insert(Account account)
         {
             int result = 0;
-            SqlConnection conn = Code.Connection.DBConnection.openConnection();
+            //SqlConnection conn = Code.Connection.DBConnection.openConnection();
             try
             {
+                conn.Open();
                 string query = "Insert into Account " +
                                "(username, password, fullname, email, phoneNum, balance) " +
-                               "values '" + account.Username + "', '" + account.Password + "', '" + account.Fullname + "', '" + account.Email + "', '" + account.PhoneNum + "', '" + account.Balance + "')"; 
+                               "values ('" + account.Username + "', '" + account.Password + "', '" + account.Fullname + "', '" + account.Email + "', '" + account.PhoneNum + "', '" + account.Balance + "')"; 
                 SqlCommand cmd = new SqlCommand(query, conn);
+                MessageBox.Show(query);
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -64,25 +68,28 @@ namespace RestaurantMangement.Code.DAO
 
         public Account findbyUsernamePassword(Account account)
         {
-            SqlConnection conn = Code.Connection.DBConnection.openConnection();
-            string query = "Select * from Account" +
-                           "where username = '" + account.Username + "' and '" + account.Password + "'";
+            //SqlConnection conn = Code.Connection.DBConnection.openConnection();
+            string query = "Select * from Account " +
+                           "where username = '" + account.Username + "' AND password ='" + account.Password + "'";
             try
             {
+                conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
+
                 if (reader.HasRows)
                 {
-                    string accID = reader.GetString(0);
-                    string username = reader.GetString(1);
-                    string password = reader.GetString(2);
-                    string fullName = reader.GetString(3);
-                    string email = reader.GetString(4);
-                    string phoneNum = reader.GetString(5);
-                    decimal balance = reader.GetDecimal(6);
-
-                    account = new Account(accID, username, password, fullName, email, phoneNum, balance);
-                    return account;
+                    if (reader.Read()) {
+                        string accID = reader.GetString(0);
+                        string username = reader.GetString(1);
+                        string password = reader.GetString(2);
+                        string fullName = reader.GetString(3);
+                        string email = reader.GetString(4);
+                        string phoneNum = reader.GetString(5);
+                        decimal balance = reader.GetDecimal(6);
+                        account = new Account(accID, username, password, fullName, email, phoneNum, balance);
+                        return account;
+                    }
                 }
             }
             catch (Exception ex)
@@ -126,7 +133,7 @@ namespace RestaurantMangement.Code.DAO
                     string fullName = reader.GetString(3);
                     string email = reader.GetString(4);
                     string phoneNum = reader.GetString(5);
-                    float balance = reader.GetFloat(6);
+                    decimal balance = reader.GetDecimal(6);
 
                     account = new Account(accID, username, password, fullName, email, phoneNum, balance);
                     return account;

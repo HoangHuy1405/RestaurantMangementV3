@@ -10,8 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantMangement.Forms
-{
+namespace RestaurantMangement.Forms {
     public partial class FResBillHistory : Form {
         DBConnection db = new DBConnection();
         Account currentAcc = FResLogin.currentAcc;
@@ -26,14 +25,16 @@ namespace RestaurantMangement.Forms
         }
 
         private void FResBillHistory_Load(object sender, EventArgs e) {
-            lblName.Text = currentAcc.FullName;
-            if(FResLogin.isAdmin) {
+            lblName.Text = currentAcc.Fullname;
+            if (FResLogin.isAdmin) {
                 // if you are a manager => you are allowed to see all bill history
                 gvBillHistory.DataSource = db.GetAllBillHistory();
             } else {
+                /* testing1
                 gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccId);
+                */
             }
-            
+
             gvBillHistory.ColumnHeadersHeight = 30;
         }
 

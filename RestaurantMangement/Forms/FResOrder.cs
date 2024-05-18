@@ -18,9 +18,7 @@ namespace RestaurantMangement.Forms
 {
     public partial class FResOrder : Form {
         DBConnection db = new DBConnection();
-        Bill bill = new Bill();
-
-        List<BookedProduct> bookedProducts = new List<BookedProduct>();
+        Order order = new Order();
 
         public FResOrder() {
             InitializeComponent();
@@ -105,8 +103,8 @@ namespace RestaurantMangement.Forms
                 if (isAdded) {
                     MessageBox.Show("This food is already in the food cart.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } else {
-                    BookedProduct bookedProduct = new BookedProduct(productId, productName, 1, price);
-                    bill.bookedProducts.Add(bookedProduct);
+                    OrderDetail orderDetail = new OrderDetail(productId, productName, 1, price);
+                    order.OrderList.Add(orderDetail);
                     dataGridView2.Rows.Add(productName, 1);
                 }
             }
@@ -117,8 +115,9 @@ namespace RestaurantMangement.Forms
                 if (dataGridView2.Columns[e.ColumnIndex].HeaderText == "+") {
                     // Increment quantity by 1
                     int quantity = Convert.ToInt32(dataGridView2.Rows[index].Cells["dgvQuantity"].Value);
-                    bill.bookedProducts[index].Quantity += 1;
-                    bill.bookedProducts[index].Totalprice += bill.bookedProducts[index].NormalPrice;
+                    order.OrderList[index].Quantity += 1;
+                    // no need for this, automatic price calculation in db
+                    //bill.bookedProducts[index].Totalprice += bill.bookedProducts[index].NormalPrice;
 
                     quantity++;
                     dataGridView2.Rows[index].Cells["dgvQuantity"].Value = quantity;
@@ -126,8 +125,10 @@ namespace RestaurantMangement.Forms
                     // Decrement quantity by 1, if it's greater than 0
                     int quantity = Convert.ToInt32(dataGridView2.Rows[index].Cells["dgvQuantity"].Value);
                     if (quantity > 0) {
-                        bill.bookedProducts[index].Quantity -= 1;
-                        bill.bookedProducts[index].Totalprice -= bill.bookedProducts[index].NormalPrice;
+
+                        order.OrderList[index].Quantity -= 1;
+                        // no need for this, automatic price calculation in db
+                        //bill.bookedProducts[index].Totalprice -= bill.bookedProducts[index].NormalPrice;
 
                         quantity--;
                         dataGridView2.Rows[index].Cells["dgvQuantity"].Value = quantity;
@@ -146,7 +147,7 @@ namespace RestaurantMangement.Forms
 
         private void btnProceed_Click(object sender, EventArgs e) {
             this.Hide();
-            FResPayment f = new FResPayment(bill);
+            FResPayment f = new FResPayment(order);
             f.Closed += (s, args) => this.Close();
             f.Show();
         }

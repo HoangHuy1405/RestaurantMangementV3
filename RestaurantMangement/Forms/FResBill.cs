@@ -10,8 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantMangement.Forms
-{
+namespace RestaurantMangement.Forms {
     public partial class FResBill : Form {
         Account currentAcc = FResLogin.currentAcc;
         Bill bill = new Bill();
@@ -70,6 +69,8 @@ namespace RestaurantMangement.Forms
             dataGridView1.Columns.Add(columnDishOrDrinkTotalPrice);
 
             // Fill gvFood with booked dish and drink data
+
+            /* testing1
             foreach (BookedProduct bookedProduct in bill.bookedProducts) {
                 // Create a new row for the DataGridView
                 DataGridViewRow newRow = new DataGridViewRow();
@@ -84,6 +85,7 @@ namespace RestaurantMangement.Forms
                 dataGridView1.Rows.Add(newRow);
             }
 
+            */
             dataGridView1.ColumnHeadersHeight = 30;
         }
 

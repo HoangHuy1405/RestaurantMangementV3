@@ -10,8 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantMangement.Forms
-{
+namespace RestaurantMangement.Forms {
     public partial class FResPaymentTable : Form {
         DBConnection db = new DBConnection();
         private Bill bill = new Bill();
@@ -39,15 +38,17 @@ namespace RestaurantMangement.Forms
         }
 
         private void btnConfirm_Click(object sender, EventArgs e) {
+            /* testing 1
             db.CreateBill(bill);
             db.InsertDataIntoAccBookTable(bookedTable);
             this.Hide();
             FResBill frm = new FResBill(bill);
             frm.Closed += (s, args) => this.Close();
             frm.Show();
+            */
         }
 
-        
+
 
         private void btnCancel_Click(object sender, EventArgs e) {
             this.Hide();

@@ -11,8 +11,9 @@ namespace RestaurantMangement.Code.Model
         private string orderID;
         private DateTime date;
         private decimal totalPrice;
-        private string note;
         private string accID;
+
+        private List<OrderDetail> orderList = new List<OrderDetail>();
 
         public Order() { }
 
@@ -21,14 +22,13 @@ namespace RestaurantMangement.Code.Model
             this.orderID = orderID;
             this.date = date;
             this.totalPrice = totalPrice;
-            this.note = note;
             this.accID = accID;
         }
 
         public string OrderID { get => orderID; set => orderID = value; }
         public DateTime Date { get => date; set => date = value; }
         public decimal TotalPrice { get => totalPrice; set => totalPrice = value; }
-        public string Note { get => note; set => note = value; }
         public string AccID { get => accID; set => accID = value; }
+        public List<OrderDetail> OrderList { get => orderList; set => orderList = value; }
     }
 }

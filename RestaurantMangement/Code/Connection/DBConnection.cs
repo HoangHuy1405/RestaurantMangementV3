@@ -17,6 +17,7 @@ namespace RestaurantMangement.Code.Connection
             try
             {
                 conn = new SqlConnection(connectionUrl);
+                conn.Open();
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);

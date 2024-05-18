@@ -12,6 +12,8 @@ namespace RestaurantMangement.Code.Model
         private string billId;
         private string orderID;
         private string bookedTableID;
+        private string voucherId;
+        private string accID;
         private DateTime date;
         private string customerAddress;
         private string customerName;
@@ -21,7 +23,8 @@ namespace RestaurantMangement.Code.Model
         private string status;
         private decimal totalPrice;
         private string type;
-        private string voucherId;
+        private string note;
+        
 
         public Bill() { }
 
@@ -55,5 +58,7 @@ namespace RestaurantMangement.Code.Model
         public decimal TotalPrice { get => totalPrice; set => totalPrice = value; }
         public string Type { get => type; set => type = value; }
         public string VoucherId { get => voucherId; set => voucherId = value; }
+        public string AccID { get => accID; set => accID = value; }
+        public string Note { get => note; set => note = value; }
     }
 }

@@ -16,7 +16,7 @@ namespace RestaurantMangement.Code
     {
         Account currentAcc = FResLogin.currentAcc;
         // SqlConnection object to establish a connection with the database
-        SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
+        SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=RMv7;Integrated Security=True; User ID = sa; Password = 123");
 
         public DBConnection() { }
 

@@ -13,22 +13,28 @@ namespace RestaurantMangement.Code.DAO
     {
         public static bool isManager(Account account)
         {
-            SqlConnection conn = Code.Connection.DBConnection.openConnection();
-            string query = "Select mID from Manager" +
+            SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=RMv7;Integrated Security=True; User ID = sa; Password = 123");
+            //SqlConnection conn = Code.Connection.DBConnection.openConnection();
+            string query = "Select mID from Manager " +
                            "where accID = '" + account.AccID + "'";
             try
             {
+                string mId = "";
+                conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
-                string mId = cmd.ExecuteScalar().ToString();
+                var mIdVar = cmd.ExecuteScalar();
+                if (mIdVar != null) {
+                    mId = mIdVar.ToString();
+                }
 
-                if(string.IsNullOrEmpty(mId) ) 
+                if (string.IsNullOrEmpty(mId) ) 
                 {
-                    MessageBox.Show("Login as admin");
+                    MessageBox.Show("Login as customer");
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show("Login as customer");
+                    MessageBox.Show("Login as admin");
                     return false;
                 }
 

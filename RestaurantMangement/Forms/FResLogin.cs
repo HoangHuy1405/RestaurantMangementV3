@@ -43,7 +43,6 @@ namespace RestaurantMangement
                 }
                 else
                 {
-                    MessageBox.Show("Login success");
                     // get current using account to be used across project
                     currentAcc = acc;
                     isAdmin = Code.DAO.ManagerDAO.isManager(acc);

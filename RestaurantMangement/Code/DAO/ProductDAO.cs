@@ -10,15 +10,14 @@ namespace RestaurantMangement.Code.DAO
 {
     public class ProductDAO
     {
+        static SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=RMv7;Integrated Security=True; User ID = sa; Password = 123");
         public static DataTable loadProductWithCate()
         {
             DataTable dataTable = new DataTable();
-            SqlConnection conn = null;
-
             try
             {
-                conn = Code.Connection.DBConnection.openConnection();
-
+                //conn = Code.Connection.DBConnection.openConnection();
+                conn.Open();
                 string query = "SELECT p.ProductID, p.productName, p.description, p.price, c.cateName " +
                                "FROM Product p " +
                                "INNER JOIN category c ON p.cateID = c.cateID";

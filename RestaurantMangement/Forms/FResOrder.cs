@@ -147,10 +147,17 @@ namespace RestaurantMangement.Forms
 
         private void btnProceed_Click(object sender, EventArgs e) {
             this.Hide();
+            fillOrderInformation();
+            string orderID =  Code.DAO.OrderDAO.instance().insert(order);
+            order.OrderID = orderID;
             FResPayment f = new FResPayment(order);
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
-
+        private void fillOrderInformation() {
+            order.TotalPrice = order.calculateTotalPrice();
+            order.AccID = FResLogin.currentAcc.AccID;
+            order.Date = DateTime.Now;
+        }
     }
 }

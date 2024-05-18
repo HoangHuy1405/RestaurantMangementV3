@@ -25,14 +25,13 @@ namespace RestaurantMangement.Forms
         public FResPayment(Order order) {
             InitializeComponent();
             this.order = order;
-            this.vouchers = db.LoadVoucherTable();
+            this.vouchers = Code.DAO.VoucherDAO.instance().LoadVoucherTable();
             loadVoucherIntoComboBox();
             definingBookedProduct();
             calculateTheTotalPrice();
         }
         private void FResPayment_Load(object sender, EventArgs e) {
             lblBuyerName.Text = currentAcc.Fullname;
-            definingBookedProduct();
             //calculateTheTotalPrice();
         }
         private void definingBookedProduct() {
@@ -81,63 +80,56 @@ namespace RestaurantMangement.Forms
         }
 
         private void btnHome_Click(object sender, EventArgs e) {
+            Code.DAO.OrderDAO.instance().deleteOrder(order.OrderID);
             this.Hide();
             FResMain f = new FResMain();
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
         private void calculateTheTotalPrice() {
-            /* Calculate total Price in sql */
+            decimal subTotalPrice = order.TotalPrice;
+            decimal totalPrice = 0;
 
-            /* calculate total Price in C# (no need) */
-            //decimal subTotalPrice = 0;
-            //decimal totalPrice = 0;
-            //int numberofitems = 0;
+            decimal voucherDiscount = 0;
+            if (cbVouchers.SelectedItem != null) {
+                string selectedVoucherId = cbVouchers.SelectedItem.ToString();
+                DataRow[] foundRows = vouchers.Select($"voucherID = '{selectedVoucherId}'");
+                if (foundRows.Length > 0) {
+                    // Get the discount value from the found row
+                    voucherDiscount = Convert.ToDecimal(foundRows[0]["discount"]);
+                    MessageBox.Show($"Discount value for voucher id {selectedVoucherId}: {voucherDiscount}%");
+                }
+            }
 
-            //decimal voucherDiscount = 0;
-            //if (cbVouchers.SelectedItem != null) {
-            //    string selectedVoucherId = cbVouchers.SelectedItem.ToString();
-            //    DataRow[] foundRows = vouchers.Select($"voucherID = '{selectedVoucherId}'");
-            //    if (foundRows.Length > 0) {
-            //        // Get the discount value from the found row
-            //        voucherDiscount = Convert.ToDecimal(foundRows[0]["discount"]);
-            //        MessageBox.Show($"Discount value for voucher id {selectedVoucherId}: {voucherDiscount}%");
-            //    }
-            //}
-            //// Calculate total price of booked dish and drink items
-            //foreach (DataGridViewRow row in dataGridView1.Rows) {
-            //    decimal price = Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-            //    subTotalPrice += price;
-            //    numberofitems += Convert.ToInt32(row.Cells["Quantity"].Value);
-            //}
+            // Calculate shipping (if applicable)
+            decimal shipping = (subTotalPrice / 100) * 10;
+            totalPrice = shipping + subTotalPrice;
+            totalPrice = totalPrice - totalPrice * voucherDiscount / 100;
+            bill.TotalPrice = totalPrice;
 
-            //// Calculate shipping (if applicable)
-            //decimal shipping = (subTotalPrice / 100) * 10;
-            //totalPrice = shipping + subTotalPrice;
-            //totalPrice = totalPrice - totalPrice * voucherDiscount / 100;
-            //bill.TotalPrice = totalPrice;
-
-            // Update the UI with calculated values
-            //lblVoucher.Text = voucherDiscount.ToString() + "%";
-            //lblTotalPrice.Text = totalPrice.ToString();
-            //lblShippingFee.Text = shipping.ToString();
-            //lblSubTotalPrice.Text = subTotalPrice.ToString();
-            //lblNoOfItems.Text = numberofitems.ToString();
-
+            //Update the UI with calculated values
+            lblVoucher.Text = voucherDiscount.ToString() + "%";
+            lblTotalPrice.Text = totalPrice.ToString();
+            lblShippingFee.Text = shipping.ToString();
+            lblSubTotalPrice.Text = subTotalPrice.ToString();
         }
         private void FillBill() {
+            bill.OrderID = order.OrderID;
+            bill.BookedTableID = null;
+            bill.AccID = currentAcc.AccID;
+            bill.VoucherId = string.Empty;
+            bill.Date = DateTime.Now;
+            bill.CustomerAddress = txtAddress.Text;
             bill.CustomerName = txtName.Text;
             bill.CustomerEmail = currentAcc.Email;
+            bill.CustomerPhone = txtPhone.Text;
             if (this.rbtnOnline.Checked) {
                 bill.PaymentMethods = "Online";
             } else bill.PaymentMethods = "Cash";
-            bill.Note = "Order food";
-            bill.CustomerPhone = txtPhone.Text;
-            bill.CustomerAddress = txtAddress.Text;
-            bill.VoucherId = string.Empty;
             bill.Status = "Pending";
-            bill.Date = DateTime.Now;
-            bill.AccID = currentAcc.AccID;
+            bill.Note = txtNote.Text;
+            // bill.TotalPrice is already filled in
+            bill.Type = "Order Product";
         }
         // load every voucher in db to gunaComboBox
         public void loadVoucherIntoComboBox() {
@@ -165,10 +157,9 @@ namespace RestaurantMangement.Forms
             this.Hide();
             //db.CreateBill(bill);
             MessageBox.Show("Done!");
-            //FResMain f = new FResMain();
-            //FResBill f = new FResBill(bill);
-            //f.Closed += (s, args) => this.Close();
-            //f.Show();
+            FResBill f = new FResBill(bill);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
 
         // recalculate the total price
@@ -191,6 +182,14 @@ namespace RestaurantMangement.Forms
             } else {
                 MessageBox.Show("Admin access requirement!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void FResPayment_FormClosing(object sender, FormClosingEventArgs e) {
+            Code.DAO.OrderDAO.instance().deleteOrder(order.OrderID);
+        }
+
+        private void guna2TextBox1_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }

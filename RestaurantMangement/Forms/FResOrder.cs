@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using RestaurantMangement.Code;
+using RestaurantMangement.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,12 +25,8 @@ namespace RestaurantMangement.Forms
         public FResOrder() {
             InitializeComponent();
         }
-        //public FResOrder(Bill bill) {
-        //    InitializeComponent();
-        //    this.bill = bill;
-        //}
 
-        private void btnHome_Click(object sender, EventArgs e) {
+        public void btnHome_Click(object sender, EventArgs e) {
             this.Hide();
             FResMain frm = new FResMain();
             frm.Closed += (s, args) => this.Close();
@@ -38,7 +35,7 @@ namespace RestaurantMangement.Forms
 
         // retrieve data from database
         public void FResOrder_Load(object sender, EventArgs e) {
-            DataTable table = db.Load("SELECT p.ProductID, p.productName, p.description, p.price, c.cateName FROM Product p INNER JOIN category c ON p.cateID = c.cateID");
+            DataTable table = Code.DAO.ProductDAO.loadProductWithCate();
             dataGridView1.DataSource = table;
             if (dataGridView1.Columns.Contains("productName"))
                 dataGridView1.Columns["productName"].HeaderText = "Prduct Name";
@@ -64,7 +61,6 @@ namespace RestaurantMangement.Forms
             subtractButtonColumn.Text = "-";
             subtractButtonColumn.UseColumnTextForButtonValue = true;
             dataGridView2.Columns.Add(subtractButtonColumn);
-
 
             dataGridView1.ColumnHeadersHeight = 30;
         }
@@ -115,7 +111,6 @@ namespace RestaurantMangement.Forms
                 }
             }
         }
-
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             int index = e.RowIndex;
             if (index >= 0 && dataGridView2.Columns[e.ColumnIndex] is DataGridViewButtonColumn) {
@@ -156,8 +151,5 @@ namespace RestaurantMangement.Forms
             f.Show();
         }
 
-        private void dataGridView2_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            
-        }
     }
 }

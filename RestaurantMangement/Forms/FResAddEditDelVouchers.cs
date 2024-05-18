@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using RestaurantMangement.Code;
+using RestaurantMangement.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace RestaurantMangement.Forms {
+namespace RestaurantMangement.Forms
+{
     public partial class FResAddEditDelVouchers : Form {
         DBConnection db = new DBConnection();
         Voucher voucher = new Voucher();
@@ -54,7 +56,7 @@ namespace RestaurantMangement.Forms {
         }
         private bool isValidDiscount() {
             if (decimal.TryParse(txtVoucherDiscount.Text, out discount)) {
-                voucher.Discount = discount;
+                /*voucher.Discount = discount;*/
                 return true;
             } else {
                 MessageBox.Show("Invalid discount number!");

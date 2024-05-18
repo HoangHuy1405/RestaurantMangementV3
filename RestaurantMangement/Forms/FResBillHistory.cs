@@ -1,4 +1,5 @@
 ﻿using RestaurantMangement.Code;
+using RestaurantMangement.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantMangement.Forms {
+namespace RestaurantMangement.Forms
+{
     public partial class FResBillHistory : Form {
         DBConnection db = new DBConnection();
         Account currentAcc = FResLogin.currentAcc;

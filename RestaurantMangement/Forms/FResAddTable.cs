@@ -10,7 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantMangement.Forms {
+namespace RestaurantMangement.Forms
+{
     public partial class FResAddTable : Form {
         DBConnection db = new DBConnection();
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);

@@ -28,7 +28,7 @@ namespace RestaurantMangement.Forms {
 
         }
         private void Initilize() {
-            //lblBIllID.Text = db.getBillIdBasedOnDate(currentAcc.AccId, bill.date);
+            lblBIllID.Text = bill.BillId;
             lblStatusFill.Text = bill.Status;
             lblNameFill.Text = bill.CustomerName;
             lblEmailFill.Text = bill.CustomerEmail;

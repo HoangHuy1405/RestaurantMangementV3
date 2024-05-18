@@ -287,45 +287,37 @@ namespace RestaurantMangement.Code
             return dataTable;
         }
         /* BILL */
-/*        public void CreateBill(Bill bill)
+        public void CreateBill(Bill bill)
         {
             using (var connection = new SqlConnection(Properties.Settings.Default.connStr))
             {
                 connection.Open();
 
-                // PROCEDURE CreateBill created in database in procedure.sql
-                var command = new SqlCommand("CreateBill", connection);
+                string query = "INSERT INTO Bill " +
+                               "(orderID, bookID, accID, voucherID, date, customerAddress, customerName, " +
+                               "customerEmail, paymentsMethods, status, note, totalPrice, type)" +
+                               "VALUES " +
+                               "(@OrderID,@BookId,@AccID,@VoucherID,@Date,@customerAddress,@CustomerName, " +
+                               "@CustomerEmail,@PaymentMethod,@Status,@Note,@TotalPrice,@Type";
+
+                var command = new SqlCommand(query, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 // Add parameters
+                command.Parameters.AddWithValue("@OrderID", string.IsNullOrEmpty(bill.OrderID) ? DBNull.Value : bill.OrderID);
+                command.Parameters.AddWithValue("@BookId", string.IsNullOrEmpty(bill.BookedTableID) ? DBNull.Value : bill.BookedTableID);
+                command.Parameters.AddWithValue("@AccID", bill.AccID);
+                command.Parameters.AddWithValue("@VoucherID", string.IsNullOrEmpty(bill.VoucherId) ? DBNull.Value : bill.VoucherId);
                 command.Parameters.AddWithValue("@Date", bill.Date);
-                command.Parameters.AddWithValue("@Address", bill.CustomerAddress);
+                command.Parameters.AddWithValue("@customerAddress", bill.CustomerAddress);
                 command.Parameters.AddWithValue("@CustomerName", bill.CustomerName);
                 command.Parameters.AddWithValue("@CustomerEmail", bill.CustomerEmail);
                 command.Parameters.AddWithValue("@CustomerPhone", bill.CustomerPhone);
                 command.Parameters.AddWithValue("@PaymentMethod", bill.PaymentMethods); // Changed parameter name to match the stored procedure
-                command.Parameters.AddWithValue("@Note", bill.Note);
                 command.Parameters.AddWithValue("@Status", bill.Status);
+                command.Parameters.AddWithValue("@Note", bill.Note);
                 command.Parameters.AddWithValue("@TotalPrice", bill.TotalPrice);
-                command.Parameters.AddWithValue("@AccID", bill.AccId);
-                command.Parameters.AddWithValue("@VoucherID", string.IsNullOrEmpty(bill.VoucherId) ? DBNull.Value : bill.VoucherId);
-
-                // Output parameter for BillID
-                command.Parameters.Add("@BillID", SqlDbType.VarChar, 10).Direction = ParameterDirection.Output;
-
-                // Parameter for BookedProducts using DataTable
-                var bookedProductsTable = new DataTable();
-                bookedProductsTable.Columns.Add("productID", typeof(string));
-                bookedProductsTable.Columns.Add("quantity", typeof(int));
-
-                foreach (var bookedProduct in bill.bookedProducts)
-                {
-                    bookedProductsTable.Rows.Add(bookedProduct.ProductId, bookedProduct.Quantity);
-                }
-
-                var parameter = command.Parameters.AddWithValue("@BookedProducts", bookedProductsTable);
-                parameter.SqlDbType = SqlDbType.Structured;
-                parameter.TypeName = "dbo.BookedProductType";
+                command.Parameters.AddWithValue("@Type", bill.Type);
 
                 // Execute the command
                 command.ExecuteNonQuery();
@@ -334,7 +326,7 @@ namespace RestaurantMangement.Code
                 string billID = command.Parameters["@BillID"].Value.ToString();
                 Console.WriteLine("Created bill with ID: " + billID);
             }
-        }*/
+        }
 
         // not work yet
         public string getBillIdBasedOnDate(string accID, DateTime date)

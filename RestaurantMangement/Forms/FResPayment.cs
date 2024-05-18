@@ -115,7 +115,7 @@ namespace RestaurantMangement.Forms
         }
         private void FillBill() {
             bill.OrderID = order.OrderID;
-            bill.BookedTableID = null;
+            bill.BookedTableID = "";
             bill.AccID = currentAcc.AccID;
             bill.VoucherId = string.Empty;
             bill.Date = DateTime.Now;
@@ -155,7 +155,8 @@ namespace RestaurantMangement.Forms
                 bill.VoucherId = cbVouchers.SelectedItem.ToString();
             }
             this.Hide();
-            //db.CreateBill(bill);
+            string billID = Code.DAO.BillDAO.instance().CreateBill(bill);
+            bill.BillId = billID;
             MessageBox.Show("Done!");
             FResBill f = new FResBill(bill);
             f.Closed += (s, args) => this.Close();
@@ -185,7 +186,9 @@ namespace RestaurantMangement.Forms
         }
 
         private void FResPayment_FormClosing(object sender, FormClosingEventArgs e) {
-            Code.DAO.OrderDAO.instance().deleteOrder(order.OrderID);
+            if (e.CloseReason == CloseReason.UserClosing) {
+                //Code.DAO.OrderDAO.instance().deleteOrder(order.OrderID);
+            }
         }
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e) {

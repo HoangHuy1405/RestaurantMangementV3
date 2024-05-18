@@ -50,6 +50,8 @@
             lblPaymentFill = new Label();
             label11 = new Label();
             dataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            label2 = new Label();
+            lblBIllID = new Label();
             guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -345,11 +347,37 @@
             dataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 13.2F);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(23, 101);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 30);
+            label2.TabIndex = 23;
+            label2.Text = "Bill ID: ";
+            // 
+            // lblBIllID
+            // 
+            lblBIllID.AutoSize = true;
+            lblBIllID.BackColor = Color.Transparent;
+            lblBIllID.Font = new Font("Segoe UI", 13.2F);
+            lblBIllID.ForeColor = Color.Black;
+            lblBIllID.Location = new Point(229, 101);
+            lblBIllID.Name = "lblBIllID";
+            lblBIllID.Size = new Size(62, 30);
+            lblBIllID.TabIndex = 24;
+            lblBIllID.Text = "BillID";
+            // 
             // FResBill
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1065, 595);
+            Controls.Add(lblBIllID);
+            Controls.Add(label2);
             Controls.Add(dataGridView1);
             Controls.Add(lblPaymentFill);
             Controls.Add(label11);
@@ -401,5 +429,7 @@
         private Label label11;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView1;
         private Guna.UI2.WinForms.Guna2Button btnHome;
+        private Label label2;
+        private Label lblBIllID;
     }
 }

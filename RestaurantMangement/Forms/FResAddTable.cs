@@ -31,6 +31,7 @@ namespace RestaurantMangement.Forms
                 }
             }
         }
+
         private void FResAddTable_Load(object sender, EventArgs e)
         {
             //show dgvRoom
@@ -57,8 +58,8 @@ namespace RestaurantMangement.Forms
             //show roomBox information
             roomBox.Items.Clear();
             loadintoRoomBox();
-
         }
+
         private void dgvRoom_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtTableID.Text = null;
@@ -79,21 +80,51 @@ namespace RestaurantMangement.Forms
                 dgvTable.DataSource = Code.DAO.TableDAO.instance().loadTablebyRoom(roomID);
             }
         }
+
+        private bool isFull(string roomID)
+        {
+            bool result = false;
+
+            string query = "Select * " +
+               "from Room " +
+               "where roomID = '" + roomID + "'";
+
+            Room room = Code.DAO.RoomDAO.instance().selectByConditon(query);
+            int current_table = Code.DAO.TableDAO.instance().getCurrentTable(roomID);
+
+            if (current_table >= room.MaxTable)
+            {
+                result = true;
+            }
+            return result;
+        }
+        
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
             int numchairs = Convert.ToInt32(txtNumberOfChair.Text);
             string roomID = roomBox.Text.ToString();
-            Table table = new Table(numchairs, roomID);
 
-            if (Code.DAO.TableDAO.instance().insert(table) != 0)
+            if (!isFull(roomID))
             {
-                MessageBox.Show("Success.");
-                FResAddTable_Load(sender, e);
+                Table table = new Table(numchairs, roomID);
+                if (Code.DAO.TableDAO.instance().insert(table) != 0)
+                {
+                    MessageBox.Show("Success.");
+                    FResAddTable_Load(sender, e);
+                    dgvTable.DataSource = Code.DAO.TableDAO.instance().loadTablebyRoom(roomID);
+
+                }
+                else
+                {
+                    MessageBox.Show("Fail.");
+                }
             }
             else
             {
-                MessageBox.Show("Fail.");
+                MessageBox.Show("This room is full");
             }
+            
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -102,17 +133,27 @@ namespace RestaurantMangement.Forms
             int numchairs = Convert.ToInt32(txtNumberOfChair.Text);
             string roomID = roomBox.Text.ToString();
 
-            Table table = new Table(tableID, numchairs, roomID);
-
-            if (Code.DAO.TableDAO.instance().update(table) != 0)
+            if (!isFull(roomID)) 
             {
-                MessageBox.Show("Success.");
-                FResAddTable_Load(sender, e);
+                Table table = new Table(tableID, numchairs, roomID);
+
+                if (Code.DAO.TableDAO.instance().update(table) != 0)
+                {
+                    MessageBox.Show("Success.");
+                    FResAddTable_Load(sender, e);
+                    dgvTable.DataSource = Code.DAO.TableDAO.instance().loadTablebyRoom(roomID);
+                }
+                else
+                {
+                    MessageBox.Show("Fail.");
+                }
             }
             else
             {
-                MessageBox.Show("Fail.");
+                MessageBox.Show("The room you choose is full.");
             }
+
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -127,6 +168,7 @@ namespace RestaurantMangement.Forms
             {
                 MessageBox.Show("Success.");
                 FResAddTable_Load(sender, e);
+                dgvTable.DataSource = Code.DAO.TableDAO.instance().loadTablebyRoom(roomID);
             }
             else
             {

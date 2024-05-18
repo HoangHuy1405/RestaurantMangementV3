@@ -130,5 +130,35 @@ namespace RestaurantMangement.Code.DAO
             }
             return dataTable;
         }
+
+        public int getCurrentTable(string roomID)
+        {
+            int result = 0;
+            try
+            {
+                conn.Open();
+                string query = "Select [Current Table] " +
+                               "from (" +
+
+
+                                    "Select t.roomID, COUNT(t.tableID) [Current Table] " +
+                                    "from [Table] t " +
+                                    "group by t.roomID) t " +
+                               "where roomID = '" + roomID + "'";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                result = (int)cmd.ExecuteScalar();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Code.Connection.DBConnection.closeConnection(conn);
+            }
+            return result;
+        }   
     }
 }

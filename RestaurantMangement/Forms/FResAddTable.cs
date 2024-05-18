@@ -55,6 +55,7 @@ namespace RestaurantMangement.Forms
             dgvTable.ColumnHeadersHeight = 30;
 
             //show roomBox information
+            roomBox.Items.Clear();
             loadintoRoomBox();
 
         }
@@ -87,6 +88,7 @@ namespace RestaurantMangement.Forms
             if (Code.DAO.TableDAO.instance().insert(table) != 0)
             {
                 MessageBox.Show("Success.");
+                FResAddTable_Load(sender, e);
             }
             else
             {
@@ -124,6 +126,7 @@ namespace RestaurantMangement.Forms
             if (Code.DAO.TableDAO.instance().delete(table) != 0)
             {
                 MessageBox.Show("Success.");
+                FResAddTable_Load(sender, e);
             }
             else
             {
@@ -148,7 +151,10 @@ namespace RestaurantMangement.Forms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            FResBookingTable frm = new FResBookingTable();
+            frm.Closed += (s, args) => this.Close();
+            frm.Show();
         }
 
         private void roomBox_SelectedIndexChanged(object sender, EventArgs e)

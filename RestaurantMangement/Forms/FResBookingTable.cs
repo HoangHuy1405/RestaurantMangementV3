@@ -35,10 +35,7 @@ namespace RestaurantMangement.Forms {
         }
 
         private void btnChooseTable_Click(object sender, EventArgs e) {
-            this.Hide();
-            FChooseTable frm = new FChooseTable();
-            frm.Closed += (s, args) => this.Close();
-            frm.Show();
+            
         }
         private void fillBill()
         {

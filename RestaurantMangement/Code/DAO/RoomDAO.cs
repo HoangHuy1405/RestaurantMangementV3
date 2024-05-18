@@ -13,6 +13,8 @@ namespace RestaurantMangement.Code.DAO
 {
     public class RoomDAO : DAOInterface<Room>
     {
+        SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
+
         public static RoomDAO instance()
         {
             return new RoomDAO();
@@ -40,7 +42,6 @@ namespace RestaurantMangement.Code.DAO
         public Room selectByConditon(string query)
         {
             Room room = null;
-            SqlConnection conn = Code.Connection.DBConnection.getConnection();
 
             try
             {
@@ -80,11 +81,9 @@ namespace RestaurantMangement.Code.DAO
         public DataTable loadRoom()
         {
             DataTable dataTable = new DataTable();
-            SqlConnection conn = null;
 
             try
             {
-                conn = Code.Connection.DBConnection.getConnection();
                 conn.Open();
                 string query = "Select r.roomID, r.type, r.pricePerTable, t.[Current Table], r.maxTable " +
                                "from " +
@@ -116,7 +115,6 @@ namespace RestaurantMangement.Code.DAO
         public DataTable getAllRoomID() 
         {
             DataTable table = new DataTable();
-            SqlConnection conn = Code.Connection.DBConnection.getConnection();
 
             try
             {

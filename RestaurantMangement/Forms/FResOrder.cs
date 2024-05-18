@@ -100,17 +100,17 @@ namespace RestaurantMangement.Forms
                         break;
                     }
                 }
-                /*if (isAdded) {
+                if (isAdded) {
                     MessageBox.Show("This food is already in the food cart.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } else {
                     OrderDetail orderDetail = new OrderDetail(productId, productName, 1, price);
                     order.OrderList.Add(orderDetail);
                     dataGridView2.Rows.Add(productName, 1);
-                }*/
+                }
             }
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            /*int index = e.RowIndex;
+            int index = e.RowIndex;
             if (index >= 0 && dataGridView2.Columns[e.ColumnIndex] is DataGridViewButtonColumn) {
                 if (dataGridView2.Columns[e.ColumnIndex].HeaderText == "+") {
                     // Increment quantity by 1
@@ -138,7 +138,7 @@ namespace RestaurantMangement.Forms
                 // Disable the button temporarily
                 dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
                 dataGridView2.BeginEdit(true);
-            }*/
+            }
         }
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
             // Enable the button after the edit is complete

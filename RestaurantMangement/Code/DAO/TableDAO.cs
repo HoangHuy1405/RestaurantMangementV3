@@ -12,6 +12,7 @@ namespace RestaurantMangement.Code.DAO
 {
     public class TableDAO : DAOInterface<Table>
     {
+        SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         public static TableDAO instance()
         {
             return new TableDAO();
@@ -20,7 +21,6 @@ namespace RestaurantMangement.Code.DAO
         public int delete(Table table)
         {
             int result = 0;
-            SqlConnection conn = Code.Connection.DBConnection.getConnection();
             try
             {   
                 conn.Open();
@@ -48,7 +48,6 @@ namespace RestaurantMangement.Code.DAO
         public int insert(Table table)
         {
             int result = 0;
-            SqlConnection conn = Code.Connection.DBConnection.getConnection();
             try
             {   
                 conn.Open();
@@ -82,7 +81,6 @@ namespace RestaurantMangement.Code.DAO
         public int update(Table table)
         {
             int result = 0;
-            SqlConnection conn = Code.Connection.DBConnection.getConnection();
             try
             {
                 conn.Open();
@@ -108,11 +106,9 @@ namespace RestaurantMangement.Code.DAO
         public DataTable loadTablebyRoom(string roomID)
         {
             DataTable dataTable = new DataTable();
-            SqlConnection conn = null;
 
             try
             {
-                conn = Code.Connection.DBConnection.getConnection();
                 conn.Open();
                 string query = "Select * " +
                                "from [Table] " +

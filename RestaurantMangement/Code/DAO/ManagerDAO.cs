@@ -13,7 +13,7 @@ namespace RestaurantMangement.Code.DAO
     {
         public static bool isManager(Account account)
         {
-            SqlConnection conn = Code.Connection.DBConnection.getConnection();
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
             string query = "Select mID from Manager " +
                            "where accID = '" + account.AccID + "'";
             try
@@ -25,12 +25,12 @@ namespace RestaurantMangement.Code.DAO
                 if (string.IsNullOrEmpty(mId) ) 
                 {
                     MessageBox.Show("Login as customer");
-                    return true;
+                    return false;
                 }
                 else
                 {
                     MessageBox.Show("Login as admin");
-                    return false;
+                    return true;
                 }
 
             }

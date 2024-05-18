@@ -16,7 +16,8 @@ namespace RestaurantMangement.Code.DAO
 {   
     public class AccountDAO : DAOInterface<Account>
     {
-        SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=RMv7;Integrated Security=True; User ID = sa; Password = 123");
+        // DAO - database access object
+        SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         public static AccountDAO instance() {
             return new AccountDAO();
         }
@@ -69,10 +70,8 @@ namespace RestaurantMangement.Code.DAO
 
         public Account findbyUsernamePassword(Account account)
         {
-            SqlConnection conn = Code.Connection.DBConnection.getConnection();
             string query = "Select * from Account " +
                            "where username = '" + account.Username + "' and password ='" + account.Password + "'";
-            MessageBox.Show(query);
             try
             {   
                 conn.Open();
@@ -107,7 +106,6 @@ namespace RestaurantMangement.Code.DAO
             }
             return null;
         }
-
         public bool CreateNewAccount(Account account)
         {
             if (checkUsernameExisted(account.Username) == true)

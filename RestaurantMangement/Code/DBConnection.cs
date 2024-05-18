@@ -140,7 +140,11 @@ namespace RestaurantMangement.Code
             {
                 conn.Open();
                 // PROCEDURE InsertProductWithCategory (in database)
-                using (SqlCommand command = new SqlCommand("InsertProductWithCategory", conn))
+                string sqlQuery = "DECLARE @cateID VARCHAR(4) " +
+                                  "SELECT @cateID = cateID FROM category WHERE cateName = @cateName " +
+                                  "INSERT INTO product (ProductName, description, price, cateID) " +
+                                  "VALUES (@productName, @description, @price, @cateID)";
+                using (SqlCommand command = new SqlCommand("sqlQuery", conn))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     // Parameters

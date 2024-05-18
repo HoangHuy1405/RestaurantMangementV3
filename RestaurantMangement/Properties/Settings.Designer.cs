@@ -27,7 +27,7 @@ namespace RestaurantMangement.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=Ak13\\SQLEXPRESS;Initial Catalog=RM;Persist Security Info=True;User ID" +
-            "=sa;")]
+            "=sa;Password = 123;")]
         public string connStr {
             get {
                 return ((string)(this["connStr"]));

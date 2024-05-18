@@ -48,7 +48,7 @@ namespace RestaurantMangement.Forms
         }
         private void fillBill()
         {
-            bill.CustomerName = txtName.Text;
+            /*bill.CustomerName = txtName.Text;
             bill.CustomerEmail = currentAcc.Email;
             bill.PaymentMethods = "Online";
             bill.Note = txtNote.Text;
@@ -57,7 +57,7 @@ namespace RestaurantMangement.Forms
             bill.VoucherId = string.Empty;
             bill.Status = "Pending";
             bill.Date = DateTime.Now;
-            bill.AccId = currentAcc.AccId;
+            bill.AccId = currentAcc.AccId;*/
         }
 
         private void btnBook_Click(object sender, EventArgs e)

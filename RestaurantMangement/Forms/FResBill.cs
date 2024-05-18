@@ -70,7 +70,7 @@ namespace RestaurantMangement.Forms
             dataGridView1.Columns.Add(columnDishOrDrinkTotalPrice);
 
             // Fill gvFood with booked dish and drink data
-            foreach (BookedProduct bookedProduct in bill.bookedProducts) {
+            /*foreach (BookedProduct bookedProduct in bill.bookedProducts) {
                 // Create a new row for the DataGridView
                 DataGridViewRow newRow = new DataGridViewRow();
 
@@ -82,7 +82,7 @@ namespace RestaurantMangement.Forms
 
                 // Add the new row to the DataGridView
                 dataGridView1.Rows.Add(newRow);
-            }
+            }*/
 
             dataGridView1.ColumnHeadersHeight = 30;
         }

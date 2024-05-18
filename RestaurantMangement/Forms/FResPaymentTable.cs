@@ -39,12 +39,12 @@ namespace RestaurantMangement.Forms
         }
 
         private void btnConfirm_Click(object sender, EventArgs e) {
-            db.CreateBill(bill);
+            /*db.CreateBill(bill);
             db.InsertDataIntoAccBookTable(bookedTable);
             this.Hide();
             FResBill frm = new FResBill(bill);
             frm.Closed += (s, args) => this.Close();
-            frm.Show();
+            frm.Show();*/
         }
 
         

@@ -13,9 +13,7 @@ namespace RestaurantMangement.Code.DAO
         public int update(T t);
         public int delete(T t);
         public T find(T t);
-
-        /*public List<T> selectAll();*/
-        
+        public List<T> selectAll();
         public T selectByConditon(string condition);
 
     }

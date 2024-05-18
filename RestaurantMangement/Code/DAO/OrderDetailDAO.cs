@@ -24,6 +24,11 @@ namespace RestaurantMangement.Code.DAO
             throw new NotImplementedException();
         }
 
+        public List<OrderDetail> selectAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public OrderDetail selectByConditon(string condition)
         {
             throw new NotImplementedException();

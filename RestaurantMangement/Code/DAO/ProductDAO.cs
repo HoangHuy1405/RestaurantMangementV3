@@ -17,8 +17,8 @@ namespace RestaurantMangement.Code.DAO
 
             try
             {
-                conn = Code.Connection.DBConnection.openConnection();
-
+                conn = Code.Connection.DBConnection.getConnection();
+                conn.Open();
                 string query = "SELECT p.ProductID, p.productName, p.description, p.price, c.cateName " +
                                "FROM Product p " +
                                "INNER JOIN category c ON p.cateID = c.cateID";

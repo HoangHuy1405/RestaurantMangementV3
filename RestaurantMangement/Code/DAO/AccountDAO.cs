@@ -32,12 +32,14 @@ namespace RestaurantMangement.Code.DAO
         public int insert(Account account)
         {
             int result = 0;
-            SqlConnection conn = Code.Connection.DBConnection.openConnection();
+            SqlConnection conn = Code.Connection.DBConnection.getConnection();
             try
             {
+                conn.Open();
                 string query = "Insert into Account " +
                                "(username, password, fullname, email, phoneNum, balance) " +
-                               "values '" + account.Username + "', '" + account.Password + "', '" + account.Fullname + "', '" + account.Email + "', '" + account.PhoneNum + "', '" + account.Balance + "')"; 
+                               "values ('" + account.Username + "', '" + account.Password + "', '" + account.Fullname + "', '" + account.Email + "', '" + account.PhoneNum + "', '" + account.Balance + "')"; 
+                MessageBox.Show(query);
                 SqlCommand cmd = new SqlCommand(query, conn);
                 result = cmd.ExecuteNonQuery();
             }
@@ -64,25 +66,31 @@ namespace RestaurantMangement.Code.DAO
 
         public Account findbyUsernamePassword(Account account)
         {
-            SqlConnection conn = Code.Connection.DBConnection.openConnection();
-            string query = "Select * from Account" +
-                           "where username = '" + account.Username + "' and '" + account.Password + "'";
+            SqlConnection conn = Code.Connection.DBConnection.getConnection();
+            string query = "Select * from Account " +
+                           "where username = '" + account.Username + "' and password ='" + account.Password + "'";
+            MessageBox.Show(query);
             try
-            {
+            {   
+                conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    string accID = reader.GetString(0);
-                    string username = reader.GetString(1);
-                    string password = reader.GetString(2);
-                    string fullName = reader.GetString(3);
-                    string email = reader.GetString(4);
-                    string phoneNum = reader.GetString(5);
-                    decimal balance = reader.GetDecimal(6);
+                    if (reader.Read()) 
+                    {
+                        string accID = reader.GetString(0);
+                        string username = reader.GetString(1);
+                        string password = reader.GetString(2);
+                        string fullName = reader.GetString(3);
+                        string email = reader.GetString(4);
+                        string phoneNum = reader.GetString(5);
+                        decimal balance = reader.GetDecimal(6);
 
-                    account = new Account(accID, username, password, fullName, email, phoneNum, balance);
-                    return account;
+                        account = new Account(accID, username, password, fullName, email, phoneNum, balance);
+                        return account;
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -113,23 +121,28 @@ namespace RestaurantMangement.Code.DAO
         public Account selectByConditon(string query)
         {   
             Account account = null;
-            SqlConnection conn = Code.Connection.DBConnection.openConnection();
+            SqlConnection conn = Code.Connection.DBConnection.getConnection();
             try
             {
+                conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
-                {
-                    string accID = reader.GetString(0);
-                    string username = reader.GetString(1);
-                    string password = reader.GetString(2);
-                    string fullName = reader.GetString(3);
-                    string email = reader.GetString(4);
-                    string phoneNum = reader.GetString(5);
-                    float balance = reader.GetFloat(6);
+                {   
+                    if (reader.Read()) 
+                    {
+                        string accID = reader.GetString(0);
+                        string username = reader.GetString(1);
+                        string password = reader.GetString(2);
+                        string fullName = reader.GetString(3);
+                        string email = reader.GetString(4);
+                        string phoneNum = reader.GetString(5);
+                        decimal balance = reader.GetDecimal(6);
 
-                    account = new Account(accID, username, password, fullName, email, phoneNum, balance);
-                    return account;
+                        account = new Account(accID, username, password, fullName, email, phoneNum, balance);
+                        return account;
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -145,7 +158,7 @@ namespace RestaurantMangement.Code.DAO
 
         private bool checkUsernameExisted(string username) 
         {
-            string query = "Select * from Account" +
+            string query = "Select * from Account " +
                            "where username = '" + username + "'";
 
             Account acc = selectByConditon(query);

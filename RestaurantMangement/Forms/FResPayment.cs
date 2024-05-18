@@ -30,9 +30,9 @@ namespace RestaurantMangement.Forms
             calculateTheTotalPrice();
         }
         private void FResPayment_Load(object sender, EventArgs e) {
-            lblBuyerName.Text = currentAcc.FullName;
+            /*lblBuyerName.Text = currentAcc.FullName;
             definingBookedProduct();
-            //calculateTheTotalPrice();
+            //calculateTheTotalPrice();*/
         }
         private void definingBookedProduct() {
             // Clear existing rows and columns
@@ -64,7 +64,7 @@ namespace RestaurantMangement.Forms
             dataGridView1.ColumnHeadersHeight = 30;
 
             // Fill gridview with booked product data from bill
-            foreach (BookedProduct bookedProduct in bill.bookedProducts) {
+            /*foreach (BookedProduct bookedProduct in bill.bookedProducts) {
                 // Create a new row for the DataGridView
                 DataGridViewRow newRow = new DataGridViewRow();
 
@@ -76,7 +76,7 @@ namespace RestaurantMangement.Forms
 
                 // Add the new row to the DataGridView
                 dataGridView1.Rows.Add(newRow);
-            }
+            }*/
         }
 
         private void btnHome_Click(object sender, EventArgs e) {
@@ -122,7 +122,7 @@ namespace RestaurantMangement.Forms
 
         }
         private void FillBill() {
-            bill.CustomerName = txtName.Text;
+            /*bill.CustomerName = txtName.Text;
             bill.CustomerEmail = currentAcc.Email;
             if (this.rbtnOnline.Checked) {
                 bill.PaymentMethods = "Online";
@@ -133,7 +133,7 @@ namespace RestaurantMangement.Forms
             bill.VoucherId = string.Empty;
             bill.Status = "Pending";
             bill.Date = DateTime.Now;
-            bill.AccId = currentAcc.AccId;
+            bill.AccId = currentAcc.AccId;*/
         }
         // load every voucher in db to gunaComboBox
         public void loadVoucherIntoComboBox() {
@@ -159,7 +159,7 @@ namespace RestaurantMangement.Forms
                 bill.VoucherId = cbVouchers.SelectedItem.ToString();
             }
             this.Hide();
-            db.CreateBill(bill);
+            /*db.CreateBill(bill);*/
             MessageBox.Show("Done!");
             //FResMain f = new FResMain();
             FResBill f = new FResBill(bill);

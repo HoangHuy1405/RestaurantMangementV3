@@ -26,7 +26,7 @@ namespace RestaurantMangement.Forms
         }
 
         private void FResBillHistory_Load(object sender, EventArgs e) {
-            lblName.Text = currentAcc.FullName;
+            /*blName.Text = currentAcc.FullName;
             if(FResLogin.isAdmin) {
                 // if you are a manager => you are allowed to see all bill history
                 gvBillHistory.DataSource = db.GetAllBillHistory();
@@ -34,7 +34,7 @@ namespace RestaurantMangement.Forms
                 gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccId);
             }
             
-            gvBillHistory.ColumnHeadersHeight = 30;
+            gvBillHistory.ColumnHeadersHeight = 30;*/
         }
 
         private void lblName_Click(object sender, EventArgs e) {

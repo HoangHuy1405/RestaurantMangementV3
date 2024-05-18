@@ -13,13 +13,14 @@ namespace RestaurantMangement.Code.DAO
     {
         public static bool isManager(Account account)
         {
-            SqlConnection conn = Code.Connection.DBConnection.openConnection();
-            string query = "Select mID from Manager" +
+            SqlConnection conn = Code.Connection.DBConnection.getConnection();
+            string query = "Select mID from Manager " +
                            "where accID = '" + account.AccID + "'";
             try
             {
+                conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
-                string mId = cmd.ExecuteScalar().ToString();
+                string mId = (string)cmd.ExecuteScalar();
 
                 if(string.IsNullOrEmpty(mId) ) 
                 {

@@ -28,9 +28,9 @@ namespace RestaurantMangement.Forms {
             lblName.Text = currentAcc.Fullname;
             if (FResLogin.isAdmin) {
                 // if you are a manager => you are allowed to see all bill history
-                gvBillHistory.DataSource = db.GetAllBillHistory();
+                gvBillHistory.DataSource = Code.DAO.BillDAO.instance().GetAllBillHistory();
             } else {
-                gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccID);
+                gvBillHistory.DataSource = Code.DAO.BillDAO.instance().GetBillHistoryFromDBOfThatAccount(currentAcc.AccID);
             }
 
             gvBillHistory.ColumnHeadersHeight = 30;

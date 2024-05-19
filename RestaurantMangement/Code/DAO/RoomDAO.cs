@@ -21,21 +21,6 @@ namespace RestaurantMangement.Code.DAO
             return new RoomDAO();
         }
 
-        public Room find(Room t)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int insert(Room t)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Room> selectAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public Room selectByConditon(string query)
         {
             Room room = null;

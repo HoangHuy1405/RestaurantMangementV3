@@ -58,7 +58,7 @@ namespace RestaurantMangement.Forms
                 return;
             }
 
-            Account acc = new Account(txtUser.Text, txtPass.Text, txtName.Text, txtEmail.Text, txtPhonenum.Text, 200);
+            Account acc = new Account(txtUser.Text, txtPass.Text, txtName.Text, txtEmail.Text, txtPhonenum.Text, 2000);
             if (Code.DAO.AccountDAO.instance().CreateNewAccount(acc))
             {
                 MessageBox.Show("Account has been created successfully.", "Signup", MessageBoxButtons.OK);

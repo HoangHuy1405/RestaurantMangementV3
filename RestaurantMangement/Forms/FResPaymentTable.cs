@@ -42,6 +42,7 @@ namespace RestaurantMangement.Forms
 
         private void btnConfirm_Click(object sender, EventArgs e) {
             string billID = Code.DAO.BillDAO.instance().CreateBill(bill);
+            bill.BillId = billID;
             this.Hide();
             FResBill frm = new FResBill(bill);
             frm.Closed += (s, args) => this.Close();

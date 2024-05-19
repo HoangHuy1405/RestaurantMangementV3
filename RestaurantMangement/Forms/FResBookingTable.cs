@@ -45,7 +45,7 @@ namespace RestaurantMangement.Forms
             DateTime timeBegin = calculateDateTime(dtBookingDate.Value.Date, cbBeginHour.SelectedItem, cbBeginMinutes.SelectedItem);
             DateTime timeEnd = calculateDateTime(dtBookingDate.Value.Date, cbEndHour.SelectedItem, cbEndMinutes.SelectedItem);
 
-            decimal totalPrice = (int)NumQuantity.Value * pricePerTable;
+            decimal totalPrice = pricePerTable;
             Booking booking = new Booking(totalPrice,accID,timeBegin,timeEnd,tableID);
 
             string bookingID = Code.DAO.BookingDAO.instance().insert(booking);

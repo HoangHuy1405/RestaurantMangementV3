@@ -22,16 +22,6 @@ namespace RestaurantMangement.Code.DAO
             return new AccountDAO();
         }
 
-        public Account find(Account t)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int delete(Account account)
-        {
-            throw new NotImplementedException();
-        }
-
         public int insert(Account account)
         {
             int result = 0;

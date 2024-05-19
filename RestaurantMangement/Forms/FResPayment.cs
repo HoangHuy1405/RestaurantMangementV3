@@ -137,15 +137,9 @@ namespace RestaurantMangement.Forms
                 foreach (DataRow dataRow in vouchers.Rows) {
                     cbVouchers.Items.Add(dataRow["voucherID"].ToString());
                 }
+
+                cbVouchers.Items.Add(string.Empty);
             }
-        }
-
-
-        private void label2_Click(object sender, EventArgs e) {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e) {
 
         }
 

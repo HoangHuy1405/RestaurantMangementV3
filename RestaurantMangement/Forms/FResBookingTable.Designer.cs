@@ -219,7 +219,7 @@
             // 
             // cbRoomType
             // 
-            cbRoomType.AllowDrop = false;
+            cbRoomType.AllowDrop = true;
             cbRoomType.BackColor = Color.Transparent;
             cbRoomType.CustomizableEdges = customizableEdges10;
             cbRoomType.DrawMode = DrawMode.OwnerDrawFixed;
@@ -240,7 +240,7 @@
             // 
             // cbEndMinutes
             // 
-            cbEndMinutes.AllowDrop = false;
+            cbEndMinutes.AllowDrop = true;
             cbEndMinutes.BackColor = Color.Transparent;
             cbEndMinutes.CustomizableEdges = customizableEdges12;
             cbEndMinutes.DrawMode = DrawMode.OwnerDrawFixed;
@@ -272,7 +272,7 @@
             // 
             // cbEndHour
             // 
-            cbEndHour.AllowDrop = false;
+            cbEndHour.AllowDrop = true;
             cbEndHour.BackColor = Color.Transparent;
             cbEndHour.CustomizableEdges = customizableEdges14;
             cbEndHour.DrawMode = DrawMode.OwnerDrawFixed;

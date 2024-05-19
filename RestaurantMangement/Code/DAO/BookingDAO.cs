@@ -1,6 +1,7 @@
 ﻿using RestaurantMangement.Code.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace RestaurantMangement.Code.DAO
 {
     public class BookingDAO
     {
-        private static SqlConnection conn = Code.Connection.DBConnection.getConnection();
+        private static SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         public static BookingDAO instance()
         {
             return new BookingDAO();
@@ -48,5 +49,30 @@ namespace RestaurantMangement.Code.DAO
             return bookingID;
         }
 
+        public DataTable loadBookingInfor(string bookingID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                conn.Open();
+                string query = "select t.tableID, t.roomID, b.timeBegin, b.timeEnd " +
+                               "from Booking b join [Table] t " +
+                               "on b.tableID = t.tableID " +
+                               "where b.bookID = '" + bookingID + "'";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return dt;
+        }
     }
 }

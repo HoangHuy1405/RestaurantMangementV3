@@ -347,7 +347,6 @@
             label2.Size = new Size(184, 31);
             label2.TabIndex = 0;
             label2.Text = "Your information";
-            label2.Click += label2_Click;
             // 
             // guna2Panel4
             // 

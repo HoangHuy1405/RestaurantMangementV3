@@ -6,7 +6,7 @@ namespace RestaurantMangement.Code
     {
 
         public static Account currentAcc = new Account();
-
+        [STAThread]
         static void Main()
         {
             ApplicationConfiguration.Initialize();

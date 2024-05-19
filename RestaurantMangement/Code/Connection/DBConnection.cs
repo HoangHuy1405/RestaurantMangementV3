@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace RestaurantMangement.Code.Connection
 {
     public static class DBConnection
-    {
+    {   
         private static string connectionUrl = Properties.Settings.Default.connStr;
 
         public static SqlConnection getConnection()

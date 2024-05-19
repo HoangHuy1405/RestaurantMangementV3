@@ -12,6 +12,7 @@ namespace RestaurantMangement.Code.Model
         private int numchair;
         private string roomID;
 
+        public Table() { }
         public Table(string tableID, int numchair, string roomID)
         {
             this.tableID = tableID;

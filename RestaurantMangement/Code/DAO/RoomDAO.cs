@@ -8,20 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Principal;
 using System.Collections;
+using System.Diagnostics;
 
 namespace RestaurantMangement.Code.DAO
 {
-    public class RoomDAO : DAOInterface<Room>
+    public class RoomDAO
     {
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
 
         public static RoomDAO instance()
         {
             return new RoomDAO();
-        }
-        public int delete(Room t)
-        {
-            throw new NotImplementedException();
         }
 
         public Room find(Room t)
@@ -70,9 +67,7 @@ namespace RestaurantMangement.Code.DAO
                 Code.Connection.DBConnection.closeConnection(conn);
             }
             return room;
-
         }
-
         public int update(Room t)
         {
             throw new NotImplementedException();
@@ -81,7 +76,6 @@ namespace RestaurantMangement.Code.DAO
         public DataTable loadRoom()
         {
             DataTable dataTable = new DataTable();
-
             try
             {
                 conn.Open();
@@ -138,6 +132,51 @@ namespace RestaurantMangement.Code.DAO
             }
 
             return table;
+        }
+
+        public decimal getpricePerTable(string roomID)
+        {
+            decimal price = 0;
+            try
+            {
+                conn.Open();
+                string query = "Select pricePerTable " +
+                               "from Room " +
+                               "where roomID = '" + roomID + "'";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                price = (decimal)cmd.ExecuteScalar();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return price;
+        }
+        
+        public string getroomType(string roomID)
+        {   
+            string type = null;
+            try
+            {
+                conn.Open();
+                string query = "Select type " +
+                               "from Room " +
+                               "where roomID = '" + roomID + "'";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                type = (string)cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return type;
         }
     }
 }

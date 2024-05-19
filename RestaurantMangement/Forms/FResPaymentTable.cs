@@ -10,45 +10,45 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantMangement.Forms {
+namespace RestaurantMangement.Forms
+{
     public partial class FResPaymentTable : Form {
-        DBConnection db = new DBConnection();
         private Bill bill = new Bill();
-        private BookedTable bookedTable = new BookedTable();
+        private Table bookedTable = new Table();
+        private Booking booking = new Booking();
+        string quantity = string.Empty;
         public FResPaymentTable() {
             InitializeComponent();
         }
-        public FResPaymentTable(Bill bill, BookedTable bookedTable) {
+        public FResPaymentTable(Bill bill, Table table, Booking booking, string quantity) {
             InitializeComponent();
             this.bill = bill;
-            this.bookedTable = bookedTable;
+            this.bookedTable = table;
+            this.booking = booking;
+            this.quantity = quantity;
         }
 
         private void FResPaymentTable_Load(object sender, EventArgs e) {
             txtName.Text = bill.CustomerName;
-            txtTableID.Text = bookedTable.TableID;
+            txtTableID.Text = bill.BookedTableID;
             txtRoomID.Text = bookedTable.RoomID;
-            txtBeginTime.Text = bookedTable.TimeBegin.ToString();
-            txtEndTime.Text = bookedTable.TimeEnd.ToString();
-            txtRoomType.Text = bookedTable.RoomType;
-            txtPricePerTable.Text = bookedTable.PricePerTable.ToString();
-            txtQuantity.Text = bookedTable.Quantity.ToString();
-
+            txtBeginTime.Text = booking.TimeBegin.ToString();
+            txtEndTime.Text = booking.TimeEnd.ToString();
+            txtRoomType.Text = Code.DAO.RoomDAO.instance().getroomType(bookedTable.RoomID);
+            txtPricePerTable.Text = Code.DAO.RoomDAO.instance().getpricePerTable(bookedTable.RoomID).ToString();
+            txtQuantity.Text = quantity;
             txtPrice.Text = bill.TotalPrice.ToString();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e) {
-            /* testing 1
-            db.CreateBill(bill);
-            db.InsertDataIntoAccBookTable(bookedTable);
+            string billID = Code.DAO.BillDAO.instance().CreateBill(bill);
             this.Hide();
             FResBill frm = new FResBill(bill);
             frm.Closed += (s, args) => this.Close();
             frm.Show();
-            */
         }
 
-
+        
 
         private void btnCancel_Click(object sender, EventArgs e) {
             this.Hide();

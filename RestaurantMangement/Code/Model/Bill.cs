@@ -45,6 +45,24 @@ namespace RestaurantMangement.Code.Model
             this.voucherId = voucherId;
         }
 
+        public Bill(string orderID, string bookedTableID, string voucherId, string accID, DateTime date, string customerAddress, string customerName, string customerEmail, string customerPhone, string paymentMethods, string status, decimal totalPrice, string type, string note)
+        {
+            this.orderID = orderID;
+            this.bookedTableID = bookedTableID;
+            this.voucherId = voucherId;
+            this.accID = accID;
+            this.date = date;
+            this.customerAddress = customerAddress;
+            this.customerName = customerName;
+            this.customerEmail = customerEmail;
+            this.customerPhone = customerPhone;
+            this.paymentMethods = paymentMethods;
+            this.status = status;
+            this.totalPrice = totalPrice;
+            this.type = type;
+            this.note = note;
+        }
+
         public string BillId { get => billId; set => billId = value; }
         public string OrderID { get => orderID; set => orderID = value; }
         public string BookedTableID { get => bookedTableID; set => bookedTableID = value; }

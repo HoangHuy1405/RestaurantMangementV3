@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 using RestaurantMangement.Code.Model;
 
 namespace RestaurantMangement.Code.DAO {
-    public class VoucherDAO {
+    public class VoucherDAO 
+    {
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         public static VoucherDAO instance() {
             return new VoucherDAO();

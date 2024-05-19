@@ -1,8 +1,12 @@
+using RestaurantMangement.Code.Model;
+
 namespace RestaurantMangement.Code
 {
     internal static class Program
     {
-        [STAThread]
+
+        public static Account currentAcc = new Account();
+
         static void Main()
         {
             ApplicationConfiguration.Initialize();

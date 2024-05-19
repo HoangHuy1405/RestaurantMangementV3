@@ -11,20 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace RestaurantMangement.Forms {
+namespace RestaurantMangement.Forms
+{
     public partial class FResBookingTable : Form {
-        DBConnection db = new DBConnection();
-        Account currentAcc = FResLogin.currentAcc;
-        bool isAdmin = FResLogin.isAdmin;
-        Bill bill = new Bill();
-        BookedTable bookedTable = new BookedTable();
-        decimal totalprice = 0;
         public FResBookingTable() {
             InitializeComponent();
-        }
-        private void FBookingTable_Load(object sender, EventArgs e) {
-
         }
 
         private void btnHome_Click(object sender, EventArgs e) {
@@ -34,23 +28,6 @@ namespace RestaurantMangement.Forms {
             frm.Show();
         }
 
-        private void btnChooseTable_Click(object sender, EventArgs e) {
-            
-        }
-        private void fillBill()
-        {
-            /*bill.CustomerName = txtName.Text;
-            bill.CustomerEmail = currentAcc.Email;
-            bill.PaymentMethods = "Online";
-            bill.Note = txtNote.Text;
-            bill.CustomerPhone = txtPhoneNumber.Text;
-            bill.CustomerAddress = "So 1 Vo Van Ngan";
-            bill.VoucherId = string.Empty;
-            bill.Status = "Pending";
-            bill.Date = DateTime.Now;
-            bill.AccId = currentAcc.AccId;*/
-        }
-
         private void btnBook_Click(object sender, EventArgs e) {
             string tableID = checkAvailableTable();
             if (string.IsNullOrEmpty(tableID)) {
@@ -58,43 +35,62 @@ namespace RestaurantMangement.Forms {
                 return;
             } else MessageBox.Show(tableID);
 
-            // fill booked Table information
-            bookedTable = db.loadBookedTableFromTableID(tableID);
+            string accID = FResLogin.currentAcc.AccID;
+
+            // get booked Table information
+            Table bookedTable = Code.DAO.TableDAO.instance().getTableInformation(tableID);
+            decimal pricePerTable = Code.DAO.RoomDAO.instance().getpricePerTable(bookedTable.RoomID);
+            
             // fill the rest of bookedTable
-            DateTime beginTime = calculateDateTime(dtBookingDate.Value.Date, cbBeginHour.SelectedItem, cbBeginMinutes.SelectedItem);
-            DateTime endTime = calculateDateTime(dtBookingDate.Value.Date, cbEndHour.SelectedItem, cbEndMinutes.SelectedItem);
-            bookedTable.TimeBegin = beginTime;
-            bookedTable.TimeEnd = endTime;
-            bookedTable.Quantity = (int)NumQuantity.Value;
+            DateTime timeBegin = calculateDateTime(dtBookingDate.Value.Date, cbBeginHour.SelectedItem, cbBeginMinutes.SelectedItem);
+            DateTime timeEnd = calculateDateTime(dtBookingDate.Value.Date, cbEndHour.SelectedItem, cbEndMinutes.SelectedItem);
+
+            decimal totalPrice = (int)NumQuantity.Value * pricePerTable;
+            Booking booking = new Booking(totalPrice,accID,timeBegin,timeEnd,tableID);
+
+            string bookingID = Code.DAO.BookingDAO.instance().insert(booking);
 
             // fill bill information
-            fillBill();
-            bill.TotalPrice = (int)NumQuantity.Value * bookedTable.PricePerTable;
 
+            string accId = FResLogin.currentAcc.AccID;
+            string voucherId = string.Empty;
+            DateTime date = DateTime.Now;
+            string customerAddress = "So 1 Vo Van Ngan";
+            string customerName = txtName.Text;
+            string customerEmail = txtEmail.Text;
+            string customerPhone = txtPhoneNumber.Text;
+            string paymentMethods = "Online";
+            string status = "Pending";
+            string note = txtNote.Text;
+            string type = "Booking";
+
+            Bill bill = new Bill(string.Empty,bookingID,voucherId,accId,date,customerAddress,customerName,customerEmail,customerPhone,paymentMethods,status,totalPrice,type,note);
+            
             // move to new form
             this.Hide();
-            FResPaymentTable frm = new FResPaymentTable(bill, bookedTable);
+            FResPaymentTable frm = new FResPaymentTable(bill, bookedTable, booking, NumQuantity.Value.ToString());
             frm.Closed += (s, args) => this.Close();
             frm.Show();
         }
+
         private string checkAvailableTable() {
             DateTime beginTime = calculateDateTime(dtBookingDate.Value.Date, cbBeginHour.SelectedItem, cbBeginMinutes.SelectedItem);
             DateTime endTime = calculateDateTime(dtBookingDate.Value.Date, cbEndHour.SelectedItem, cbEndMinutes.SelectedItem);
 
-
             if (beginTime >= endTime) {
                 MessageBox.Show("Invalid Time");
-                return "";
+                return null;
             }
 
             string beginTimeFormatted = beginTime.ToString("yyyy-MM-dd HH:mm:ss");
             string endTimeFormatted = endTime.ToString("yyyy-MM-dd HH:mm:ss");
 
             string roomType = cbRoomType.SelectedItem.ToString();
-            string tableID = db.CheckTableAvailability(beginTimeFormatted, endTimeFormatted, roomType);
+            string tableID = Code.DAO.TableDAO.instance().CheckTableAvailability(beginTimeFormatted, endTimeFormatted, roomType);
 
             return tableID;
         }
+
         private DateTime calculateDateTime(DateTime date, object hour, object minutes) {
             // Get the selected date from dtBookingDate
             DateTime selectedDate = date;
@@ -109,10 +105,6 @@ namespace RestaurantMangement.Forms {
             return calculatedDateTime;
         }
 
-        private void cbBeginMinutes_SelectedIndexChanged(object sender, EventArgs e) {
-
-        }
-
         private void btnAddTable_Click(object sender, EventArgs e) {
             if (FResLogin.isAdmin) {
                 this.Hide();
@@ -122,10 +114,6 @@ namespace RestaurantMangement.Forms {
             } else {
                 MessageBox.Show("Admin access requirement!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private void btnOrderMore_Click(object sender, EventArgs e) {
-
         }
     }
 }

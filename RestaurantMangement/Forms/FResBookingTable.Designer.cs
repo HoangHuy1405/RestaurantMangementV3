@@ -219,7 +219,7 @@
             // 
             // cbRoomType
             // 
-            cbRoomType.AllowDrop = true;
+            cbRoomType.AllowDrop = false;
             cbRoomType.BackColor = Color.Transparent;
             cbRoomType.CustomizableEdges = customizableEdges10;
             cbRoomType.DrawMode = DrawMode.OwnerDrawFixed;
@@ -240,7 +240,7 @@
             // 
             // cbEndMinutes
             // 
-            cbEndMinutes.AllowDrop = true;
+            cbEndMinutes.AllowDrop = false;
             cbEndMinutes.BackColor = Color.Transparent;
             cbEndMinutes.CustomizableEdges = customizableEdges12;
             cbEndMinutes.DrawMode = DrawMode.OwnerDrawFixed;
@@ -272,7 +272,7 @@
             // 
             // cbEndHour
             // 
-            cbEndHour.AllowDrop = true;
+            cbEndHour.AllowDrop = false;
             cbEndHour.BackColor = Color.Transparent;
             cbEndHour.CustomizableEdges = customizableEdges14;
             cbEndHour.DrawMode = DrawMode.OwnerDrawFixed;
@@ -322,7 +322,6 @@
             cbBeginMinutes.ShadowDecoration.CustomizableEdges = customizableEdges17;
             cbBeginMinutes.Size = new Size(105, 46);
             cbBeginMinutes.TabIndex = 13;
-            cbBeginMinutes.SelectedIndexChanged += cbBeginMinutes_SelectedIndexChanged;
             // 
             // btnBook
             // 
@@ -547,7 +546,6 @@
             Name = "FResBookingTable";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FBookingTable";
-            Load += FBookingTable_Load;
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             guna2Panel1.ResumeLayout(false);
             guna2ContainerControl1.ResumeLayout(false);

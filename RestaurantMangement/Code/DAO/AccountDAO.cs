@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantMangement.Code.DAO
 {   
-    public class AccountDAO : DAOInterface<Account>
+    public class AccountDAO
     {
         // DAO - database access object
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);

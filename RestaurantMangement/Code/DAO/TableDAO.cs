@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Principal;
+using System.Collections;
 
 namespace RestaurantMangement.Code.DAO
 {
-    public class TableDAO : DAOInterface<Table>
+    public class TableDAO
     {
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         public static TableDAO instance()
@@ -73,9 +74,36 @@ namespace RestaurantMangement.Code.DAO
             throw new NotImplementedException();
         }
 
-        public Table selectByConditon(string condition)
+        public Table getTableFromQuery(string query)
         {
-            throw new NotImplementedException();
+            Table table = null;
+
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    if (reader.Read())
+                    {
+                        string tableID = reader.GetString(0);
+                        int numchairs = reader.GetInt32(1);
+                        string roomID = reader.GetString(2);
+
+                        table = new Table(tableID, numchairs, roomID);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Code.Connection.DBConnection.closeConnection(conn);
+            }
+            return table;
         }
 
         public int update(Table table)
@@ -159,6 +187,81 @@ namespace RestaurantMangement.Code.DAO
                 Code.Connection.DBConnection.closeConnection(conn);
             }
             return result;
-        }   
+        }
+
+        public string CheckTableAvailability(string timeBegin, string timeEnd, string roomType)
+        {
+            string tableID = null;
+            string sqlQuery = @"SELECT t.tableID
+                            FROM [Table] t
+                            JOIN Room r ON t.roomID = r.roomID
+                            WHERE r.type = @RoomType
+                            AND t.tableID NOT IN
+                            (
+                                SELECT tableID
+                                FROM Booking
+                                WHERE NOT
+                                (
+                                    timeEnd <= @TimeBegin
+                                    OR timeBegin >= @TimeEnd
+                                )
+                            )";
+
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                cmd.Parameters.AddWithValue("@TimeBegin", timeBegin);
+                cmd.Parameters.AddWithValue("@TimeEnd", timeEnd);
+                cmd.Parameters.AddWithValue("@RoomType", roomType);
+
+                tableID = (string)cmd.ExecuteScalar();
+
+            }
+            catch (Exception ex) 
+            { 
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tableID;
+        }
+
+        public Table getTableInformation(string tableID)
+        {
+            Table table = null;
+
+            try
+            {
+                conn.Open();
+                string query = "Select * " +
+                               "from [Table] " +
+                               "where tableID = '" + tableID + "'";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    if (reader.Read())
+                    {
+                        int numchairs = reader.GetInt32(1);
+                        string roomID = reader.GetString(2);
+
+                        table = new Table(tableID, numchairs, roomID);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Code.Connection.DBConnection.closeConnection(conn);
+            }
+            return table;
+        }
+
     }
 }

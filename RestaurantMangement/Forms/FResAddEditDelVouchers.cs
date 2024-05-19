@@ -24,7 +24,7 @@ namespace RestaurantMangement.Forms
         }
 
         private void FResAddEditDelVouchers_Load(object sender, EventArgs e) {
-            DataTable dt = db.LoadVoucherTable();
+            DataTable dt = Code.DAO.VoucherDAO.instance().LoadVoucherTable();
             gvVoucher.DataSource = dt;
 
             if (gvVoucher.Columns.Contains("voucherID"))
@@ -56,7 +56,7 @@ namespace RestaurantMangement.Forms
         }
         private bool isValidDiscount() {
             if (decimal.TryParse(txtVoucherDiscount.Text, out discount)) {
-                /*voucher.Discount = discount;*/
+                voucher.Discount = discount;
                 return true;
             } else {
                 MessageBox.Show("Invalid discount number!");
@@ -69,7 +69,6 @@ namespace RestaurantMangement.Forms
 
             DateTime dateTime;
             if (DateTime.TryParseExact(userInput, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime)) {
-                //MessageBox.Show("Valid DateTime: " + dateTime.ToString(format));
                 voucher.Exp_date = dateTime;
                 return true;
             } else {
@@ -80,7 +79,7 @@ namespace RestaurantMangement.Forms
         private void btnAdd_Click(object sender, EventArgs e) {
             if (isValidDiscount() && isValidateDateTime()) {
                 voucher.VoucherName = txtVoucherName.Text;
-                db.addVoucher(voucher);
+                Code.DAO.VoucherDAO.instance().addVoucher(voucher); 
                 FResAddEditDelVouchers_Load(sender, e);
                 MessageBox.Show("added successfully!");
                 txtVoucherName.Text = "";
@@ -92,7 +91,7 @@ namespace RestaurantMangement.Forms
         private void btnEdit_Click(object sender, EventArgs e) {
             if (isValidDiscount() && isValidateDateTime()) {
                 voucher.VoucherName = txtVoucherName.Text;
-                db.editVoucher(voucher, txtVoucherID.Text);
+                Code.DAO.VoucherDAO.instance().editVoucher(voucher, txtVoucherID.Text);
                 FResAddEditDelVouchers_Load(sender, e);
                 MessageBox.Show("editted successfully!");
                 txtVoucherName.Text = "";
@@ -102,7 +101,7 @@ namespace RestaurantMangement.Forms
         }
 
         private void btnDelete_Click(object sender, EventArgs e) {
-            db.deleteVoucher(txtVoucherID.Text);
+            Code.DAO.VoucherDAO.instance().deleteVoucher(txtVoucherID.Text);
             FResAddEditDelVouchers_Load(sender, e);
             MessageBox.Show("deleted successfully!");
             txtVoucherName.Text = "";

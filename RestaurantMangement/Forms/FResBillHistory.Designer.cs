@@ -27,6 +27,7 @@
             gvBillHistory = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gvBillHistory).BeginInit();
+            SuspendLayout();
             // 
             // guna2Panel1
             // 
@@ -61,6 +62,7 @@
             btnHome.Size = new Size(126, 56);
             btnHome.TabIndex = 3;
             btnHome.Text = "Home";
+            btnHome.Click += btnHome_Click_1;
             // 
             // lblName
             // 

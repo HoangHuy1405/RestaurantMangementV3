@@ -35,16 +35,14 @@ namespace RestaurantMangement.Code.DAO
         public int insert(Account account)
         {
             int result = 0;
-            SqlConnection conn = Code.Connection.DBConnection.getConnection();
+            //SqlConnection conn = Code.Connection.DBConnection.getConnection();
             try
             {
                 conn.Open();
                 string query = "Insert into Account " +
                                "(username, password, fullname, email, phoneNum, balance) " +
                                "values ('" + account.Username + "', '" + account.Password + "', '" + account.Fullname + "', '" + account.Email + "', '" + account.PhoneNum + "', '" + account.Balance + "')"; 
-                MessageBox.Show(query);
                 SqlCommand cmd = new SqlCommand(query, conn);
-                MessageBox.Show(query);
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -123,7 +121,7 @@ namespace RestaurantMangement.Code.DAO
         public Account selectByConditon(string query)
         {   
             Account account = null;
-            SqlConnection conn = Code.Connection.DBConnection.getConnection();
+            //SqlConnection conn = Code.Connection.DBConnection.getConnection();
             try
             {
                 conn.Open();

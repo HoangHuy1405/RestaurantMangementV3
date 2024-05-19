@@ -30,9 +30,7 @@ namespace RestaurantMangement.Forms {
                 // if you are a manager => you are allowed to see all bill history
                 gvBillHistory.DataSource = db.GetAllBillHistory();
             } else {
-                /* testing1
-                gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccId);
-                */
+                gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccID);
             }
 
             gvBillHistory.ColumnHeadersHeight = 30;
@@ -66,6 +64,13 @@ namespace RestaurantMangement.Forms {
 
         private void gvBillHistory_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
+        }
+
+        private void btnHome_Click_1(object sender, EventArgs e) {
+            this.Hide();
+            FResMain f = new FResMain();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 }

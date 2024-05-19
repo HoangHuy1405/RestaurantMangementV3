@@ -33,7 +33,7 @@ namespace RestaurantMangement.Forms
 
         // retrieve data from database
         public void FResOrder_Load(object sender, EventArgs e) {
-            DataTable table = Code.DAO.ProductDAO.loadProductWithCate();
+            DataTable table = Code.DAO.ProductDAO.instance().loadProductWithCate();
             dataGridView1.DataSource = table;
             if (dataGridView1.Columns.Contains("productName"))
                 dataGridView1.Columns["productName"].HeaderText = "Prduct Name";

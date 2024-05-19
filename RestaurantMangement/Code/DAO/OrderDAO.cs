@@ -11,7 +11,7 @@ using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
 namespace RestaurantMangement.Code.DAO
 {
     public class OrderDAO  {
-        SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=RMv7;Integrated Security=True; User ID = sa; Password = 123");
+        SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         public static OrderDAO instance() {
             return new OrderDAO();
         }

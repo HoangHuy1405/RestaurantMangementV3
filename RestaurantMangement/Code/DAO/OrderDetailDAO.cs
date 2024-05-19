@@ -11,7 +11,7 @@ namespace RestaurantMangement.Code.DAO
 {
     public class OrderDetailDAO 
     {
-        SqlConnection conn = Code.Connection.DBConnection.getConnection();
+        SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         public static OrderDetailDAO instance() {
             return new OrderDetailDAO();
         }

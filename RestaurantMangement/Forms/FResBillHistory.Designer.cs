@@ -5,16 +5,6 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
         #region Windows Form Designer generated code
 
@@ -72,7 +62,7 @@
             btnHome.Size = new Size(126, 56);
             btnHome.TabIndex = 3;
             btnHome.Text = "Home";
-            btnHome.Click += btnHome_Click;
+            btnHome.Click += btnHome_Click_1;
             // 
             // lblName
             // 
@@ -85,7 +75,6 @@
             lblName.Size = new Size(154, 38);
             lblName.TabIndex = 1;
             lblName.Text = "Your Name";
-            lblName.Click += lblName_Click;
             // 
             // label1
             // 

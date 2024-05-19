@@ -32,7 +32,7 @@ namespace RestaurantMangement.Forms
 
 
         private void FResAddDelEditProduct_Load(object sender, EventArgs e) {
-            DataTable table = db.loadProductWithCate();
+            DataTable table = Code.DAO.ProductDAO.instance().loadProductWithCate();
             dataGridView2.DataSource = table;
             if (dataGridView2.Columns.Contains("productName"))
                 dataGridView2.Columns["productName"].HeaderText = "Prduct Name";
@@ -74,7 +74,7 @@ namespace RestaurantMangement.Forms
         }
         // load into gunaComboxBox
         private void LoadCategories() {
-            DataTable categories = db.LoadCategoryTable();
+            DataTable categories = Code.DAO.CategoryDAO.instance().LoadCategoryTable();
             if (categories.Rows.Count > 0) {
                 foreach (DataRow row in categories.Rows) {
                     cbCategoryItems.Items.Add(row["cateName"].ToString());
@@ -100,7 +100,7 @@ namespace RestaurantMangement.Forms
             // check if input is valid or not
             if (isValidInput()) {
                 string cateName = cbCategoryItems.SelectedItem.ToString();
-                db.addProductWithCate(txtProductName.Text, txtDescription.Text, price, cateName);
+                Code.DAO.ProductDAO.instance().addProductWithCate(txtProductName.Text, txtDescription.Text, price, cateName);
                 // update 
                 cbCategoryItems.Items.Clear();
                 FResAddDelEditProduct_Load(sender, e);
@@ -115,7 +115,7 @@ namespace RestaurantMangement.Forms
         private void btnEdit_Click(object sender, EventArgs e) {
             if (isValidInput()) {
                 string cateName = cbCategoryItems.SelectedItem.ToString();
-                db.editProduct(txtProductID.Text, txtProductName.Text, cateName, price, txtDescription.Text);
+                Code.DAO.ProductDAO.instance().editProduct(txtProductID.Text, txtProductName.Text, cateName, price, txtDescription.Text);
                 //menuItemDAO.edit(menuItem);
                 // update 
                 cbCategoryItems.Items.Clear();
@@ -129,8 +129,7 @@ namespace RestaurantMangement.Forms
             }
         }
         private void btnDelete_Click(object sender, EventArgs e) {
-            db.deleteProduct(txtProductID.Text);
-
+            Code.DAO.ProductDAO.instance().deleteProduct(txtProductID.Text);
             // update 
             FResAddDelEditProduct_Load(sender, e);
             MessageBox.Show("deleted successfully");

@@ -1,4 +1,5 @@
 ﻿using RestaurantMangement.Code;
+using RestaurantMangement.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,15 +38,17 @@ namespace RestaurantMangement.Forms {
         }
 
         private void btnConfirm_Click(object sender, EventArgs e) {
+            /* testing 1
             db.CreateBill(bill);
             db.InsertDataIntoAccBookTable(bookedTable);
             this.Hide();
             FResBill frm = new FResBill(bill);
             frm.Closed += (s, args) => this.Close();
             frm.Show();
+            */
         }
 
-        
+
 
         private void btnCancel_Click(object sender, EventArgs e) {
             this.Hide();

@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
+using RestaurantMangement.Code.Model;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -74,18 +75,23 @@ namespace RestaurantMangement.Code
             }
         }
         /* ACCOUNT */
-        public Account getCurrentUsingAccount(string email, string password) {
+ /*       public Account getCurrentUsingAccount(string email, string password)
+        {
             Account user = null;
-            try {
+            try
+            {
                 conn.Open();
                 string query = "SELECT * FROM Account WHERE email = @Email AND password = @Password";
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@Email", email);
                 command.Parameters.AddWithValue("@Password", password);
 
-                using (SqlDataReader reader = command.ExecuteReader()) {
-                    if (reader.Read()) {
-                        user = new Account {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        user = new Account
+                        {
                             AccId = reader["accID"].ToString(),
                             Username = reader["username"].ToString(),
                             Password = reader["password"].ToString(),
@@ -96,46 +102,7 @@ namespace RestaurantMangement.Code
                         };
                     }
                 }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-            return user;
-        }
-        /* PRODUCT */
-        public DataTable loadProductWithCate() {
 
-            DataTable dataTable = new DataTable();
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr)) {
-                string query = "SELECT p.ProductID, p.productName, p.description, p.price, c.cateName " +
-                               "FROM Product p " +
-                               "INNER JOIN category c ON p.cateID = c.cateID";
-                using (SqlCommand command = new SqlCommand(query, connection)) {
-                    connection.Open();
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command)) {
-                        adapter.Fill(dataTable);
-                    }
-                }
-            }
-            return dataTable;
-        }
-        public void addProductWithCate(string productName, string description, double price, string cataName)
-        {
-            try
-            {
-                conn.Open();
-                // PROCEDURE InsertProductWithCategory (in database)
-                using (SqlCommand command = new SqlCommand("InsertProductWithCategory", conn))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    // Parameters
-                    command.Parameters.AddWithValue("@productName", productName);
-                    command.Parameters.AddWithValue("@description", description);
-                    command.Parameters.AddWithValue("@price", price);
-                    command.Parameters.AddWithValue("@cateName", cataName);
-                    command.ExecuteNonQuery();
-                }
             }
             catch (SqlException ex)
             {
@@ -145,12 +112,16 @@ namespace RestaurantMangement.Code
             {
                 conn.Close();
             }
-        }
+            return user;
+        }*/
+        /* PRODUCT */
 
         //edit
-        private string GetOrCreateCategory(string cateName) {
+        private string GetOrCreateCategory(string cateName)
+        {
             string cateID = "";
-            try {
+            try
+            {
                 string query = "SELECT cateID FROM Category WHERE CateName = @CateName";
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@CateName", cateName);
@@ -158,9 +129,12 @@ namespace RestaurantMangement.Code
                 conn.Open();
                 var result = command.ExecuteScalar();
 
-                if (result != null) {
+                if (result != null)
+                {
                     cateID = result.ToString();
-                } else {
+                }
+                else
+                {
                     // if a category does not exist yet => create it
                     query = "INSERT INTO Category (cateName) VALUES (@CateName); SELECT SCOPE_IDENTITY();";
                     command = new SqlCommand(query, conn);
@@ -168,61 +142,6 @@ namespace RestaurantMangement.Code
 
                     cateID = command.ExecuteScalar().ToString();
                 }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-
-            return cateID;
-        }
-        public string getCateIDFromCateName(string cateName) {
-            string cateID = "";
-            try {
-                string sqlQuery = "SELECT cateID FROM Category WHERE cateName = '" + cateName + "'";
-                SqlCommand command = new SqlCommand(sqlQuery, conn);
-                conn.Open();
-                cateID = command.ExecuteScalar().ToString();
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-            return cateID;
-        }
-
-        public void editProduct(string productID, string productName, string cateName, double price, string description) {
-            string cateID = getCateIDFromCateName(cateName);
-            // update product
-            try {
-                string query = "UPDATE Product " +
-                               "SET productName = @ProductName, price = @Price, cateID = @CateID, description = @Description " +
-                               "WHERE productID = @ProductID";
-                SqlCommand command = new SqlCommand(query, conn);
-                command.Parameters.AddWithValue("@ProductName", productName);
-                command.Parameters.AddWithValue("@Price", price);
-                command.Parameters.AddWithValue("@CateID", cateID);
-                command.Parameters.AddWithValue("@Description", description);
-                command.Parameters.AddWithValue("@ProductID", productID);
-
-                conn.Open();
-                command.ExecuteNonQuery();
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-        }
-        // delete product
-        public void deleteProduct(string productID)
-        {
-            try
-            {
-                string query = "DELETE FROM Product WHERE ProductID = '" + productID +"'";
-                SqlCommand command = new SqlCommand(query, conn);
-
-                conn.Open();
-                command.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
@@ -232,104 +151,31 @@ namespace RestaurantMangement.Code
             {
                 conn.Close();
             }
+
+            return cateID;
         }
-        /* Category */
-        public DataTable LoadCategoryTable() {
-            DataTable dataTable = new DataTable();
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr)) {
-                string query = "SELECT cateID, cateName FROM Category";
-                using (SqlCommand command = new SqlCommand(query, connection)) {
-                    connection.Open();
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command)) {
-                        adapter.Fill(dataTable);
-                    }
-                }
-            }
-            return dataTable;
-        }
+        
+
+        
+        
         /* BILL */
-        public void CreateBill(Bill bill) {
-            using (var connection = new SqlConnection(Properties.Settings.Default.connStr)) {
-                connection.Open();
-
-                // PROCEDURE CreateBill created in database in procedure.sql
-                var command = new SqlCommand("CreateBill", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                // Add parameters
-                command.Parameters.AddWithValue("@Date", bill.Date);
-                command.Parameters.AddWithValue("@Address", bill.CustomerAddress);
-                command.Parameters.AddWithValue("@CustomerName", bill.CustomerName);
-                command.Parameters.AddWithValue("@CustomerEmail", bill.CustomerEmail);
-                command.Parameters.AddWithValue("@CustomerPhone", bill.CustomerPhone);
-                command.Parameters.AddWithValue("@PaymentMethod", bill.PaymentMethods); // Changed parameter name to match the stored procedure
-                command.Parameters.AddWithValue("@Note", bill.Note);
-                command.Parameters.AddWithValue("@Status", bill.Status);
-                command.Parameters.AddWithValue("@TotalPrice", bill.TotalPrice);
-                command.Parameters.AddWithValue("@AccID", bill.AccId);
-                command.Parameters.AddWithValue("@VoucherID", string.IsNullOrEmpty(bill.VoucherId) ? (object)DBNull.Value : bill.VoucherId);
-
-                // Output parameter for BillID
-                command.Parameters.Add("@BillID", SqlDbType.VarChar, 10).Direction = ParameterDirection.Output;
-
-                // Parameter for BookedProducts using DataTable
-                var bookedProductsTable = new DataTable();
-                bookedProductsTable.Columns.Add("productID", typeof(string));
-                bookedProductsTable.Columns.Add("quantity", typeof(int));
-
-                foreach (var bookedProduct in bill.bookedProducts) {
-                    bookedProductsTable.Rows.Add(bookedProduct.ProductId, bookedProduct.Quantity);
-                }
-
-                var parameter = command.Parameters.AddWithValue("@BookedProducts", bookedProductsTable);
-                parameter.SqlDbType = SqlDbType.Structured;
-                parameter.TypeName = "dbo.BookedProductType";
-
-                // Execute the command
-                command.ExecuteNonQuery();
-
-                // Retrieve the output parameter value
-                string billID = command.Parameters["@BillID"].Value.ToString();
-                Console.WriteLine("Created bill with ID: " + billID);
-            }
-        }
-
-        // not work yet
-        public string getBillIdBasedOnDate(string accID, DateTime date) {
-            string billID = null;
-            try {
-                conn.Open();
-                string sqlQuery = "SELECT billID FROM Bill WHERE accID = @AccID AND date = @Date";
-
-                using (SqlCommand command = new SqlCommand(sqlQuery, conn)) {
-                    command.Parameters.AddWithValue("@AccID", accID);
-                    command.Parameters.AddWithValue("@Date", date);
-
-                    object result = command.ExecuteScalar();
-                    if (result != null) {
-                        billID = result.ToString();
-                    }
-                }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-            return billID;
-        }
-
-
-        public void GetBillBasedOnBillID(Bill bill, string billid) {
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+/*        public void GetBillBasedOnBillID(Bill bill, string billid)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr))
+                {
                     conn.Open();
                     string sqlQuery = "SELECT * FROM Bill WHERE billID = @BillID";
 
-                    using (SqlCommand command = new SqlCommand(sqlQuery, conn)) {
+                    using (SqlCommand command = new SqlCommand(sqlQuery, conn))
+                    {
                         command.Parameters.AddWithValue("@BillID", billid);
 
-                        using (SqlDataReader reader = command.ExecuteReader()) {
-                            if (reader.Read()) {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
                                 bill.BillId = reader["billID"].ToString();
                                 bill.Date = Convert.ToDateTime(reader["date"]);
                                 bill.CustomerAddress = reader["Address"].ToString();
@@ -347,181 +193,29 @@ namespace RestaurantMangement.Code
                         }
                     }
                 }
-            } catch (SqlException ex) {
+            }
+            catch (SqlException ex)
+            {
                 MessageBox.Show("Error: " + ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
-        }
-        public DataTable GetBillHistoryFromDBOfThatAccount(string accId) {
-            DataTable dt = new DataTable();
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    conn.Open();
-                    string sqlQuery = "SELECT * FROM bill WHERE accID = '" + accId + "'";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
-                    adapter.Fill(dt);
-                }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-            return dt;
-        }
-        public DataTable GetAllBillHistory() {
-            DataTable dt = new DataTable();
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    conn.Open();
-                    string sqlQuery = "SELECT * FROM bill";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
-                    adapter.Fill(dt);
-                }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-            return dt;
-        }
-        public DataTable getBillFromBillID(string billID) {
-            DataTable dt = new DataTable();
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    conn.Open();
-                    string sqlQuery = "SELECT * FROM bill WHERE billID = '" + billID + "'";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
-                    adapter.Fill(dt);
-                }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-            return dt;
-        }
-        public void UpdateBillStatus(string billID, string billStatus) {
-            try {
-                using(SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    string sqlQuery = "UPDATE Bill " +
-                                      "SET status = '" + billStatus + "' " +
-                                      "WHERE billID = '" + billID + "'";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-                    conn.Open();
-                    command.ExecuteNonQuery();
-                }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-        }
-        public void deleteBIll(string billID) {
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    string sqlQuery = "DELETE FROM bill " +
-                                      "WHERE billID = '" + billID + "'";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-
-                    conn.Open();
-                    command.ExecuteNonQuery();
-                }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-        }
+        }*/
+        
         /* VOUCHER */
-        public DataTable LoadVoucherTable() {
-            DataTable dt = new DataTable();
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    string sqlQuery = "SELECT * FROM Voucher";
-                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
-                    adapter.Fill(dt);
-                }
-            } catch( SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-            return dt;
-        }
-        public void addVoucher(Voucher voucher) {
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    conn.Open();
-                    string sqlQuery = string.Format("INSERT INTO Voucher(voucherName, Discount, exp_date) " +
-                                                    "VALUES (@voucherName, @discount ,@exp_date)");
-
-                    DataTable dt = new DataTable("Voucher");
-                    DataRow row = dt.NewRow();
-
-                    using (SqlCommand command = new SqlCommand(sqlQuery, conn)) {
-                        command.Parameters.Add("@voucherName", System.Data.SqlDbType.VarChar, 50).Value = voucher.VoucherName;
-                        command.Parameters.Add("@discount", System.Data.SqlDbType.Decimal, 4).Value = voucher.Discount;
-                        command.Parameters.Add("@exp_date", System.Data.SqlDbType.DateTime, 50).Value = voucher.Exp_date.ToString("yyyy-MM-dd HH:mm:ss");
-
-                        command.ExecuteNonQuery();
-                    }
-
-
-                }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-        }
-        public void editVoucher(Voucher voucher, string voucherID) {
-            try {
-                string query = "UPDATE Voucher " +
-                               "SET voucherName = @VoucherName, discount = @Discount, exp_date = @ExpDate " +
-                               "WHERE voucherID = @VoucherID";
-
-                using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    using (SqlCommand command = new SqlCommand(query, connection)) {
-                        command.Parameters.AddWithValue("@VoucherID", voucherID);
-                        command.Parameters.AddWithValue("@VoucherName", voucher.VoucherName);
-                        command.Parameters.AddWithValue("@Discount", voucher.Discount);
-                        command.Parameters.AddWithValue("@ExpDate", voucher.Exp_date);
-
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                    }
-                }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-        }
-        public void deleteVoucher(string voucherID) {
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
-                    string sqlQuery = "DELETE FROM Voucher " +
-                                      "WHERE voucherID = '" + voucherID + "'";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-
-                    conn.Open();
-                    command.ExecuteNonQuery();
-                }
-            } catch (SqlException ex) {
-                MessageBox.Show("Error: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-        }
+        
+        
+        
         /* TABLE */
-        public DataTable LoadTablesFromDB() {
+        public DataTable LoadTablesFromDB()
+        {
             DataTable dt = new DataTable();
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr))
+                {
                     conn.Open();
                     string sqlQuery = "SELECT tableID, t.roomID, numchair, status, type, PricePerTable " +
                                       "FROM [Table] t INNER JOIN Room r ON t.roomID = r.roomID";
@@ -529,15 +223,20 @@ namespace RestaurantMangement.Code
                     SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
                     adapter.Fill(dt);
                 }
-            } catch (SqlException ex) {
+            }
+            catch (SqlException ex)
+            {
                 MessageBox.Show("Error: " + ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return dt;
         }
 
-        public string CheckTableAvailability(string timeBegin, string timeEnd, string roomType) {
+        public string CheckTableAvailability(string timeBegin, string timeEnd, string roomType)
+        {
             string tableID = "";
             string sqlQuery = @"SELECT t.tableID
                             FROM [Table] t
@@ -555,8 +254,10 @@ namespace RestaurantMangement.Code
                             )
                          ";
 
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr)) {
-                using (SqlCommand command = new SqlCommand(sqlQuery, connection)) {
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr))
+            {
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
                     command.Parameters.AddWithValue("@TimeBegin", timeBegin);
                     command.Parameters.AddWithValue("@TimeEnd", timeEnd);
                     command.Parameters.AddWithValue("@RoomType", roomType);
@@ -569,7 +270,8 @@ namespace RestaurantMangement.Code
             return tableID;
         }
 
-        public BookedTable loadBookedTableFromTableID(string tableID) {
+        public BookedTable loadBookedTableFromTableID(string tableID)
+        {
             BookedTable bookedTable = new BookedTable();
 
             string sqlQuery = @"
@@ -578,12 +280,15 @@ namespace RestaurantMangement.Code
                             JOIN Room r ON t.roomID = r.roomID
                             WHERE t.tableID = '" + tableID + "'";
 
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr)) {
-                using (SqlCommand command = new SqlCommand(sqlQuery, connection)) {
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.connStr))
+            {
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
                     command.Parameters.AddWithValue("@TableID", tableID);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read()) {
+                    if (reader.Read())
+                    {
                         bookedTable.TableID = tableID;
                         bookedTable.RoomID = reader["roomID"].ToString();
                         bookedTable.PricePerTable = Convert.ToDecimal(reader["PricePerTable"]);
@@ -596,9 +301,12 @@ namespace RestaurantMangement.Code
             return bookedTable;
         }
 
-        public void InsertDataIntoAccBookTable(BookedTable bookedTable) {
-            try {
-                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr)) {
+        /*public void InsertDataIntoAccBookTable(BookedTable bookedTable)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr))
+                {
                     conn.Open();
                     MessageBox.Show(bookedTable.TimeBegin.ToString());
                     string sqlQuery = string.Format("INSERT INTO AccBookTable(tableID, accID, timeBegin, timeEnd) " +
@@ -606,26 +314,31 @@ namespace RestaurantMangement.Code
 
                     DataTable dt = new DataTable("AccBookTable");
                     DataRow row = dt.NewRow();
-                   
-                    
-                    using (SqlCommand command = new SqlCommand(sqlQuery, conn)) {
-                        command.Parameters.Add("@tableID", System.Data.SqlDbType.VarChar, 4).Value = bookedTable.TableID;
-                        command.Parameters.Add("@accId", System.Data.SqlDbType.VarChar, 4).Value = currentAcc.AccId;
-                        command.Parameters.Add("@timeBegin", System.Data.SqlDbType.DateTime, 50).Value = bookedTable.TimeBegin.ToString("yyyy-MM-dd HH:mm:ss"); 
-                        command.Parameters.Add("@timeEnd", System.Data.SqlDbType.DateTime, 50).Value = bookedTable.TimeEnd.ToString("yyyy-MM-dd HH:mm:ss"); 
 
-                        
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, conn))
+                    {
+                        command.Parameters.Add("@tableID", SqlDbType.VarChar, 4).Value = bookedTable.TableID;
+                        command.Parameters.Add("@accId", SqlDbType.VarChar, 4).Value = currentAcc.AccId;
+                        command.Parameters.Add("@timeBegin", SqlDbType.DateTime, 50).Value = bookedTable.TimeBegin.ToString("yyyy-MM-dd HH:mm:ss");
+                        command.Parameters.Add("@timeEnd", SqlDbType.DateTime, 50).Value = bookedTable.TimeEnd.ToString("yyyy-MM-dd HH:mm:ss");
+
+
                         command.ExecuteNonQuery();
                     }
 
-                    
+
                 }
-            } catch (SqlException ex) {
+            }
+            catch (SqlException ex)
+            {
                 MessageBox.Show("Error: " + ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
-        }
+        }*/
 
     }
 }

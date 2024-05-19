@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using RestaurantMangement.Code;
+using RestaurantMangement.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,41 +13,33 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RestaurantMangement.Forms {
-    public partial class FResBookingTable : Form
-    {
+    public partial class FResBookingTable : Form {
         DBConnection db = new DBConnection();
         Account currentAcc = FResLogin.currentAcc;
         bool isAdmin = FResLogin.isAdmin;
         Bill bill = new Bill();
         BookedTable bookedTable = new BookedTable();
         decimal totalprice = 0;
-        public FResBookingTable()
-        {
+        public FResBookingTable() {
             InitializeComponent();
         }
-        private void FBookingTable_Load(object sender, EventArgs e)
-        {
+        private void FBookingTable_Load(object sender, EventArgs e) {
 
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
-        {
+        private void btnHome_Click(object sender, EventArgs e) {
             this.Hide();
             FResMain frm = new FResMain();
             frm.Closed += (s, args) => this.Close();
             frm.Show();
         }
 
-        private void btnChooseTable_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FChooseTable frm = new FChooseTable();
-            frm.Closed += (s, args) => this.Close();
-            frm.Show();
+        private void btnChooseTable_Click(object sender, EventArgs e) {
+            
         }
         private void fillBill()
         {
-            bill.CustomerName = txtName.Text;
+            /*bill.CustomerName = txtName.Text;
             bill.CustomerEmail = currentAcc.Email;
             bill.PaymentMethods = "Online";
             bill.Note = txtNote.Text;
@@ -55,18 +48,15 @@ namespace RestaurantMangement.Forms {
             bill.VoucherId = string.Empty;
             bill.Status = "Pending";
             bill.Date = DateTime.Now;
-            bill.AccId = currentAcc.AccId;
+            bill.AccId = currentAcc.AccId;*/
         }
 
-        private void btnBook_Click(object sender, EventArgs e)
-        {
+        private void btnBook_Click(object sender, EventArgs e) {
             string tableID = checkAvailableTable();
-            if (string.IsNullOrEmpty(tableID))
-            {
+            if (string.IsNullOrEmpty(tableID)) {
                 MessageBox.Show("Out of table in that time");
                 return;
-            }
-            else MessageBox.Show(tableID);
+            } else MessageBox.Show(tableID);
 
             // fill booked Table information
             bookedTable = db.loadBookedTableFromTableID(tableID);
@@ -87,14 +77,12 @@ namespace RestaurantMangement.Forms {
             frm.Closed += (s, args) => this.Close();
             frm.Show();
         }
-        private string checkAvailableTable()
-        {
+        private string checkAvailableTable() {
             DateTime beginTime = calculateDateTime(dtBookingDate.Value.Date, cbBeginHour.SelectedItem, cbBeginMinutes.SelectedItem);
             DateTime endTime = calculateDateTime(dtBookingDate.Value.Date, cbEndHour.SelectedItem, cbEndMinutes.SelectedItem);
 
 
-            if (beginTime >= endTime)
-            {
+            if (beginTime >= endTime) {
                 MessageBox.Show("Invalid Time");
                 return "";
             }
@@ -107,8 +95,7 @@ namespace RestaurantMangement.Forms {
 
             return tableID;
         }
-        private DateTime calculateDateTime(DateTime date, object hour, object minutes)
-        {
+        private DateTime calculateDateTime(DateTime date, object hour, object minutes) {
             // Get the selected date from dtBookingDate
             DateTime selectedDate = date;
 
@@ -122,14 +109,12 @@ namespace RestaurantMangement.Forms {
             return calculatedDateTime;
         }
 
-        private void cbBeginMinutes_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void cbBeginMinutes_SelectedIndexChanged(object sender, EventArgs e) {
 
         }
 
-        private void btnAddTable_Click(object sender, EventArgs e)
-        {
-            if(FResLogin.isAdmin) {
+        private void btnAddTable_Click(object sender, EventArgs e) {
+            if (FResLogin.isAdmin) {
                 this.Hide();
                 FResAddTable frm = new FResAddTable();
                 frm.Closed += (s, args) => this.Close();

@@ -1,4 +1,5 @@
 ﻿using RestaurantMangement.Code;
+using RestaurantMangement.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,14 +25,14 @@ namespace RestaurantMangement.Forms {
         }
 
         private void FResBillHistory_Load(object sender, EventArgs e) {
-            lblName.Text = currentAcc.FullName;
-            if(FResLogin.isAdmin) {
+            lblName.Text = currentAcc.Fullname;
+            if (FResLogin.isAdmin) {
                 // if you are a manager => you are allowed to see all bill history
                 gvBillHistory.DataSource = db.GetAllBillHistory();
             } else {
-                gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccId);
+                gvBillHistory.DataSource = db.GetBillHistoryFromDBOfThatAccount(currentAcc.AccID);
             }
-            
+
             gvBillHistory.ColumnHeadersHeight = 30;
         }
 
@@ -63,6 +64,13 @@ namespace RestaurantMangement.Forms {
 
         private void gvBillHistory_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
+        }
+
+        private void btnHome_Click_1(object sender, EventArgs e) {
+            this.Hide();
+            FResMain f = new FResMain();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 }

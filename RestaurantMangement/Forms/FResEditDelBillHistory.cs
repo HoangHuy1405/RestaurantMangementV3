@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantMangement.Forms {
+namespace RestaurantMangement.Forms
+{
     public partial class FResEditDelBillHistory : Form {
-        DBConnection db = new DBConnection();
         private string billID;
         public FResEditDelBillHistory() {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace RestaurantMangement.Forms {
         }
 
         private void FResEditDelBillHistory_Load(object sender, EventArgs e) {
-            gvBillHistory.DataSource = db.getBillFromBillID(this.billID);
+            gvBillHistory.DataSource = Code.DAO.BillDAO.instance().getBillFromBillID(this.billID);
             gvBillHistory.ColumnHeadersHeight = 30;
         }
 
@@ -44,7 +44,7 @@ namespace RestaurantMangement.Forms {
                     return;
                 } else {
                     string billStatus = cbBillStatus.SelectedItem.ToString();
-                    db.UpdateBillStatus(this.billID, billStatus);
+                    Code.DAO.BillDAO.instance().UpdateBillStatus(this.billID, billStatus);
                     MessageBox.Show("Updated successfully");
                     this.Hide();
                     FResBillHistory f = new FResBillHistory();
@@ -56,7 +56,7 @@ namespace RestaurantMangement.Forms {
 
         private void btnDelete_Click(object sender, EventArgs e) {
             if(this.billID!= null) {
-                db.deleteBIll(this.billID);
+                Code.DAO.BillDAO.instance().deleteBIll(this.billID);
                 MessageBox.Show("Deleted successfully!");
                 this.Hide();
                 FResBillHistory f = new FResBillHistory();

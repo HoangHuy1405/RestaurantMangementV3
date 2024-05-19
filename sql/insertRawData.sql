@@ -1,4 +1,4 @@
-use testRMv3;
+use RMv7;
 -- Inserting data into the Account table
 INSERT INTO Account (accID, username, password, fullname, email, phoneNum, balance)
 VALUES 
@@ -30,6 +30,16 @@ VALUES
 ('F640','Grilled Chicken', 'Grilled chicken breast with vegetables', 12.99, '757B'),
 ('1557','Chocolate Cake', 'Decadent chocolate cake', 6.99, 'D8F3'),
 ('84FE','Pho','vietnamese traditions', 10.4, '757B');
+
+-- Inserting data into the order table
+INSERT INTO Orders(date, totalPrice, accID)
+VALUES 
+('2024-05-01',25, '47BA')
+
+INSERT INTO OrderDetail(quantity, productID, orderID) 
+VALUES 
+(2,'1557', '01C7'),
+(1,'42A6', '01C7');
 
 
 -- Inserting data into the Bill table

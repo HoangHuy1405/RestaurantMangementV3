@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using RestaurantMangement.Code;
+using RestaurantMangement.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,19 +18,13 @@ namespace RestaurantMangement.Forms
 {
     public partial class FResOrder : Form {
         DBConnection db = new DBConnection();
-        Bill bill = new Bill();
-
-        List<BookedProduct> bookedProducts = new List<BookedProduct>();
+        Order order = new Order();
 
         public FResOrder() {
             InitializeComponent();
         }
-        //public FResOrder(Bill bill) {
-        //    InitializeComponent();
-        //    this.bill = bill;
-        //}
 
-        private void btnHome_Click(object sender, EventArgs e) {
+        public void btnHome_Click(object sender, EventArgs e) {
             this.Hide();
             FResMain frm = new FResMain();
             frm.Closed += (s, args) => this.Close();
@@ -38,7 +33,7 @@ namespace RestaurantMangement.Forms
 
         // retrieve data from database
         public void FResOrder_Load(object sender, EventArgs e) {
-            DataTable table = db.Load("SELECT p.ProductID, p.productName, p.description, p.price, c.cateName FROM Product p INNER JOIN category c ON p.cateID = c.cateID");
+            DataTable table = Code.DAO.ProductDAO.instance().loadProductWithCate();
             dataGridView1.DataSource = table;
             if (dataGridView1.Columns.Contains("productName"))
                 dataGridView1.Columns["productName"].HeaderText = "Prduct Name";
@@ -64,7 +59,6 @@ namespace RestaurantMangement.Forms
             subtractButtonColumn.Text = "-";
             subtractButtonColumn.UseColumnTextForButtonValue = true;
             dataGridView2.Columns.Add(subtractButtonColumn);
-
 
             dataGridView1.ColumnHeadersHeight = 30;
         }
@@ -109,21 +103,21 @@ namespace RestaurantMangement.Forms
                 if (isAdded) {
                     MessageBox.Show("This food is already in the food cart.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } else {
-                    BookedProduct bookedProduct = new BookedProduct(productId, productName, 1, price);
-                    bill.bookedProducts.Add(bookedProduct);
+                    OrderDetail orderDetail = new OrderDetail(productId, productName, 1, price);
+                    order.OrderList.Add(orderDetail);
                     dataGridView2.Rows.Add(productName, 1);
                 }
             }
         }
-
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             int index = e.RowIndex;
             if (index >= 0 && dataGridView2.Columns[e.ColumnIndex] is DataGridViewButtonColumn) {
                 if (dataGridView2.Columns[e.ColumnIndex].HeaderText == "+") {
                     // Increment quantity by 1
                     int quantity = Convert.ToInt32(dataGridView2.Rows[index].Cells["dgvQuantity"].Value);
-                    bill.bookedProducts[index].Quantity += 1;
-                    bill.bookedProducts[index].Totalprice += bill.bookedProducts[index].NormalPrice;
+                    order.OrderList[index].Quantity += 1;
+                    // no need for this, automatic price calculation in db
+                    //bill.bookedProducts[index].Totalprice += bill.bookedProducts[index].NormalPrice;
 
                     quantity++;
                     dataGridView2.Rows[index].Cells["dgvQuantity"].Value = quantity;
@@ -131,8 +125,10 @@ namespace RestaurantMangement.Forms
                     // Decrement quantity by 1, if it's greater than 0
                     int quantity = Convert.ToInt32(dataGridView2.Rows[index].Cells["dgvQuantity"].Value);
                     if (quantity > 0) {
-                        bill.bookedProducts[index].Quantity -= 1;
-                        bill.bookedProducts[index].Totalprice -= bill.bookedProducts[index].NormalPrice;
+
+                        order.OrderList[index].Quantity -= 1;
+                        // no need for this, automatic price calculation in db
+                        //bill.bookedProducts[index].Totalprice -= bill.bookedProducts[index].NormalPrice;
 
                         quantity--;
                         dataGridView2.Rows[index].Cells["dgvQuantity"].Value = quantity;
@@ -151,13 +147,17 @@ namespace RestaurantMangement.Forms
 
         private void btnProceed_Click(object sender, EventArgs e) {
             this.Hide();
-            FResPayment f = new FResPayment(bill);
+            fillOrderInformation();
+            string orderID =  Code.DAO.OrderDAO.instance().insert(order);
+            order.OrderID = orderID;
+            FResPayment f = new FResPayment(order);
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
-
-        private void dataGridView2_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            
+        private void fillOrderInformation() {
+            order.TotalPrice = order.calculateTotalPrice();
+            order.AccID = FResLogin.currentAcc.AccID;
+            order.Date = DateTime.Now;
         }
     }
 }

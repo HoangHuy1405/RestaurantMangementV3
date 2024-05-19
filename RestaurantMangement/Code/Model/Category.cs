@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantMangement.Code
+namespace RestaurantMangement.Code.Model
 {
     public class Category
     {
@@ -15,10 +15,6 @@ namespace RestaurantMangement.Code
         public Category(string cateID, string cateName)
         {
             this.cateID = cateID;
-            this.cateName = cateName;
-        }
-        public Category(string cateName)
-        {
             this.cateName = cateName;
         }
 

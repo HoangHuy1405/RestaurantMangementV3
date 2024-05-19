@@ -22,7 +22,8 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -43,7 +44,7 @@
             label3 = new Label();
             label1 = new Label();
             txtPass = new Guna.UI2.WinForms.Guna2TextBox();
-            txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
+            txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             label2 = new Label();
             btnLogin = new Guna.UI2.WinForms.Guna2Button();
             btnExit = new Guna.UI2.WinForms.Guna2Button();
@@ -65,7 +66,6 @@
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2Panel1.Size = new Size(518, 158);
             guna2Panel1.TabIndex = 4;
-            guna2Panel1.Paint += guna2Panel1_Paint;
             // 
             // guna2PictureBox1
             // 
@@ -80,7 +80,6 @@
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 7;
             guna2PictureBox1.TabStop = false;
-            guna2PictureBox1.Click += guna2PictureBox1_Click_1;
             // 
             // label3
             // 
@@ -93,7 +92,6 @@
             label3.TabIndex = 6;
             label3.Text = "SIGN IN";
             label3.TextAlign = ContentAlignment.MiddleCenter;
-            label3.Click += label3_Click;
             // 
             // label1
             // 
@@ -127,27 +125,27 @@
             txtPass.Size = new Size(430, 60);
             txtPass.TabIndex = 1;
             // 
-            // txtEmail
+            // txtUsername
             // 
-            txtEmail.CustomizableEdges = customizableEdges7;
-            txtEmail.DefaultText = "";
-            txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtEmail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtEmail.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Font = new Font("Segoe UI", 9F);
-            txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(45, 211);
-            txtEmail.Margin = new Padding(3, 4, 3, 4);
-            txtEmail.Name = "txtEmail";
-            txtEmail.PasswordChar = '\0';
-            txtEmail.PlaceholderText = "";
-            txtEmail.RightToLeft = RightToLeft.No;
-            txtEmail.SelectedText = "";
-            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            txtEmail.Size = new Size(430, 60);
-            txtEmail.TabIndex = 0;
+            txtUsername.CustomizableEdges = customizableEdges7;
+            txtUsername.DefaultText = "";
+            txtUsername.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtUsername.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtUsername.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtUsername.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtUsername.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtUsername.Font = new Font("Segoe UI", 9F);
+            txtUsername.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtUsername.Location = new Point(45, 211);
+            txtUsername.Margin = new Padding(3, 4, 3, 4);
+            txtUsername.Name = "txtUsername";
+            txtUsername.PasswordChar = '\0';
+            txtUsername.PlaceholderText = "";
+            txtUsername.RightToLeft = RightToLeft.No;
+            txtUsername.SelectedText = "";
+            txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtUsername.Size = new Size(430, 60);
+            txtUsername.TabIndex = 0;
             // 
             // label2
             // 
@@ -155,10 +153,9 @@
             label2.ForeColor = Color.Black;
             label2.Location = new Point(45, 187);
             label2.Name = "label2";
-            label2.Size = new Size(46, 20);
+            label2.Size = new Size(75, 20);
             label2.TabIndex = 5;
-            label2.Text = "Email";
-            label2.Click += label2_Click;
+            label2.Text = "Username";
             // 
             // btnLogin
             // 
@@ -237,7 +234,7 @@
             Controls.Add(signUpBtn);
             Controls.Add(btnExit);
             Controls.Add(btnLogin);
-            Controls.Add(txtEmail);
+            Controls.Add(txtUsername);
             Controls.Add(label2);
             Controls.Add(txtPass);
             Controls.Add(label1);
@@ -259,7 +256,7 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Label label1;
         private Guna.UI2.WinForms.Guna2TextBox txtPass;
-        private Guna.UI2.WinForms.Guna2TextBox txtEmail;
+        private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private Label label2;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
         private Guna.UI2.WinForms.Guna2Button btnExit;

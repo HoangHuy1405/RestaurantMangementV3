@@ -51,7 +51,7 @@
             label11 = new Label();
             dataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             label2 = new Label();
-            lblVoucherID = new Label();
+            lblBIllID = new Label();
             guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -353,30 +353,30 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 13.2F);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(504, 363);
+            label2.Location = new Point(23, 101);
             label2.Name = "label2";
-            label2.Size = new Size(114, 30);
+            label2.Size = new Size(79, 30);
             label2.TabIndex = 23;
-            label2.Text = "VoucherID";
+            label2.Text = "Bill ID: ";
             // 
-            // lblVoucherID
+            // lblBIllID
             // 
-            lblVoucherID.AutoSize = true;
-            lblVoucherID.BackColor = Color.Transparent;
-            lblVoucherID.Font = new Font("Segoe UI", 13.2F);
-            lblVoucherID.ForeColor = Color.Black;
-            lblVoucherID.Location = new Point(708, 363);
-            lblVoucherID.Name = "lblVoucherID";
-            lblVoucherID.Size = new Size(114, 30);
-            lblVoucherID.TabIndex = 24;
-            lblVoucherID.Text = "VoucherID";
+            lblBIllID.AutoSize = true;
+            lblBIllID.BackColor = Color.Transparent;
+            lblBIllID.Font = new Font("Segoe UI", 13.2F);
+            lblBIllID.ForeColor = Color.Black;
+            lblBIllID.Location = new Point(229, 101);
+            lblBIllID.Name = "lblBIllID";
+            lblBIllID.Size = new Size(62, 30);
+            lblBIllID.TabIndex = 24;
+            lblBIllID.Text = "BillID";
             // 
             // FResBill
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1065, 595);
-            Controls.Add(lblVoucherID);
+            Controls.Add(lblBIllID);
             Controls.Add(label2);
             Controls.Add(dataGridView1);
             Controls.Add(lblPaymentFill);
@@ -430,6 +430,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView1;
         private Guna.UI2.WinForms.Guna2Button btnHome;
         private Label label2;
-        private Label lblVoucherID;
+        private Label lblBIllID;
     }
 }

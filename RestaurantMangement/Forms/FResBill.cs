@@ -1,4 +1,5 @@
 ﻿using RestaurantMangement.Code;
+using RestaurantMangement.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace RestaurantMangement.Forms {
 
         }
         private void Initilize() {
-            //lblBIllID.Text = db.getBillIdBasedOnDate(currentAcc.AccId, bill.date);
+            lblBIllID.Text = bill.BillId;
             lblStatusFill.Text = bill.Status;
             lblNameFill.Text = bill.CustomerName;
             lblEmailFill.Text = bill.CustomerEmail;
@@ -72,21 +73,21 @@ namespace RestaurantMangement.Forms {
             dataGridView1.Columns.Add(columnDishOrDrinkQuantity);
             dataGridView1.Columns.Add(columnDishOrDrinkTotalPrice);
 
-            // Fill gvFood with booked dish and drink data
-            foreach (BookedProduct bookedProduct in bill.bookedProducts) {
-                // Create a new row for the DataGridView
-                DataGridViewRow newRow = new DataGridViewRow();
+            // Fill gvFood with booked dish and drink 
+            //foreach (BookedProduct bookedProduct in bill.bookedProducts) {
+            //    // Create a new row for the DataGridView
+            //    DataGridViewRow newRow = new DataGridViewRow();
 
-                // Populate the cells of the new row with data from the BookedDishOrDrink object
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.ProductId });
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.ProductName });
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.Quantity });
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.Totalprice });
+            //    // Populate the cells of the new row with data from the BookedDishOrDrink object
+            //    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.ProductId });
+            //    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.ProductName });
+            //    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.Quantity });
+            //    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = bookedProduct.Totalprice });
 
-                // Add the new row to the DataGridView
-                dataGridView1.Rows.Add(newRow);
-            }
-
+            //    // Add the new row to the DataGridView
+            //    dataGridView1.Rows.Add(newRow);
+            //}
+            dataGridView1.DataSource = Code.DAO.OrderDetailDAO.instance().loadOrderDetailsFromOrderID(bill.OrderID);
             dataGridView1.ColumnHeadersHeight = 30;
         }
 

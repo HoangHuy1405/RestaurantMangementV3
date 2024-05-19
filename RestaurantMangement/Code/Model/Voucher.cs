@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantMangement.Code {
-    public class Voucher {
+namespace RestaurantMangement.Code.Model
+{
+    public class Voucher
+    {
+        private string voucherID;
         private string voucherName;
         private decimal discount;
         private DateTime exp_date;
 
-        public Voucher() {
-        }
+        public Voucher() { }
 
-        public Voucher(string voucherName, decimal discount, DateTime exp_date) {
+        public Voucher(string voucherName, decimal discount, DateTime exp_date)
+        {
             this.voucherName = voucherName;
             this.discount = discount;
             this.exp_date = exp_date;

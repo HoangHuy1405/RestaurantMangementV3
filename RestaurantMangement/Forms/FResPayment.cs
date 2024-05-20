@@ -16,7 +16,6 @@ namespace RestaurantMangement.Forms
         Account currentAcc = FResLogin.currentAcc;
         Bill bill = new Bill();
         Order order = new Order();
-        DBConnection db = new DBConnection();
         DataTable vouchers;
 
         public FResPayment() {

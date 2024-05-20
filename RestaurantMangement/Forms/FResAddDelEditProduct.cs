@@ -16,7 +16,6 @@ using System.Windows.Forms;
 namespace RestaurantMangement.Forms
 {
     public partial class FResAddDelEditProduct : Form {
-        DBConnection db = new DBConnection();
         private string productID;
         private string productCategory;
 

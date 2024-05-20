@@ -28,7 +28,7 @@ namespace RestaurantMangement.Forms
 
         private void FResPaymentTable_Load(object sender, EventArgs e) {
             txtName.Text = bill.CustomerName;
-            txtTableID.Text = bill.BookedTableID;
+            txtTableID.Text = bookedTable.TableID;
             txtRoomID.Text = bookedTable.RoomID;
             txtBeginTime.Text = booking.TimeBegin.ToString();
             txtEndTime.Text = booking.TimeEnd.ToString();

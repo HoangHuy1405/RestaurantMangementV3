@@ -6,7 +6,6 @@ namespace RestaurantMangement.Forms
     public partial class FResBill : Form {
         Account currentAcc = FResLogin.currentAcc;
         Bill bill = new Bill();
-        DBConnection db = new DBConnection();
 
         public FResBill() {
             InitializeComponent();

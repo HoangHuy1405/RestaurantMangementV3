@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace RestaurantMangement.Forms {
     public partial class FResBillHistory : Form {
-        DBConnection db = new DBConnection();
         Account currentAcc = FResLogin.currentAcc;
 
 

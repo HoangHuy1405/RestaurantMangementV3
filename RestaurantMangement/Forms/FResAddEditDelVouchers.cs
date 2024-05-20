@@ -16,7 +16,6 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace RestaurantMangement.Forms
 {
     public partial class FResAddEditDelVouchers : Form {
-        DBConnection db = new DBConnection();
         Voucher voucher = new Voucher();
         private decimal discount;
         public FResAddEditDelVouchers() {

@@ -17,7 +17,6 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace RestaurantMangement.Forms
 {
     public partial class FResOrder : Form {
-        DBConnection db = new DBConnection();
         Order order = new Order();
 
         public FResOrder() {

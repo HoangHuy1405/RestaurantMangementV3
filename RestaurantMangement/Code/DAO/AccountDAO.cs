@@ -160,7 +160,38 @@ namespace RestaurantMangement.Code.DAO
             return false;
 
         }
-
-
+        public void updateAccountBalance(decimal billPrice) {
+            try {
+                conn.Open();
+                string query = "UPDATE Account SET balance = balance - @BillPrice WHERE accID = @AccID";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@BillPrice", billPrice);
+                command.Parameters.AddWithValue("@AccID", FResLogin.currentAcc.AccID);
+                command.ExecuteNonQuery();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            } finally {
+                conn.Close();
+            }
+        }
+        public decimal getAccountBalance() {
+            decimal balance = 0m;
+            try {
+                conn.Open();
+                string query = "SELECT balance FROM Account " +
+                               "WHERE accID = @AccID";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@AccID", FResLogin.currentAcc.AccID);
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value) {
+                    balance = (decimal)result;
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            } finally {
+                conn.Close();
+            }
+            return balance;
+        }
     }
 }

@@ -146,13 +146,17 @@ namespace RestaurantMangement.Forms
         }
 
         private void btnProceed_Click(object sender, EventArgs e) {
-            this.Hide();
-            fillOrderInformation();
-            string orderID =  Code.DAO.OrderDAO.instance().insert(order);
-            order.OrderID = orderID;
-            FResPayment f = new FResPayment(order);
-            f.Closed += (s, args) => this.Close();
-            f.Show();
+            if(order.OrderList.Count > 0) {
+                this.Hide();
+                fillOrderInformation();
+                string orderID = Code.DAO.OrderDAO.instance().insert(order);
+                order.OrderID = orderID;
+                FResPayment f = new FResPayment(order);
+                f.Closed += (s, args) => this.Close();
+                f.Show();
+            } else {
+                MessageBox.Show("Your order is empty. Please add items to your order before proceeding.", "Order Empty", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } 
         }
         private void fillOrderInformation() {
             order.TotalPrice = order.calculateTotalPrice();

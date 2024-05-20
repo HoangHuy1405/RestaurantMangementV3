@@ -29,6 +29,19 @@ namespace RestaurantMangement.Forms
         }
 
         private void btnBook_Click(object sender, EventArgs e) {
+            if (string.IsNullOrEmpty(txtName.Text)) {
+                MessageBox.Show("Please enter your name");
+                return;
+            } else if (string.IsNullOrEmpty(txtPhoneNumber.Text)) {
+                MessageBox.Show("Please enter your phone number");
+                return;
+            } else if (cbRoomType.SelectedIndex == -1) {
+                MessageBox.Show("Please choose your room type");
+                return;
+            } else if (cbBeginHour.SelectedIndex==-1||cbBeginMinutes.SelectedIndex == -1|| cbEndHour.SelectedIndex == -1|| cbEndMinutes.SelectedIndex == -1) {
+                MessageBox.Show("Please choose invalid time!");
+                return;
+            }
             string tableID = checkAvailableTable();
             if (string.IsNullOrEmpty(tableID)) {
                 MessageBox.Show("Out of table in that time");
@@ -68,7 +81,7 @@ namespace RestaurantMangement.Forms
             
             // move to new form
             this.Hide();
-            FResPaymentTable frm = new FResPaymentTable(bill, bookedTable, booking, NumQuantity.Value.ToString());
+            FResPaymentTable frm = new FResPaymentTable(bill, bookedTable, booking);
             frm.Closed += (s, args) => this.Close();
             frm.Show();
         }

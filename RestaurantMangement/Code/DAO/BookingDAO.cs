@@ -74,5 +74,18 @@ namespace RestaurantMangement.Code.DAO
 
             return dt;
         }
+        public void deleteBooking(string bookID) {
+            try {
+                conn.Open();
+                string sqlQuery = "DELETE FROM Booking " +
+                                  "WHERE bookID  = '" + bookID + "'";
+                SqlCommand command = new SqlCommand(sqlQuery, conn);
+                command.ExecuteNonQuery();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            } finally {
+                conn.Close();
+            }
+        }
     }
 }

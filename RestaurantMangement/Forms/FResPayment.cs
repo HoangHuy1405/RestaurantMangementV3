@@ -144,21 +144,37 @@ namespace RestaurantMangement.Forms
         }
 
         private void btnBuy_Click(object sender, EventArgs e) {
+            if(string.IsNullOrEmpty(txtName.Text)) {
+                MessageBox.Show("Please enter your name");
+                return;
+            } else if (string.IsNullOrEmpty(txtPhone.Text)){
+                MessageBox.Show("Please enter your phone number");
+                return;
+            } else if (string.IsNullOrEmpty(txtAddress.Text)) {
+                MessageBox.Show("Please enter your address");
+                return;
+            } else if (!rbtnOnline.Checked && !rbtnCash.Checked) {
+                MessageBox.Show("Please choose your payment method");
+                return;
+            }
             FillBill();
             if (cbVouchers.SelectedItem != null) {
                 bill.VoucherId = cbVouchers.SelectedItem.ToString();
             }
-            this.Hide();
-            string billID = Code.DAO.BillDAO.instance().CreateBill(bill);
-            bill.BillId = billID;
-            MessageBox.Show("Done!");
-            FResBill f = new FResBill(bill);
-            f.Closed += (s, args) => this.Close();
-            f.Show();
-        }
-
-        // recalculate the total price
-        private void cbVouchers_SelectedIndexChanged(object sender, EventArgs e) {
+            decimal balance = Code.DAO.AccountDAO.instance().getAccountBalance();
+            if (balance >= bill.TotalPrice) {
+                MessageBox.Show("Sucess!");
+                string billID = Code.DAO.BillDAO.instance().CreateBill(bill);
+                Code.DAO.AccountDAO.instance().updateAccountBalance(bill.TotalPrice);
+                FResLogin.currentAcc.Balance = Code.DAO.AccountDAO.instance().getAccountBalance();
+                bill.BillId = billID;
+                this.Hide();
+                FResBill f = new FResBill(bill);
+                f.Closed += (s, args) => this.Close();
+                f.Show();
+            } else {
+                MessageBox.Show("Invalid! Your account balance: " + FResLogin.currentAcc.Balance);
+            }
 
         }
 
@@ -178,15 +194,8 @@ namespace RestaurantMangement.Forms
                 MessageBox.Show("Admin access requirement!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private void FResPayment_FormClosing(object sender, FormClosingEventArgs e) {
-            if (e.CloseReason == CloseReason.UserClosing) {
-                //Code.DAO.OrderDAO.instance().deleteOrder(order.OrderID);
-            }
-        }
-
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e) {
-
+        private void btnCancel_Click(object sender, EventArgs e) {
+            Code.DAO.OrderDAO.instance().deleteOrder(order.OrderID);
         }
     }
 }

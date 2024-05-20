@@ -20,11 +20,11 @@ namespace RestaurantMangement.Code.DAO {
 
                 string query = "INSERT INTO Bill " +
                                "(orderID, bookID, accID, voucherID, date, customerAddress, customerName, " +
-                               "customerEmail, paymentMethods, status, note, totalPrice, type) " +
+                               "customerEmail, customerPhone, paymentMethods, status, note, totalPrice, type) " +
                                "OUTPUT INSERTED.billID " +
                                "VALUES " +
                                "(@OrderID,@BookId,@AccID,@VoucherID,@Date,@customerAddress,@CustomerName, " +
-                               "@CustomerEmail,@PaymentMethod,@Status,@Note,@TotalPrice,@Type)";
+                               "@CustomerEmail,@CustomerPhone,@PaymentMethod,@Status,@Note,@TotalPrice,@Type)";
 
                 SqlCommand command = new SqlCommand(query, conn);
 

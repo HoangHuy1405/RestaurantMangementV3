@@ -36,27 +36,17 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
@@ -69,16 +59,6 @@
             guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             label2 = new Label();
-            guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            label3 = new Label();
-            guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            label4 = new Label();
-            guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
-            label5 = new Label();
-            guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
-            label6 = new Label();
-            guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
-            label7 = new Label();
             guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
             dataGridView2 = new Guna.UI2.WinForms.Guna2DataGridView();
             dgvName = new DataGridViewTextBoxColumn();
@@ -93,11 +73,6 @@
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             CategoryPanel.SuspendLayout();
             guna2Panel3.SuspendLayout();
-            guna2Panel4.SuspendLayout();
-            guna2Panel5.SuspendLayout();
-            guna2Panel6.SuspendLayout();
-            guna2Panel7.SuspendLayout();
-            guna2Panel8.SuspendLayout();
             guna2Panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             guna2Panel13.SuspendLayout();
@@ -189,11 +164,6 @@
             // CategoryPanel
             // 
             CategoryPanel.Controls.Add(guna2Panel3);
-            CategoryPanel.Controls.Add(guna2Panel4);
-            CategoryPanel.Controls.Add(guna2Panel5);
-            CategoryPanel.Controls.Add(guna2Panel6);
-            CategoryPanel.Controls.Add(guna2Panel7);
-            CategoryPanel.Controls.Add(guna2Panel8);
             CategoryPanel.Dock = DockStyle.Left;
             CategoryPanel.Location = new Point(0, 96);
             CategoryPanel.Name = "CategoryPanel";
@@ -229,121 +199,16 @@
             label2.TabIndex = 0;
             label2.Text = "Menu";
             // 
-            // guna2Panel4
-            // 
-            guna2Panel4.Controls.Add(label3);
-            guna2Panel4.CustomizableEdges = customizableEdges13;
-            guna2Panel4.Dock = DockStyle.Top;
-            guna2Panel4.Location = new Point(3, 76);
-            guna2Panel4.Name = "guna2Panel4";
-            guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2Panel4.Size = new Size(173, 57);
-            guna2Panel4.TabIndex = 1;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(14, 18);
-            label3.Name = "label3";
-            label3.Size = new Size(93, 23);
-            label3.TabIndex = 0;
-            label3.Text = "Vegetables";
-            // 
-            // guna2Panel5
-            // 
-            guna2Panel5.Controls.Add(label4);
-            guna2Panel5.CustomizableEdges = customizableEdges15;
-            guna2Panel5.Dock = DockStyle.Top;
-            guna2Panel5.Location = new Point(3, 139);
-            guna2Panel5.Name = "guna2Panel5";
-            guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2Panel5.Size = new Size(173, 57);
-            guna2Panel5.TabIndex = 2;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(14, 18);
-            label4.Name = "label4";
-            label4.Size = new Size(148, 23);
-            label4.TabIndex = 0;
-            label4.Text = "Fired/Grilled Food";
-            // 
-            // guna2Panel6
-            // 
-            guna2Panel6.Controls.Add(label5);
-            guna2Panel6.CustomizableEdges = customizableEdges17;
-            guna2Panel6.Dock = DockStyle.Top;
-            guna2Panel6.Location = new Point(3, 202);
-            guna2Panel6.Name = "guna2Panel6";
-            guna2Panel6.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2Panel6.Size = new Size(173, 57);
-            guna2Panel6.TabIndex = 3;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(14, 18);
-            label5.Name = "label5";
-            label5.Size = new Size(78, 23);
-            label5.TabIndex = 0;
-            label5.Text = "Sea food";
-            // 
-            // guna2Panel7
-            // 
-            guna2Panel7.Controls.Add(label6);
-            guna2Panel7.CustomizableEdges = customizableEdges19;
-            guna2Panel7.Dock = DockStyle.Top;
-            guna2Panel7.Location = new Point(3, 265);
-            guna2Panel7.Name = "guna2Panel7";
-            guna2Panel7.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            guna2Panel7.Size = new Size(173, 57);
-            guna2Panel7.TabIndex = 4;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(14, 18);
-            label6.Name = "label6";
-            label6.Size = new Size(58, 23);
-            label6.TabIndex = 0;
-            label6.Text = "Drinks";
-            // 
-            // guna2Panel8
-            // 
-            guna2Panel8.Controls.Add(label7);
-            guna2Panel8.CustomizableEdges = customizableEdges21;
-            guna2Panel8.Dock = DockStyle.Top;
-            guna2Panel8.Location = new Point(3, 328);
-            guna2Panel8.Name = "guna2Panel8";
-            guna2Panel8.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            guna2Panel8.Size = new Size(173, 57);
-            guna2Panel8.TabIndex = 5;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(14, 18);
-            label7.Name = "label7";
-            label7.Size = new Size(72, 23);
-            label7.TabIndex = 0;
-            label7.Text = "Services";
-            // 
             // guna2Panel11
             // 
             guna2Panel11.Controls.Add(dataGridView2);
             guna2Panel11.Controls.Add(guna2Panel13);
             guna2Panel11.Controls.Add(guna2Panel12);
-            guna2Panel11.CustomizableEdges = customizableEdges29;
+            guna2Panel11.CustomizableEdges = customizableEdges19;
             guna2Panel11.Dock = DockStyle.Right;
             guna2Panel11.Location = new Point(950, 96);
             guna2Panel11.Name = "guna2Panel11";
-            guna2Panel11.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            guna2Panel11.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2Panel11.Size = new Size(384, 601);
             guna2Panel11.TabIndex = 6;
             // 
@@ -417,18 +282,18 @@
             // guna2Panel13
             // 
             guna2Panel13.Controls.Add(btnProceed);
-            guna2Panel13.CustomizableEdges = customizableEdges25;
+            guna2Panel13.CustomizableEdges = customizableEdges15;
             guna2Panel13.Dock = DockStyle.Bottom;
             guna2Panel13.Location = new Point(0, 496);
             guna2Panel13.Name = "guna2Panel13";
-            guna2Panel13.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            guna2Panel13.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2Panel13.Size = new Size(384, 105);
             guna2Panel13.TabIndex = 2;
             // 
             // btnProceed
             // 
             btnProceed.BorderRadius = 5;
-            btnProceed.CustomizableEdges = customizableEdges23;
+            btnProceed.CustomizableEdges = customizableEdges13;
             btnProceed.DisabledState.BorderColor = Color.DarkGray;
             btnProceed.DisabledState.CustomBorderColor = Color.DarkGray;
             btnProceed.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -438,7 +303,7 @@
             btnProceed.ForeColor = Color.White;
             btnProceed.Location = new Point(14, 34);
             btnProceed.Name = "btnProceed";
-            btnProceed.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            btnProceed.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnProceed.Size = new Size(358, 68);
             btnProceed.TabIndex = 1;
             btnProceed.Text = "Proceed";
@@ -448,11 +313,11 @@
             // 
             guna2Panel12.Controls.Add(guna2Separator2);
             guna2Panel12.Controls.Add(FoodCart);
-            guna2Panel12.CustomizableEdges = customizableEdges27;
+            guna2Panel12.CustomizableEdges = customizableEdges17;
             guna2Panel12.Dock = DockStyle.Top;
             guna2Panel12.Location = new Point(0, 0);
             guna2Panel12.Name = "guna2Panel12";
-            guna2Panel12.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2Panel12.ShadowDecoration.CustomizableEdges = customizableEdges18;
             guna2Panel12.Size = new Size(384, 75);
             guna2Panel12.TabIndex = 0;
             // 
@@ -545,16 +410,6 @@
             CategoryPanel.ResumeLayout(false);
             guna2Panel3.ResumeLayout(false);
             guna2Panel3.PerformLayout();
-            guna2Panel4.ResumeLayout(false);
-            guna2Panel4.PerformLayout();
-            guna2Panel5.ResumeLayout(false);
-            guna2Panel5.PerformLayout();
-            guna2Panel6.ResumeLayout(false);
-            guna2Panel6.PerformLayout();
-            guna2Panel7.ResumeLayout(false);
-            guna2Panel7.PerformLayout();
-            guna2Panel8.ResumeLayout(false);
-            guna2Panel8.PerformLayout();
             guna2Panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             guna2Panel13.ResumeLayout(false);
@@ -574,16 +429,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Label label2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
-        private Label label3;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
-        private Label label4;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
-        private Label label5;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel7;
-        private Label label6;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel8;
-        private Label label7;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel11;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel12;
         private Label FoodCart;

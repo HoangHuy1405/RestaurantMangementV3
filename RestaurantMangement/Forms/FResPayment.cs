@@ -160,20 +160,30 @@ namespace RestaurantMangement.Forms
             if (cbVouchers.SelectedItem != null) {
                 bill.VoucherId = cbVouchers.SelectedItem.ToString();
             }
-            decimal balance = Code.DAO.AccountDAO.instance().getAccountBalance();
-            if (balance >= bill.TotalPrice) {
-                MessageBox.Show("Sucess!");
-                string billID = Code.DAO.BillDAO.instance().CreateBill(bill);
-                Code.DAO.AccountDAO.instance().updateAccountBalance(bill.TotalPrice);
-                FResLogin.currentAcc.Balance = Code.DAO.AccountDAO.instance().getAccountBalance();
-                bill.BillId = billID;
-                this.Hide();
-                FResBill f = new FResBill(bill);
-                f.Closed += (s, args) => this.Close();
-                f.Show();
-            } else {
-                MessageBox.Show("Invalid! Your account balance: " + FResLogin.currentAcc.Balance);
+            
+            if (rbtnCash.Checked) 
+            {
+                decimal balance = Code.DAO.AccountDAO.instance().getAccountBalance();
+                if (balance >= bill.TotalPrice)
+                { 
+                    FResLogin.currentAcc.Balance = Code.DAO.AccountDAO.instance().getAccountBalance();
+                    Code.DAO.AccountDAO.instance().updateAccountBalance(bill.TotalPrice); 
+                }
+                else
+                {
+                    MessageBox.Show("Invalid! Your account balance: " + FResLogin.currentAcc.Balance);
+                    return;
+                }
             }
+            string billID = Code.DAO.BillDAO.instance().CreateBill(bill);
+            bill.BillId = billID;
+
+            MessageBox.Show("Sucess!");
+            this.Hide();
+            FResBill f = new FResBill(bill);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+
 
         }
 
